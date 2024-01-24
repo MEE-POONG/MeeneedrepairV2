@@ -87,13 +87,13 @@ export default function BlogCard() {
                     ))}
                 </div>
                 
-                <div className="py-9"> 
+                {/* <div className="py-9"> 
             <button className="group relative h-8 w-36 md:h-12 md:w-48 overflow-hidden rounded-lg bg-white md:text-base text-sm shadow">
             <div className="absolute inset-0 w-3 bg-slate-700 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
             <span className="relative text-black group-hover:text-white"onClick={handleLoadMore} >โหลดเพิ่มเติม</span>
             </button>
             </div>
-                
+                 */}
   
             </div>
            

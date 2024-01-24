@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
-//
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
 
@@ -11,9 +11,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.news.findUnique({
+                if (!id || typeof id !== 'string') {
+                    res.status(400).json({ error: "Invalid or missing 'id' parameter" });
+                    return;
+                }
+
+                const data = await prisma.user.findUnique({
                     where: {
-                        id: id as string,
+                        id: id,
                     },
                 });
 
@@ -27,11 +32,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.news.update({
+                if (!id || typeof id !== 'string') {
+                    res.status(400).json({ error: "Invalid or missing 'id' parameter" });
+                    return;
+                }
+
+                const data = await prisma.user.update({
                     where: {
-                        id: id as string,
+                        id: id,
                     },
-                    data: req.body,
+                    data: JSON.parse(req.body),
                 });
 
                 res.status(200).json(data);
@@ -44,9 +54,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.news.delete({
+                if (!id || typeof id !== 'string') {
+                    res.status(400).json({ error: "Invalid or missing 'id' parameter" });
+                    return;
+                }
+
+                const data = await prisma.user.delete({
                     where: {
-                        id: id as string,
+                        id: id,
                     },
                 });
 
