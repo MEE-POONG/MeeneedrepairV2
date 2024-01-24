@@ -27,7 +27,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ loggedInUser, children }) => {
             <main className={fontMNR.className}>
                 {children}
             </main>
-                <Footer />
+            <Footer />
         </>
     )
 }
