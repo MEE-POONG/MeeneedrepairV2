@@ -13,8 +13,8 @@ const fontMNR = Mitr({
 
 const Footer: React.FC = () => {
     return (
-        <footer className={`bottom-0 w-full  ${fontMNR.className}`}>
-            <div className="font-fontTH01 fixed bottom-0 w-full bg-[#F4F5F5]">
+        <footer className={`w-full ${fontMNR.className}`}>
+            {/* <div className="font-fontTH01 w-full bg-[#F4F5F5] bottom-0">
                 <div className="md:grid grid-flow-col gap-3 mx-5 md:mx-16">
                     <img className="w-28 lg:w-36 hidden md:block" src="../images/logo/logoMR7.png" alt=""/>
                     <div className="hidden md:block">
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}s
         </footer>
 
     )
