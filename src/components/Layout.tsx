@@ -3,8 +3,6 @@ import React, { ReactNode } from "react";
 
 import Navbar from './Navbar';
 import Footer from './Footer';
-import BackToTopButton from '../../../../nextjs/MEENEED/meeneedrepair/src/components/BactToTop';
-import Header from '../../../../nextjs/MEENEED/meeneedrepair/src/components/Header';
 
 
 interface RootLayoutProps {
@@ -29,10 +27,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ loggedInUser, children }) => {
             <main className={fontMNR.className}>
                 {children}
             </main>
-            <footer className='bottom-0 w-full mt-24'>
-
                 <Footer />
-            </footer>
         </>
     )
 }
