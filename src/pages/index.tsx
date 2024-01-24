@@ -26,14 +26,14 @@ const Home: React.FC = (props) => {
         <div className="container mx-auto my-auto py-6 px-5 lg:">
           <div className="flex justify-between">
             <p className="text-xl md:text-3xl font-bold text-black mb-5 text-center md:text-left">ข่าวสาร</p>
-            <Link href='news'><a className="text-sx md:text-xl flex items-center hover:underline hover:decoration-sky-500 ">เพิ่มเติม</a></Link>
+            <Link href='news' className="text-sx md:text-xl flex items-center hover:underline hover:decoration-sky-500 ">เพิ่มเติม</Link>
           </div>
           <NewsCard />
         </div>
         <div className="container mx-auto my-auto py-6 px-5 lg:">
           <div className="flex justify-between">
             <p className="text-xl md:text-3xl font-bold text-black text-center md:text-left">บทความน่าสนใจ</p>
-            <Link href='blog'><a className="text-sx md:text-xl flex items-center hover:underline hover:decoration-sky-500 ">เพิ่มเติม</a></Link>
+            <Link href='blog' className="text-sx md:text-xl flex items-center hover:underline hover:decoration-sky-500 ">เพิ่มเติม</Link>
           </div>
           <BlogCard />
         </div>

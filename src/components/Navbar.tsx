@@ -133,10 +133,10 @@ const Navbar: React.FC = () => {
                   <span className="hidden lg:block">{loggedInUser.email}</span>
                 </Link>
               ) : (
-                <button className="flex items-center">
+                <Link href="./login" className="flex items-center">
                   <HiUser size={20} />
-                  <a href="./login" className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</a>
-                </button>
+                  <span className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</span>
+                </Link>
               )}
             </li>
             <div className="bg-natural04 w-[1px] h-10 "></div>
