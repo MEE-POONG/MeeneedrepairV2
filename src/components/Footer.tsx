@@ -11,7 +11,6 @@ const fontMNR = Mitr({
     variable: '--font-mitr',
 })
 
-
 const Footer: React.FC = () => {
     return (
         <footer className={`bottom-0 w-full mt-24 ${fontMNR.className}`}>
