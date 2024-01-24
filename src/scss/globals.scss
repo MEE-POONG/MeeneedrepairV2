@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+// @import 'login.scss';
+
+// @font-face {
+//     font-family: Prompt;
+//     src: url("../fonts/Prompt.ttf");
+// }
+
+@import 'newscard.scss';
+
+// @import 'slideproduct.scss';
+
+body {
+    background-image: url('/images/Back.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.product-category {
+    svg {
+        margin: auto;
+    }
+}
+
