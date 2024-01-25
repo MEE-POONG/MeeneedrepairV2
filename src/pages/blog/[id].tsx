@@ -1,13 +1,12 @@
 import Link from "next/link";
-import RootLayout from "../../components/layout";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import LatestBlog from "../../container/Blog/Latestblog";
+// import LatestBlog from "../../container/Blog/Latestblog";
+import RootLayout from "@/components/Layout";
 
-const ReadBlogDetail = () => {
+const ReadBlogDetail: React.FC = () => {
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
-
     const [blogData, setblogData] = useState<any>({}); // กำหนดประเภทของข้อมูลบทความข่าว
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +18,6 @@ const ReadBlogDetail = () => {
                     setblogData(data); // กำหนดข้อมูลบทความข่าวที่ดึงมา
                     //console.log(data);
                     setIsLoading(false); // ตั้งค่า isLoading เป็น false เมื่อโหลดเสร็จสมบูรณ์
-
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -29,7 +27,7 @@ const ReadBlogDetail = () => {
         }
     }, [id]);
     return (
-        <>
+        <RootLayout loggedInUser="">
             <div className="container mx-auto"
             >
                 <div>
@@ -87,14 +85,14 @@ const ReadBlogDetail = () => {
                         {/* Right Content */}
                        
 
-                            <LatestBlog/>
+                            {/* <LatestBlog/> */}
 
                         </div>
                     </div>
                 </div>
 
      
-        </>
+        </RootLayout>
     )
 }
 export default ReadBlogDetail;

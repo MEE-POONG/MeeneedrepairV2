@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Blog } from "@prisma/client";
 import Link from "next/link";
+import RootLayout from "@/components/Layout";
+import SlideBlog from "@/container/blog/SlideBlog";
 
 interface NewsData {
     id: string;
@@ -39,10 +41,11 @@ const BlogsPage: React.FC = () => {
         }, []);
 
     return (
-        <>
+        <RootLayout loggedInUser="">
             <div className='relative flex items-center justify-center bg-gray-800'>
-                <div className="md:h-[590px] w-full">
-                    <img src="/images/blog3.jpg" className="h-full w-full object-cover" alt="" /></div>
+                <div className="md:h-[590px] w-full mb-24">
+                    <SlideBlog />
+                </div>
                 <div className='absolute inset-x-0 top-[35%]  md:h-40 text-center'>
                     <button className=" bg-black/20  rounded-lg w-28 h-14  md:w-80 md:h-28">
                         <div className=" text-xl md:text-5xl text-white">สาระน่ารู้</div>
@@ -60,7 +63,7 @@ const BlogsPage: React.FC = () => {
                 </div>
 
                 <div className="grid grid-col md:grid-cols-3 lg:grid-cols-5 justify-center gap-5">
-                {/* {blogData.slice(0, visibleItems).map((blog) => ( */}
+                    {/* {blogData.slice(0, visibleItems).map((blog) => ( */}
                     {blogData.slice(0).map((blog) => (
                         <div key={blog.id} className="bg-white shadow-xl rounded-md overflow-hidden ">
                             <Link href={`/blog/${blog.id}`} >
@@ -108,7 +111,7 @@ const BlogsPage: React.FC = () => {
                     </button>
                 </div> */}
             </div>
-        </>
+        </RootLayout>
     )
 }
 export default BlogsPage;
