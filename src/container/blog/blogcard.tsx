@@ -7,10 +7,10 @@ interface blog {
     title: string;
     subtitle: string;
     detail: string;
-    author:string;
-    date:string;
+    author: string;
+    date: string;
     img: string;
-    
+
     // Add other properties if there are more
 }
 
@@ -28,7 +28,6 @@ export default function BlogCard() {
         setVisibleItems(visibleItems + 4);
     };
 
-    const hasMoreDataToLoad =
 
     useEffect(() => {
         fetch('/api/blog')
@@ -48,55 +47,51 @@ export default function BlogCard() {
     return (
         <>
 
-<div className="container mx-auto mt-5 px-6">
+            <div className="container mx-auto mt-5">
                 <div className="grid grid-col md:grid-cols-3 lg:grid-cols-5 justify-center gap-5">
                     {blogData.slice(0, visibleItems).map((blog) => (
-                        <div key={blog.id} className="bg-secondary1 shadow-xl rounded-md overflow-hidden p-2 md:p-4">
-                            <div className="flex md:flex-wrap items-center">
-                                <div className="w-[350px] md:w-full h-[80px] md:h-[150px] rounded-l-md md:rounded-lg overflow-hidden ">
-                                    <img className="w-full h-full object-cover"
-                                        src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
-                                        alt=""
-                                    />
-                                </div>
+                        <div key={blog.id} className="bg-white shadow-xl rounded-md overflow-hidden ">
+                            <Link href={`/blog/${blog.id}`} >
+                                <div className="flex md:flex-wrap items-center">
+                                    <div className="w-[350px] md:w-full h-[100px] md:h-[220px]  md:rounded-tr-lg md:rounded-tl-lg overflow-hidden ">
 
-                                <div className="ml-3 md:ml-0 md:mt-2">
-                                    <p className="text-sm lg:text-lg line-clamp-2 font-semibold bg-gradient-to-r from-[#081FF0] to-[#13D1D1] bg-clip-text text-transparent">
-                                        {blog.title}
-                                    </p>
+                                        <img className="w-full h-full object-cover"
+                                            src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
+                                            alt=""
+                                        />
 
-                                    <div className="hidden md:block text-secondary2 text-xs md:text-sm mt-2 ">
-                                        <p className="line-clamp-2">{blog.subtitle}</p>
                                     </div>
 
-                                    <div className="flex justify-between mt-5">
-                                        <p className="text-natural01 text-xs">
-                                            By: &nbsp;{blog.author}
+                                    <div className="ml-0 w-[100%] md:mt-2 px-3">
+                                        <div className="flex flex-wrap justify-between md:mt-5">
+                                            <p className="text-black text-xs">
+                                                by: {blog.author}
+                                            </p>
+
+                                            <p className="text-orange-600 text-xs">
+                                                {blog.date}
+                                            </p>
+
+                                        </div>
+                                        <p className="text-xs md:text-base font-bold line-clamp-2 text-black hover:text-amber-400 mt-2">
+                                            {blog.title}
                                         </p>
 
-                                        <Link href={`/blog/${blog.id}`} 
-                                            className="text-natural04 text-xs">
-                                            อ่าน
-                                        </Link>
+                                        <div className="hidden md:block text-black text-xs md:text-sm py-3">
+                                            <p className="line-clamp-2 text-sm">{blog.subtitle}</p>
+                                        </div>
 
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
 
                         </div>
                     ))}
                 </div>
-                
-                {/* <div className="py-9"> 
-            <button className="group relative h-8 w-36 md:h-12 md:w-48 overflow-hidden rounded-lg bg-white md:text-base text-sm shadow">
-            <div className="absolute inset-0 w-3 bg-slate-700 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-            <span className="relative text-black group-hover:text-white"onClick={handleLoadMore} >โหลดเพิ่มเติม</span>
-            </button>
+
+
             </div>
-                 */}
-  
-            </div>
-           
+
 
         </>
     )

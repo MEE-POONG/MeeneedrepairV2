@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import RootLayout from "@/components/Layout";
 import Slide from "@/container/Home/Slide";
 import Menuservice from "@/container/Home/Menuservice";
@@ -7,12 +6,7 @@ import NewsCard from "@/container/News/NewsCard";
 import Head from "next/head";
 import Link from "next/link";
 import Cardsevice from "@/container/Home/Cardservice";
-
-const inter = Inter({ subsets: ["latin"] });
-
 // If you have specific props, define them here
-
-
 const Home: React.FC = (props) => {
   return (
     <RootLayout loggedInUser="">

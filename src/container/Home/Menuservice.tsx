@@ -6,13 +6,13 @@ import { FaHeadset } from "react-icons/fa6";
 export default function Menuservice() {
   return (
     <>
-      <div className="container  mx-auto ">
+      <div className="container mx-auto ">
         <p className="flex justify-center gap-2 mt-12 text-xl md:text-5xl">
           <span className="text-black font-bold capitalize">Menu </span>
           <span className="text-orange-500 font-bold capitalize">Service</span>
         </p>
 
-        <div className="flex mx-auto grid-cols-2 md:grid-cols-4 px-3 lg:px-32 gap-3 my-8 h-48">
+        <div className="grid grid-cols-2 md:grid-cols-4 px-3 lg:px-32 gap-3 my-8 h-48">
           <div className="bg-white rounded-xl p-3 hover:bg-slate-900 hover:text-white">
             <Link href='' className="text-sm text-center">
               <MdComputer className="text-5xl md:text-7xl lg:text-[100px] mx-auto mb-2" />
