@@ -23,7 +23,7 @@ interface blog {
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
 
-export default function Slide() {
+export default function SlideBlog() {
     const initialVisibleItems = 5; //ตัวตั้ง Limited จำนวนสำหรับการแสดงบนหน้าจอ
     const [visibleItems, setVisibleItems] = useState(initialVisibleItems);
     const [blogData, setblogData] = useState<blog[]>([]); // Use the defined interface here
@@ -71,7 +71,7 @@ export default function Slide() {
                 > {blogData.slice(0, visibleItems).map((blog) => (
                     <SwiperSlide className="relative">
                          <Link href={`/blog/${blog.id}`} className="text-natural04 text-xs">
-                        <img  className="object-cover w-full h-[720px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" />
+                        <img  className="object-cover w-full h-[700px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" />
                         </Link>
                     </SwiperSlide>
                 ))}

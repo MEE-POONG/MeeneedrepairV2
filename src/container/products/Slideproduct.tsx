@@ -23,7 +23,7 @@ interface blog {
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
 
-export default function Slide() {
+export default function Slideproduct() {
     const initialVisibleItems = 5; //ตัวตั้ง Limited จำนวนสำหรับการแสดงบนหน้าจอ
     const [visibleItems, setVisibleItems] = useState(initialVisibleItems);
     const [blogData, setblogData] = useState<blog[]>([]); // Use the defined interface here
