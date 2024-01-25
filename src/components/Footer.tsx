@@ -14,16 +14,16 @@ const fontMNR = Mitr({
 const Footer: React.FC = () => {
     return (
         <footer className={`w-full ${fontMNR.className}`}>
-            {/* <div className="font-fontTH01 w-full bg-[#F4F5F5] bottom-0">
-                <div className="md:grid grid-flow-col gap-3 mx-5 md:mx-16">
-                    <img className="w-28 lg:w-36 hidden md:block" src="../images/logo/logoMR7.png" alt=""/>
-                    <div className="hidden md:block">
+            <div className="font-fontTH01 w-full bg-[#F4F5F5] bottom-0">
+                <div className="md:grid grid-cols-6 lg:grid-cols-5 gap-3 mx-5 md:mx-8 py-4 justify-center">
+                    <img className="w-24 lg:w-36 md:mx-auto md:col-span-2 lg:col-span-1" src="../images/logo/logoMR7.png" alt="" />
+                    <div className="md:col-span-4 lg:col-span-2 ">
                         <p className="text-base lg:text-3xl font-extrabold text-transparent 
                                       bg-gradient-to-r from-orange-400 to-blue-600
                                       bg-clip-text mb-1 "
                         >Mee Need Repair
                         </p>
-                        <div className=" lg:flex items-start gap-2 hidden">
+                        <div className=" flex items-center gap-2">
                             <ImHome />
                             <span className="text-[10px] md:text-base ">
                                 46/3 ถ.ราชนิกุล ต.ในเมือง อ.เมือง, นครราชสีมา 30000
@@ -41,12 +41,12 @@ const Footer: React.FC = () => {
 
                         </div>
                     </div>
-                    <div className="">
+                    <div className="md:col-span-2 md:col-start-2 lg:col-span-1">
                         <p className="text-sm md:text-base font-semibold mb-1">บริกรของเรา</p>
                         <p className="text-[10px] md:text-sm">รับซ่อมบำรุงอุปกรณ์ IT</p>
                         <p className="text-[10px] md:text-sm">ให้คำปรึกษาปัญหาเกี่ยวกับอุปกรณ์ IT</p>
                     </div>
-                    <div>
+                    <div className="md:col-span-2 md:col-start-4 lg:col-span-1">
                         <p className=" text-sm md:text-base font-semibold mb-1">สนับสนุน</p>
                         <Link href="./howto_register" className="text-[10px] md:text-sm"><p >วิธีการสมัครสมาชิก</p></Link>
                         <Link href="" className=" text-[10px] md:text-sm"><p >วิธีการสั่งซื้อ และชำระเงิน</p></Link>
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-            </div> */}s
+            </div>
         </footer>
 
     )
