@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LuMapPin } from "react-icons/lu";
 import { Address } from '@prisma/client';
 
-const AddressProfile = () => {
+const AddressProfile: React.FC = (props) => {
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
     const [UserId, setUserId] = useState<String>();

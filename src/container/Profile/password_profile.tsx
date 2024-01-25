@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LuUnlock } from "react-icons/lu";
 
-const PasswordProfile = () => {
-
+const PasswordProfile: React.FC = (props) => {
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
 

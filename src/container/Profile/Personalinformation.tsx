@@ -5,8 +5,9 @@ import { User } from '@prisma/client';
 import Information from "../../components/profile/Information";
 import { LuNewspaper } from "react-icons/lu";
 
+const Personalinformation: React.FC = (props) => {
 
-export default function Personalinformation() {
+
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
 
@@ -34,13 +35,13 @@ export default function Personalinformation() {
 
         }
     }, [id]);
- 
+
 
     return (
         <>
             <div className="">
                 <div className="flex items-center">
-                <LuNewspaper className='w-[25px] h-[25px]' />
+                    <LuNewspaper className='w-[25px] h-[25px]' />
                     <h3 className="text-2xl text-black ml-2">ข้อมูลส่วนตัว</h3>
                 </div>
 
@@ -55,3 +56,4 @@ export default function Personalinformation() {
         </>
     )
 }
+export default Personalinformation

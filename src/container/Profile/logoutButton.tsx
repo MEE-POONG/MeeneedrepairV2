@@ -2,7 +2,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 
-const LogoutButton: React.FC = () => {
+const LogoutButton: React.FC = (props) => {
   const router = useRouter();
 
   const handleLogout = () => {

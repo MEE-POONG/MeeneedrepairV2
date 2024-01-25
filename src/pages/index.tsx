@@ -6,12 +6,7 @@ import NewsCard from "@/container/News/NewsCard";
 import Head from "next/head";
 import Link from "next/link";
 import Cardsevice from "@/container/Home/Cardservice";
-import Cookies from 'js-cookie'
 // If you have specific props, define them here
-
-var value = Cookies.get('user');
-console.log(value);
-
 const Home: React.FC = (props) => {
   return (
     <RootLayout loggedInUser="">

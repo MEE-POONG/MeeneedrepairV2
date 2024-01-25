@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SelectAddress from "./selectaddress_personaldata_profile";
 import { LuUser2 } from "react-icons/lu";
+const PersonalData: React.FC = (props) => {
 
-const PersonalData = () => {
     const router = useRouter();
     const { id } = router.query;
 

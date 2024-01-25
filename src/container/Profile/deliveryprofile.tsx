@@ -14,7 +14,9 @@ interface Address {
     tel: string;
 }
 //พรุ่งนี้ต้อง ทำให้แก้ไขข้อมูลได้sภายในหน้านี้ และ ทำ เพิ่มที่อยู่แบบ Modal
-export default function DeliveryLocations() {
+const DeliveryLocations: React.FC = (props) => {
+
+
     const router = useRouter();
     const { id } = router.query;
     const [deliveryLocationData, setDeliveryLocationData] = useState<any>();
@@ -193,3 +195,4 @@ export default function DeliveryLocations() {
         </>
     );
 }
+export default DeliveryLocations

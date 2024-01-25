@@ -10,7 +10,7 @@ interface User {
     img: string;
 }
 
-export default function Information() {
+const Information: React.FC = (props) => {
     const router = useRouter();
     const { id } = router.query;
 
@@ -45,7 +45,7 @@ export default function Information() {
                 });
         }
     }, [id]);
-//
+    //
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
 
@@ -290,3 +290,4 @@ export default function Information() {
         </div>
     );
 }
+export default Information
