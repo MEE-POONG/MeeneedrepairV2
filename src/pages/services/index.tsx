@@ -1,10 +1,10 @@
 import Link from "next/link";
-import RootLayout from "../../components/layout";
 import SlideServices from '../../container/Services/SlideServices';
 import SlideServices2 from '../../container/Services/SlideServices2';
 import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import Menuservice from "../../container/Home/Menuservice";
+import RootLayout from "@/components/Layout";
 
 
 const AdviserService: React.FC = (props) => {
