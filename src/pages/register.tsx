@@ -161,7 +161,7 @@ const Register: React.FC = (props) => {
 
                         </div>
                         <button type="submit"
-                            className="group relative h-12 w-full overflow-hidden rounded-2xl bg-[#0F172A]  text-1xl font-bold ">
+                            className="group relative h-12 w-full overflow-hidden rounded-2xl bg-[#0F172A] text-white text-1xl font-bold text-whilt">
                             สมัครสมาชิก
                         </button>
                     </form>
@@ -174,19 +174,19 @@ const Register: React.FC = (props) => {
 
 
 
-                    <div className="flex justify-center mt-10 items-center w-full text-center text-black bg- text-1xl my-[20px]">
+                    <div className="flex justify-center mt-10 items-center w-full text-center text-white bg- text-1xl my-[20px]">
                         <span className="w-full border border-black"></span>
                         <span className="px-4 ">หรือ</span>
                         <span className="w-full border border-black"></span>
                     </div>
 
-                    <button className="flex w-full text-black text-1xl px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium bg-[#1879EB]">
+                    <button className="flex w-full text-white text-1xl px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium bg-[#1879EB]">
                         <span className="text-md md:text-[25px]">
                             <FaFacebook />
                         </span>
                         <span className="ml-2 md:mx-10 text-xs md:text-lg">เข้าสู่ระบบด้วย Facebook</span>
                     </button>
-                    <button className=" flex w-full my-3 text-black text-1xl px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium bg-[#0F172A]">
+                    <button className=" flex w-full my-3 text-white text-1xl px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium bg-[#0F172A]">
                         <span className="text-md md:text-[25px]">
                             <FaGoogle />
                         </span>
@@ -210,14 +210,14 @@ const Register: React.FC = (props) => {
 
                     {showModal && (
                         <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 ">
-                            <div className="bg-black p-6 rounded-lg w-[500px] h-[300px] flex flex-col items-center justify-center">
+                            <div className="bg-white p-6 rounded-lg w-[500px] h-[300px] flex flex-col items-center justify-center">
                                 <div className='text-8xl mx-auto my-5 text-green-500'><BsFillCheckCircleFill /></div>
                                 <h2 className="text-4xl font-semibold mb-4">สมัครเสร็จสิ้น</h2>
                                 <p>คุณได้ทำการสมัรเสร็จสิ้น</p>
                                 <div className="mt-4">
                                     <button
                                         onClick={handleConfirm}
-                                        className="px-4 py-2 bg-green-500 text-black rounded-md"
+                                        className="px-4 py-2 bg-green-500 text-white rounded-md"
                                     >
                                         ยืนยัน
                                     </button>
@@ -227,14 +227,14 @@ const Register: React.FC = (props) => {
                     )}
                     {errorText && (
                         <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 ">
-                            <div className="bg-black p-6 rounded-lg w-[500px] h-[300px] flex flex-col items-center justify-center">
+                            <div className="bg-white p-6 rounded-lg w-[500px] h-[300px] flex flex-col items-center justify-center">
                                 <div className='text-8xl mx-auto my-5 text-red-500'><PiWarningCircleFill /></div>
                                 <h2 className="text-4xl font-semibold mb-4">กรุณากรอกข้อมูลให้ถูกต้อง</h2>
                                 <p>ทำการกรอกข้อมูลให้ถูกต้อง</p>
                                 <div className="mt-4">
                                     <button
                                         onClick={handleConfirm}
-                                        className="px-4 py-2 bg-red-500 text-black rounded-md"
+                                        className="px-4 py-2 bg-red-500 text-white rounded-md"
                                     >
                                         กลับ
                                     </button>
@@ -242,7 +242,6 @@ const Register: React.FC = (props) => {
                             </div>
                         </div>
                     )}
-
                 </div>
             </div>
         </RootLayout>
