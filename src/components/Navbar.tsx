@@ -1,14 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { HiBars3BottomLeft, HiOutlineXMark, HiUser, HiChevronDown, HiChevronUp, HiChevronRight } from "react-icons/hi2";
 import Cookies from 'js-cookie';
+import { Mitr } from 'next/font/google'
 
-
+const fontMNR = Mitr({
+  weight: "300",
+  subsets: ['latin'],
+  variable: '--font-mitr',
+})
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
 
   const [loggedInUser, setLoggedInUser] = useState<any>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       const userDataFromCookies = Cookies.get('user');
@@ -53,9 +61,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="font-fontTH01">
-      <div className="" style={{ backgroundColor: scroll > 50 ? "" : "#0f172a" }}>
-        <div className=" container mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}>
+    <nav className={` ${fontMNR.className}`}>
+      <div className="fixed  top-0 z-50 w-full" style={{ backgroundColor: scroll > 50 ? "" : "#0f172a" }}>
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}>
           {/* <div className=" container  " style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}> */}
           <div className="flex items-center  py-5 ">
             <div onClick={() => setIsOpen(!isOpen)}
@@ -65,7 +73,7 @@ const Navbar: React.FC = () => {
                 isOpen ? <HiOutlineXMark size={38} /> : <HiBars3BottomLeft size={38} />
               }
             </div>
-            <div className="" >
+            <div className="" > 
               <Image
                 src="/images/logo.png"
                 width={100}
@@ -127,6 +135,7 @@ const Navbar: React.FC = () => {
           <ul className="flex gap-3 font-semibold items-center text-base">
 
             <li className="hover:border-b-2 hover:border-natural04" style={{ color: scroll > 50 ? "" : "#F4F5F5" }}>
+             
               {loggedInUser ? (
                 <Link href={`./../profile/${loggedInUser.id}`} className="flex items-center">
                   <HiUser size={20} />
@@ -134,15 +143,18 @@ const Navbar: React.FC = () => {
                 </Link>
               ) : (
                 <Link href="./login" className="flex items-center">
+
                   <HiUser size={20} />
-                  <span className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</span>
+                  <span  className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</span>
+
                 </Link>
+
               )}
             </li>
             <div className="bg-natural04 w-[1px] h-10 "></div>
 
             <li className="mr-5 ">
-              <Link href="./shoppingCart">
+              <a href="./shoppingCart">
                 <svg xmlns="http://www.w3.org/500/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
                   <path d="M8.5 18H6.5V26H8.5V18Z" fill="url(#paint0_linear_220_322)" />
                   <path d="M13.5 18H11.5V26H13.5V18Z" fill="url(#paint1_linear_220_322)" />
@@ -172,10 +184,17 @@ const Navbar: React.FC = () => {
                     </linearGradient>
                   </defs>
                 </svg>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
+
+
+
+
+        {/* nav link for mobile here */}
+
+        
       </div>
     </nav>
   );
