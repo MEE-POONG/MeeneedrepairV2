@@ -1,34 +1,31 @@
-import Link from "next/link";
-import RootLayout from "../../components/layout";
-import ProductCategory from "../../container/Product/CategoryList";
-import CustomerProfile from "./custom_profile";
-import TabMenu from "../../container/Profile/test/TabMenu";
-import TabMenuMobile from "../../container/Profile/test/TabMenuMobile";
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import RootLayout from "@/components/Layout";
+import SubPage from '@/container/Profile/SubPage';
 
-export default function ProfilePage() {
+
+const RegisterPage: React.FC = (props) => {
+
     const [loggedInUser, setLoggedInUser] = useState<any>(null);
+    useEffect(() => {
+        const fetchData = async () => {
+            const userDataFromCookies = Cookies.get('user');
+            if (userDataFromCookies) {
+                const parsedUser = JSON.parse(userDataFromCookies);
+                setLoggedInUser(parsedUser);
+            }
+        };
+
+        fetchData();
+    }, []);
+    useEffect(() => {
+        console.log(loggedInUser);
+    }, [loggedInUser]);
     return (
         <RootLayout loggedInUser={loggedInUser}>
-            {/* <ProductCategory /> */}
-            <div className="xl:hidden">
-                <TabMenuMobile />
-            </div>
-            <div className="container mx-auto font-fontTH02">
-                <div className="grid grid-cols-12 md:gap-10 bg-[#1E293B] lg:bg-[#0F172A]">
-                    <div className="lg:col-span-2">
-                        <div className="hidden lg:block">
-                            <h3 className="text-2xl text-secondary2 mb-8">จัดการบัญชีผู้ใช้</h3>
-                            <TabMenu />
-                        </div>
-                    </div>
-                    <div className="col-span-12 p-5 lg:p-0 lg:col-span-10 pt-5 mb-10 lg:mb-0 lg:pt-0">
-                        <CustomerProfile />
-                        {/* <EditProfile /> */}
-                    </div>
-                </div>
-
-            </div>
+            <SubPage />
         </RootLayout>
     )
 }
+
+export default RegisterPage;
