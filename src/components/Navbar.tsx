@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={` ${fontMNR.className}`}>
-      <div className="fixed  top-0 z-50 w-full" style={{ backgroundColor: scroll > 50 ? "" : "#0f172a" }}>
+      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: scroll > 50 ? "" : "#0f172a" }}>
         <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}>
           {/* <div className=" container  " style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}> */}
           <div className="flex items-center  py-5 ">
