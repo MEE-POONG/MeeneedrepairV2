@@ -13,7 +13,9 @@ const Home: React.FC = (props) => {
       <Head>
         <title>Mee Need Repair</title>
       </Head>
-      <Slide />
+      <div className="mt-[91px]">
+        <Slide />
+      </div>
       <div className=''>
         <Menuservice />
         {/* Other components */}
