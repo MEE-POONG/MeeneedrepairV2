@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import Link from 'next/link';
 import { Appointment } from '@prisma/client';
 import useAxios from "axios-hooks";
@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-export default function ModalRepair({ appointmentData }: any) {
+const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
     const [open, setOpen] = useState(false)
     const router = useRouter();
     const cancelButtonRef = useRef(null)
@@ -303,3 +303,4 @@ export default function ModalRepair({ appointmentData }: any) {
         </>
     )
 }
+export default ModalRepair

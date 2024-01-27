@@ -1,8 +1,8 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+const ModalOrder: React.FC = (props) => {
 
-export default function ModalOrder() {
     const [open, setOpen] = useState(false)
 
     const cancelButtonRef = useRef(null)
@@ -10,7 +10,7 @@ export default function ModalOrder() {
     return (
         <>
             <button onClick={() => setOpen(true)}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-file-description" width="32" height="32" viewBox="0 0 24 24"fill="none" >
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-file-description" width="32" height="32" viewBox="0 0 24 24" fill="none" >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
                     <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
@@ -130,3 +130,4 @@ export default function ModalOrder() {
         </>
     )
 }
+export default ModalOrder

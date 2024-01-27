@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { LuReceipt } from "react-icons/lu"
+const ReceiptProfile: React.FC = (props) => {
 
-const ReceiptProfile = () => {
+
     return (
         <div className="">
             <div className="flex items-center">
-            <LuReceipt className='w-[30px] h-[30px]' />
+                <LuReceipt className='w-[30px] h-[30px]' />
                 <h3 className="text-2xl text-black ml-2">ใบเสร็จ/ใบกำกับภาษี</h3>
             </div>
 

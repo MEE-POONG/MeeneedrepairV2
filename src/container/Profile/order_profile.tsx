@@ -1,8 +1,7 @@
 import Link from "next/link";
 import ModalOrder from './ModalOrder';
 import { TbShoppingCartSearch } from "react-icons/tb";
-
-const OrderProfile = () => {
+const OrderProfile: React.FC = (props) => {
     return (
         <div className="">
             <div className="flex items-center">

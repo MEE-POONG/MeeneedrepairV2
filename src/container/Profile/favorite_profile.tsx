@@ -11,8 +11,9 @@ type ProductItem = {
     productprice: string;
     // Add other properties as needed
 };
+const FavoriteProfile: React.FC = (props) => {
 
-const FavoriteProfile = () => {
+
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
 

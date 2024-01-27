@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { User } from '@prisma/client';
 import { AiOutlineTool } from "react-icons/ai";
+const RepairProfile: React.FC = (props) => {
 
-const RepairProfile = () => {
     const router = useRouter();
     const { id } = router.query; // ดึงค่า id จาก query parameters
     const [AppointmentData, setAppointmentData] = useState<any[]>([]);
@@ -43,7 +43,7 @@ const RepairProfile = () => {
     return (
         <div className="">
             <div className="flex items-center">
-            <AiOutlineTool className='w-[25px] h-[25px]' />
+                <AiOutlineTool className='w-[25px] h-[25px]' />
                 <h3 className="text-2xl text-black ml-2">บริการซ่อมอุปกรณ์</h3>
             </div>
 
@@ -77,7 +77,7 @@ const RepairProfile = () => {
                         </div>
                     </div>
                 ))}
-                
+
 
 
 

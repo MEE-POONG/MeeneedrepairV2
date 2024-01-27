@@ -7,15 +7,14 @@
 // export default EditProfile;
 
 import Link from "next/link";
-import RootLayout from "../../components/layout";
-import ProductCategory from "../../container/Product/CategoryList";
 import OrderProfile from "./order_profile";
 import TabMenu from "../../container/Profile/test/TabMenu";
 import TabMenuMobile from "../../container/Profile/test/TabMenuMobile";
+import RootLayout from "@/components/Layout";
+const EditFavoritePage: React.FC = (props) => {
 
-export default function EditFavoritePage() {
     return (
-        <>
+        <RootLayout>
             {/* <ProductCategory /> */}
             <div className="xl:hidden">
                 <TabMenuMobile />
@@ -35,6 +34,7 @@ export default function EditFavoritePage() {
                 </div>
 
             </div>
-        </>
+        </RootLayout>
     )
 }
+export default EditFavoritePage

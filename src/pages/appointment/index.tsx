@@ -5,58 +5,8 @@ import Cookies from 'js-cookie';
 import SelectAddress from './address';
 import RootLayout from '@/components/Layout';
 
-const Appointment: React.FC = () => {
 
-    // const [{ error: errorMessage, loading: IndexActivityLoading }, executeIndexActivity] = useAxios(
-    //     { url: '/api/appointment', method: 'POST' },
-    //     { manual: true }
-    // )
-    // const router = useRouter();
-
-    // const { id } = router.query; // ดึงค่า id จาก query parameters
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [fname, setFname] = useState<string>("");
-    const [lname, setLname] = useState<string>("");
-    const [tel, setTel] = useState<string>("");
-    const [time, setTime] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [request, setRequest] = useState<string>("");
-    const [userId, setUserId] = useState<string>("");
-    // const [addressId,setAddressId]= useState<string>("");
-
-    const [UserAddressData, setUserAddressData] = useState<any>({});
-    const [selectedAddressId, setSelectedAddressId] = useState<string | null>(null);
-    // const [CurrentAddress, setCurrentAddress] = useState<any>({});
-    // const [selectedAddress, setSelectedAddress] = useState<any | null>(null)
-
-
-    // const [loggedInUser, setLoggedInUser] = useState<any>(null);
-    const [message, setMessage] = useState<string>("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [isMissingModalOpen, setIsMissingModalOpen] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [missingFields, setMissingFields] = useState<string[]>([]);
-
-    // const [UserData, setUserData] = useState({
-    //     fname: "",
-    //     lname: "",
-    //     tel: "",
-    //     email: "",
-    //     id: ""
-    // });
-    // useEffect(() => {
-    //     if (loggedInUser) {
-    //         // ให้ทำการตั้งค่า state ต่าง ๆ ด้วยข้อมูลที่ได้จาก loggedInUser
-    //         setFname(loggedInUser.fname || ""); // ตั้งค่าเป็นค่า fname หรือว่าเป็นค่าว่างถ้าไม่มี
-    //         setLname(loggedInUser.lname || "");
-    //         setTel(loggedInUser.tel || "");
-    //         setEmail(loggedInUser.email || "");
-    //         setUserId(loggedInUser.id || "");
-
-    //         // ... (ตั้งค่า state อื่น ๆ ตามต้องการ)
-    //     }
-    // }, [loggedInUser])
+function YourComponent() {
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,25 +14,7 @@ const Appointment: React.FC = () => {
             if (userDataFromCookies) {
                 try {
                     const parsedUser = JSON.parse(userDataFromCookies);
-                    setUserId(parsedUser);
-                    // if (parsedUser) {
-                    //     fetch(`/api/user/address/${parsedUser}`)
-                    //         .then((response) => response.json())
-                    //         .then((data) => {
-                    //             // const foundAddress = data.Address.find((address: any) => address.id === selectedAddressId);
-
-                    //             // if (foundAddress) {
-                    //             //     setSelectedAddress(foundAddress);
-                    //             // }
-
-                    //             setUserAddressData(data.Address);
-                    //             setIsLoading(false);
-                    //         })
-                    //         .catch((error) => {
-                    //             console.error('Error:', error);
-                    //             setIsLoading(false);
-                    //         });
-                    // }
+                    setLoggedInUser(parsedUser);
                 } catch (error) {
                     console.error('Error parsing user data:', error);
                 }
@@ -91,10 +23,96 @@ const Appointment: React.FC = () => {
 
         fetchData();
     }, []);
+
+    const [{ error: errorMessage, loading: IndexActivityLoading }, executeIndexActivity] = useAxios(
+        { url: '/api/appointment', method: 'POST' },
+        { manual: true }
+    )
+    const router = useRouter();
+
+    const [loading, setLoading] = useState(false);
+    const [fname, setFname] = useState<string>("");
+    const [lname, setLname] = useState<string>("");
+    const [tel, setTel] = useState<string>("");
+    const [time, setTime] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [request, setRequest] = useState<string>("");
+    const [userId, setUserId] = useState<string>("");
+
+
+    const [UserAddressData, setUserAddressData] = useState<any>({});
+    const [addressId, setSelectedAddressId] = useState<string | null>(null);
+    const [CurrentAddress, setCurrentAddress] = useState<any>({});
+    const [selectedAddress, setSelectedAddress] = useState<any | null>(null)
+
+
+    const [loggedInUser, setLoggedInUser] = useState<any>(null);
+    const [message, setMessage] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [isMissingModalOpen, setIsMissingModalOpen] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
     useEffect(() => {
-        console.log(userId);
-        console.log(selectedAddressId);
-    }, [userId, selectedAddressId]);
+        if (loggedInUser) {
+            // ให้ทำการตั้งค่า state ต่าง ๆ ด้วยข้อมูลที่ได้จาก loggedInUser
+            setFname(loggedInUser.fname || ""); // ตั้งค่าเป็นค่า fname หรือว่าเป็นค่าว่างถ้าไม่มี
+            setLname(loggedInUser.lname || "");
+            setTel(loggedInUser.tel || "");
+            setEmail(loggedInUser.email || "");
+            setUserId(loggedInUser.id || "");
+
+            // ... (ตั้งค่า state อื่น ๆ ตามต้องการ)
+        }
+    }, [loggedInUser])
+
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+
+        console.log(addressId);
+
+
+        // ตรวจสอบว่าข้อมูลถูกกรอกครบถ้วน
+        // if (!fname || !lname || !tel || !email || !time || !request || !message ) {
+        //     // ถ้าข้อมูลไม่ครบถ้วน ให้แสดง modal แจ้งเตือน
+        //     setIsMissingModalOpen(true);
+        //     return;
+        // }
+
+        // ส่งข้อมูลไปยัง API
+        try {
+            setIsLoading(true);
+            const response = await executeIndexActivity({
+                data: {
+                    fname,
+                    lname,
+                    tel,
+                    email,
+                    time,
+                    request,
+                    userId,
+                    status: "กำลังดำเนินการ",
+                    message,
+                    addressId
+
+                    // UserAddressData
+                    // เพิ่มข้อมูลอื่น ๆ ตามที่ต้องการ
+                },
+            });
+
+            // ประมวลผลเมื่อสำเร็จ
+            setIsLoading(false);
+            setIsSuccess(true);
+            setMessage("สำเร็จ! คุณได้ทำการจองคิวเรียบร้อยแล้ว");
+
+            // setIsModalOpen(true);
+        } catch (error) {
+            // ประมวลผลเมื่อเกิดข้อผิดพลาด
+            setIsLoading(false);
+            setIsSuccess(false);
+            setMessage("เกิดข้อผิดพลาดในการจองคิว");
+            console.error('Error:', error);
+        }
+    };
 
 
     // // เรียกใช้งานฟังก์ชันเมื่อกดปุ่ม "จองคิว"
@@ -103,116 +121,78 @@ const Appointment: React.FC = () => {
     // };
 
     // // เรียกใช้งานฟังก์ชันเมื่อกดปุ่ม "ยกเลิก"
-    const handleCloseModal = () => {
+    // const handleCloseModal = () => {
 
-        window.location.reload();
-        // setIsModalOpen(false);
-    };
-    const handleConfirm = () => {
+    //     window.location.reload();
+    //     setIsModalOpen(false);
+    // };
+    // const handleConfirm = () => {
 
-        // window.location.reload();
-        // ทำสิ่งที่คุณต้องการเมื่อยืนยัน
-        // ตัวอย่าง: ปิด Modal
-        // setIsModalOpen(false);
+    //     window.location.reload();
+    //     // ทำสิ่งที่คุณต้องการเมื่อยืนยัน
+    //     // ตัวอย่าง: ปิด Modal
+    //     setIsModalOpen(false);
 
-    };
+    // };
+
+    const [UserData, setUserData] = useState({
+        fname: "",
+        lname: "",
+        tel: "",
+        email: "",
+        id: ""
+    });
+    useEffect(() => {
+        if (userId) {
+            fetch(`/api/user/address/${userId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    const foundAddress = data.Address.find((address: { id: string; }) => address.id === addressId);
+
+                    if (foundAddress) {
+                        setCurrentAddress(foundAddress);
+                        setSelectedAddress(foundAddress);
+                    }
+
+                    setUserAddressData(data.Address);
+                    setIsLoading(false);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    setIsLoading(false);
+                });
+        }
+    }, [userId, addressId]);
+
+    useEffect(() => {
+        if (userId ) {
+            fetch(`/api/user/${userId }`)
+                .then((response) => response.json())
+                .then((data) => {
+                    // console.log(data.id);
+                    setUserData(data);
+                    setFname(data.fname);
+                    setLname(data.lname);
+                    setTel(data.tel);
+                    setEmail(data.email);
+                    setRequest(data.request);
+                    setUserId(data.id);
+                    // setAddress(data);
+                    // console.log(data);
+
+                    setIsLoading(false); // ตั้งค่า isLoading เป็น false เมื่อโหลดเสร็จสมบูรณ์
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    setIsLoading(false); // ตั้งค่า isLoading เป็น false เมื่อโหลดเสร็จสมบูรณ์
+
+                });
+
+        }
+    }, [userId]);
 
 
-    // useEffect(() => {
-    //     if (id) {
-    //         fetch(`/api/user/address/${id}`)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 const foundAddress = data.Address.find((address: { id: string; }) => address.id === selectedAddressId);
-
-    //                 if (foundAddress) {
-    //                     setCurrentAddress(foundAddress);
-    //                     setSelectedAddress(foundAddress);
-    //                 }
-
-    //                 setUserAddressData(data.Address);
-    //                 setIsLoading(false);
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Error:', error);
-    //                 setIsLoading(false);
-    //             });
-    //     }
-    // }, [loggedInUser?.id, selectedAddressId]);
-
-    // useEffect(() => {
-    //     if (id) {
-    //         fetch(`/api/user/${id}`)
-    //             .then((response) => response.json())
-    //             .then((data) => {
-    //                 // console.log(data.id);
-    //                 setUserData(data);
-    //                 setFname(data.fname);
-    //                 setLname(data.lname);
-    //                 setTel(data.tel);
-    //                 setEmail(data.email);
-    //                 setRequest(data.request)
-    //                 setUserId(data.id)
-    //                 // setAddress(data);
-    //                 // console.log(data);
-
-    //                 setIsLoading(false); // ตั้งค่า isLoading เป็น false เมื่อโหลดเสร็จสมบูรณ์
-
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Error:', error);
-    //                 setIsLoading(false); // ตั้งค่า isLoading เป็น false เมื่อโหลดเสร็จสมบูรณ์
-
-    //             });
-
-    //     }
-    // }, [id]);
-
-    const handleSubmit = () => {
-        // e.preventDefault();
-
-        console.log(userId);
-
-        //     // // ตรวจสอบว่าข้อมูลถูกกรอกครบถ้วน
-        //     // // if (!fname || !lname || !tel || !email || !time || !request || !message ) {
-        //     // //     // ถ้าข้อมูลไม่ครบถ้วน ให้แสดง modal แจ้งเตือน
-        //     // //     setIsMissingModalOpen(true);
-        //     // //     return;
-        //     // // }
-
-        // ส่งข้อมูลไปยัง API
-        // try {
-        //     setIsLoading(true);
-        //     const response = await executeIndexActivity({
-        //         data: {
-        //             fname,
-        //             lname,
-        //             tel,
-        //             email,
-        //             time,
-        //             request,
-        //             userId,
-        //             status: "กำลังดำเนินการ",
-        //             message,
-        //             // UserAddressData
-        //             // เพิ่มข้อมูลอื่น ๆ ตามที่ต้องการ
-        //         },
-        //     });
-
-        //     // ประมวลผลเมื่อสำเร็จ
-        //     setIsLoading(false);
-        //     setIsSuccess(true);
-        //     setMessage("สำเร็จ! คุณได้ทำการจองคิวเรียบร้อยแล้ว");
-
-        //     setIsModalOpen(true);
-        // } catch (error) {
-        //     // ประมวลผลเมื่อเกิดข้อผิดพลาด
-        //     setIsLoading(false);
-        //     setIsSuccess(false);
-        //     setMessage("เกิดข้อผิดพลาดในการจองคิว");
-        //     console.error('Error:', error);
-        // }
-    };
 
     return (
         <RootLayout loggedInUser="">
@@ -262,7 +242,7 @@ const Appointment: React.FC = () => {
                             </div>
                         </div>
                         <div>
-                            <SelectAddress UserAddressData={UserAddressData} onSelectAddress={(id) => setSelectedAddressId(id)} />
+                            <SelectAddress UserAddressData={UserAddressData} onSelectAddress={(addressId) => setSelectedAddressId(addressId)} />
                         </div>
                         <div className="max-w-md mx-auto mb-4 mt-5" data-te-input-wrapper-init>
                             <div className='mb-2'>ต้องการจองคิววันที่</div>
@@ -318,7 +298,7 @@ const Appointment: React.FC = () => {
                         <div className="flex justify-center mt-6">
                             <button
                                 type="submit"
-                                // disabled={isLoading}
+                                disabled={isLoading}
                                 onClick={handleSubmit} // เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
                                 className="w-[200px] py-3 bg-[#FFCD4B] rounded-lg font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
                             >
@@ -340,34 +320,35 @@ const Appointment: React.FC = () => {
                                 </div>
                             </div>
                         )}
-                        {isModalOpen && (
-                            <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
-                                <div className="bg-white p-6 rounded-lg">
-                                    <p className="text-2xl font-semibold mb-4">ยืนยันการจองคิว</p>
-                                    <p>คุณต้องการจองคิวหรือไม่?</p>
-                                    <div className="mt-4 flex justify-end">
-                                        <button
-                                            onClick={handleCloseModal} // เรียกใช้งานเมื่อกดปุ่ม "ยกเลิก"
-                                            className="px-4 py-2 bg-red-500 text-white rounded-md mr-2"
-                                        >
-                                            ยกเลิก
-                                        </button>
-                                        <button
-                                            onClick={handleConfirm} // เรียกใช้งานเมื่อกดปุ่ม "ยืนยัน"
-                                            className="px-4 py-2 bg-green-500 text-white rounded-md"
-                                        >
-                                            ยืนยัน
-                                        </button>
-                                    </div>
+                        {/* {isModalOpen && (
+                        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
+                            <div className="bg-white p-6 rounded-lg">
+                                <p className="text-2xl font-semibold mb-4">ยืนยันการจองคิว</p>
+                                <p>คุณต้องการจองคิวหรือไม่?</p>
+                                <div className="mt-4 flex justify-end">
+                                    <button
+                                        onClick={handleCloseModal} // เรียกใช้งานเมื่อกดปุ่ม "ยกเลิก"
+                                        className="px-4 py-2 bg-red-500 text-white rounded-md mr-2"
+                                    >
+                                        ยกเลิก
+                                    </button>
+                                    <button
+                                        onClick={handleConfirm} // เรียกใช้งานเมื่อกดปุ่ม "ยืนยัน"
+                                        className="px-4 py-2 bg-green-500 text-white rounded-md"
+                                    >
+                                        ยืนยัน
+                                    </button>
                                 </div>
                             </div>
-                        )}
+                        </div>
+                    )} */}
                     </form>
 
                 </div>
+
             </div>
         </RootLayout>
     );
 }
 
-export default Appointment;
+export default YourComponent; 
