@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
     fetchData();
   }, []);
 
-  const navLinks = [
+  const Links = [
     { name: 'หน้าแรก', link: `/` },
     {
       name: 'เกี่ยวกับเรา',
@@ -63,11 +63,11 @@ const Navbar: React.FC = () => {
   return (
     <nav className={` ${fontMNR.className}`}>
       <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll > 50 ? "" : "#0f172a"}` }}>
-        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 50 ? "#F4F5F5" : ""}` }}>
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
           <div className="flex items-center  py-5 ">
             <div onClick={() => setIsOpen(!isOpen)}
               className="md:hidden duration-700 ease-in-out "
-              style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
+              style={{ backgroundColor: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
               {
                 isOpen ? <HiOutlineXMark size={38} /> : <HiBars3BottomLeft size={38} />
               }
@@ -81,11 +81,13 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
+          {/* nav link here */}
           <ul className="md:flex gap-5 hidden mr-96 font-medium text-sm md:text-lg items-center">
-            {navLinks.map((list) => (
-              <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
-                style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
-                {list?.children ? (
+            {Links.map((link) => (
+              <li key={link.name} className="hover:border-b-2  hover:border-natural04"
+                style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}
+              >
+                {link.children ? (
                   <div
                     className="dropdown"
                     onClick={toggleDropdown}
@@ -97,7 +99,7 @@ const Navbar: React.FC = () => {
                       aria-haspopup="true"
                       aria-expanded={open ? 'true' : 'false'}
                     >
-                      {list?.name}
+                      {link.name}
 
                       <span
                         className="">
@@ -110,11 +112,12 @@ const Navbar: React.FC = () => {
                     <ul
                       className="dropdown-menu absolute bg-secondary1 p-3 rounded-lg drop-shadow-lg"
                       aria-labelledby="dropdownMenuButton"
-                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll > 50 ? "#F4F5F5" : "#0f172a"}` }}
+                      style={{ display: open ? 'block' : 'none' }}
                     >
-                      {list?.children.map((child) => (
+                      {link.children.map((child) => (
                         <li key={child.name} className="my-4 pl-2 hover:border-l-2 hover:border-natural01"
                           style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}
+
                         >
                           <a href={child.link}>{child.name}</a>
                         </li>
@@ -122,13 +125,14 @@ const Navbar: React.FC = () => {
                     </ul>
                   </div>
                 ) : (
-                  <a href={list?.link}>{list?.name}</a>
+                  <a href={link.link}>{link.name}</a>
                 )}
               </li>
             ))}
           </ul>
 
 
+          {/* login && badket */}
           <ul className="flex gap-3 font-semibold items-center text-base">
 
             <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
@@ -188,6 +192,8 @@ const Navbar: React.FC = () => {
 
 
 
+
+        {/* nav link for mobile here */}
 
 
       </div>
