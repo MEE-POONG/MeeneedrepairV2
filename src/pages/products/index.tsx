@@ -1,18 +1,10 @@
-// Importing necessary components and hooks
+
 import { useState } from "react";
-// import CategoryList from "../../container/Product/CategoryList";
-// import CardProductAll from "../../container/Product/CardProductAll";
-import { FiSearch } from "react-icons/fi";
-import Slide from "../../container/Home/Slide";
 import Link from "next/link";
 import NewsCard from '../../container/News/NewsCard';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-import { AiOutlineTool } from "react-icons/ai";
-import { FiCpu } from "react-icons/fi";
 
-import { LuNewspaper, LuUser2, LuMapPin, LuReceipt, LuHeart, LuUnlock, LuLogOut } from "react-icons/lu";
-import { TbShoppingCartSearch } from "react-icons/tb";
 import Slideproduct from "@/container/products/Slideproduct";
 import PromoteCard2 from "@/container/products/Promote2";
 import PromoteCard from "@/container/products/Promote";
@@ -22,9 +14,6 @@ import RootLayout from "@/components/Layout";
 // Main ProductPage component
 const ProductPage: React.FC = (props) => {
     // State for search text
-    const [searchText, setSearchText] = useState("");
-    const [selectedComponent, setSelectedComponent] = useState(<ShowproductsCard />);
-    const [loggedInUser, setLoggedInUser] = useState<any>(null);
     const [activeTab, setActiveTab] = useState(0);
     const router = useRouter();
     const handleLogout = () => {
@@ -42,8 +31,9 @@ const ProductPage: React.FC = (props) => {
     return (
         <RootLayout loggedInUser="">
             {/* Slideproduct component */}
-            <Slideproduct />
-
+            <div className="mt-[110]">
+                <Slideproduct />
+            </div>
             {/* Main content container */}
             <div className="container mt-5 mx-auto font-fontTH01">
                 {/* Promotion section */}
@@ -126,6 +116,7 @@ const ProductPage: React.FC = (props) => {
                     </div>
                 </div>
             </div>
+
         </RootLayout>
     );
 }
