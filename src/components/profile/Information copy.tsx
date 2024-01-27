@@ -1,7 +1,7 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import Cookies from 'js-cookie';
-
 interface User {
     fname: string;
     lname: string;
@@ -11,10 +11,9 @@ interface User {
 }
 
 const Information: React.FC = (props) => {
-    const [loggedInUser, setLoggedInUser] = useState<any>(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
-    const [imageFile, setImageFile] = useState<File | null>(null);
+    const router = useRouter();
+    const { id } = router.query;
+
     const [initialUserData, setInitialUserData] = useState<User>({
         fname: "",
         lname: "",
@@ -29,22 +28,23 @@ const Information: React.FC = (props) => {
         tel: "",
         img: "",
     });
+    const [isEditing, setIsEditing] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [imageFile, setImageFile] = useState<File | null>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const userDataFromCookies = Cookies.get('user');
-            if (userDataFromCookies) {
-                const parsedUser = JSON.parse(userDataFromCookies);
-                setLoggedInUser(parsedUser);
-            }
-        };
-
-        fetchData();
-    }, []);
-    useEffect(() => {
-        console.log(loggedInUser);
-    }, [loggedInUser]);
-
+        if (id) {
+            fetch(`/api/user/${id}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setUserData(data);
+                    setInitialUserData(data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    }, [id]);
     //
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -86,7 +86,7 @@ const Information: React.FC = (props) => {
             // เช่น fetch('/api/upload-image', { method: 'POST', body: imageFile })
         }
 
-        fetch(`/api/user/${loggedInUser?.id}`, {
+        fetch(`/api/user/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
