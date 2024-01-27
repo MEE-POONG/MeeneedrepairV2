@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import Personalinformation from '../../container/Profile/Personalinformation';
-import EditPersonalData from '../../container/Profile/test/EditPersonalData';
-import PersonalData from '../../container/Profile/personaldata_profile';
 import ReceiptProfile from '../../container/Profile/receipt_profile';
 import AddressProfile from '../../container/Profile/address_profile';
 import OrderProfile from '../../container/Profile/order_profile';
@@ -9,8 +8,6 @@ import FavoriteProfile from '../../container/Profile/favorite_profile';
 import PasswordProfile from '../../container/Profile/password_profile';
 import RepairProfile from '../../container/Profile/repair_profile';
 import TabMenuMobile from '../../container/Profile/test/TabMenuMobile';
-import Home from '..';
-import LogoutButton from '../../container/Profile/logoutButton';
 import { LuNewspaper, LuUser2, LuMapPin, LuReceipt, LuHeart, LuUnlock, LuLogOut } from "react-icons/lu";
 import { AiOutlineTool } from "react-icons/ai";
 import { TbShoppingCartSearch } from "react-icons/tb";
@@ -19,17 +16,17 @@ import { useRouter } from 'next/router';
 import DeliveryLocations from '../../container/Profile/deliveryprofile';
 import RootLayout from '@/components/Layout';
 
-function Tabs() {
+const RegisterPage: React.FC = (props) => {
     const [loggedInUser, setLoggedInUser] = useState<any>(null);
     const [activeTab, setActiveTab] = useState(0);
     const router = useRouter();
     const handleLogout = () => {
         // ลบข้อมูลผู้ใช้ใน Cookies
         Cookies.remove('user');
-    
+
         // ทำการ redirect หน้าไปที่หน้า login หรือหน้าที่คุณต้องการ
         router.push('/login');
-      };
+    };
 
     const handleTabClick = (index: number) => {
         setActiveTab(index);
@@ -37,6 +34,9 @@ function Tabs() {
 
     return (
         <RootLayout loggedInUser="">
+            <Head>
+                <title>Mee Need Repair</title>
+            </Head>
             <div className="lg:hidden ">
                 <TabMenuMobile activeTab={activeTab} handleTabClick={handleTabClick} />
             </div>
@@ -116,4 +116,4 @@ function Tabs() {
     );
 }
 
-export default Tabs;
+export default RegisterPage;
