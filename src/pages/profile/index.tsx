@@ -18,9 +18,6 @@ const RegisterPage: React.FC = (props) => {
 
         fetchData();
     }, []);
-    useEffect(() => {
-        console.log(loggedInUser);
-    }, [loggedInUser]);
     return (
         <RootLayout loggedInUser={loggedInUser}>
             <SubPage />
