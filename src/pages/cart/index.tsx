@@ -1,3 +1,5 @@
+// CartPage.tsx
+
 import { useState, useEffect } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Link from "next/link";
@@ -29,8 +31,7 @@ const CartPage: React.FC = () => {
 
     const removeFromCart = (productId: number) => {
         const updatedCart = cartItems.filter(item => item.id !== productId);
-        setCartItems(updatedCart);
-        Cookies.set('cart', JSON.stringify(updatedCart));
+        updateCart(updatedCart);
     };
 
     const increaseQuantity = (productId: number) => {
@@ -40,8 +41,7 @@ const CartPage: React.FC = () => {
             }
             return item;
         });
-        setCartItems(updatedCart);
-        Cookies.set('cart', JSON.stringify(updatedCart));
+        updateCart(updatedCart);
     };
 
     const decreaseQuantity = (productId: number) => {
@@ -51,21 +51,54 @@ const CartPage: React.FC = () => {
             }
             return item;
         });
+        updateCart(updatedCart);
+    };
+
+    const updateQuantity = (productId: number, newQuantity: number) => {
+        const updatedCart = cartItems.map(item => {
+            if (item.id === productId) {
+                return { ...item, quantity: newQuantity };
+            }
+            return item;
+        });
+        updateCart(updatedCart);
+    };
+
+    const updateCart = (updatedCart: Product[]) => {
         setCartItems(updatedCart);
         Cookies.set('cart', JSON.stringify(updatedCart));
     };
 
-    const calculateItemTotal = (price: string, quantity: number) => {
-        return (parseInt(price) * quantity).toFixed(2);
+    const calculateItemTotal = (price: number, quantity: number) => {
+        return (price * quantity).toFixed(2);
     };
 
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + (parseInt(item.price) * item.quantity), 0).toFixed(2);
+        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
     };
 
-    const checkout = () => {
-        console.log("Payment processing...");
+    const checkout = async () => {
+        try {
+            const response = await fetch('/api/orderList', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ cartItems }),
+            });
+
+            if (response.ok) {
+                console.log('Order placed successfully');
+                setCartItems([]);
+                Cookies.remove('cart');
+            } else {
+                console.error('Failed to place order');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
+
 
     return (
         <div className="container mx-auto my-24 font-fontTH02 px-3 lg:px-24">
@@ -75,24 +108,23 @@ const CartPage: React.FC = () => {
             <div className="grid grid-flow-row lg:grid-cols-12 gap-2 lg:gap-8 mt-3 lg:mt-8 ">
                 <div className="lg:col-span-9 bg-secondary1 rounded-md">
                     {cartItems.map((product) => (
-                            <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
-                                <div className="flex justify-end absolute top-4 right-4">
-                                {/* <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${product.imgFirst ? product.imgFirst : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
-                                    alt="" className="w-[320PX] h-full object-cover rounded-xl"
-                                /> */}
-                                <span className="text-sm text-gray-500">Price: ${product.price}</span>
-                                <span className="text-sm text-gray-500">Quantity: {product.quantity}</span>
-                                <span className="text-sm text-gray-500">Item Total: ${calculateItemTotal(product.price, product.quantity)}</span>
-                           
-                            </div>
-                            <div>
-                                <button onClick={() => removeFromCart(product.id)}>
-                                    <RiDeleteBin6Line className="text-red-500" />
-                                </button>
-                                <div className="flex items-center">
-                                    <button onClick={() => decreaseQuantity(product.id)}>-</button>
-                                    <span className="mx-2">{product.quantity}</span>
-                                    <button onClick={() => increaseQuantity(product.id)}>+</button>
+                        <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
+                            <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" />
+                            <div className="flex flex-col justify-end absolute top-4 ml-56 mt-5 space-y-2">
+                                <span className="text-sm font-bold text-black">{product.productname}</span>
+                                <span className="text-sm text-black">{product.description}</span>
+                                <div className="flex items-center justify-between mt-2">
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-sm font-bold text-red-600 hover:text-red-300">฿ {product.price}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <button onClick={() => decreaseQuantity(product.id)}>-</button>
+                                        <span className="mx-2">{product.quantity}</span>
+                                        <button onClick={() => increaseQuantity(product.id)}>+</button>
+                                        <button onClick={() => removeFromCart(product.id)}>
+                                            <RiDeleteBin6Line className="text-red-500" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +138,12 @@ const CartPage: React.FC = () => {
                         <div className="w-full h-0.5 bg-secondary1 mt-5 mb-2"></div>
                         <p className="flex justify-between"> <strong>ยอดรวมสุทธิ </strong><strong>฿ {calculateTotal()}</strong></p>
                     </div>
-                    <Link href="./payment" >
-                        <button type="submit"
-                            className="bg-natural01 py-2 md:py-3 w-full text-center mt-3 rounded-xl hover:bg-natural01/80 text-xs md:text-sm"
-                        >
-                            ดำเนินการสั้งซื้อ
-                        </button>
-                    </Link>
+                    <button
+                        onClick={checkout}
+                        className="mt-5 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
+                    >
+                        ดำเนินการสั่งซื้อ
+                    </button>
                 </div>
             </div>
         </div>
