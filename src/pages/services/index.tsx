@@ -21,31 +21,33 @@ const AdviserService: React.FC = (props) => {
 
     return (
         <>
-            <RootLayout  loggedInUser="">
-                <SlideServices />
-                <Menuservice />
-                <div className="container mx-auto mt-28 mb-24 px-3">
-                    <div className="relative bg-white shadow-lg p-3 rounded-md">
-                        <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
-                            <p className="text-white">รูปแบบการบริการ</p>
+            <RootLayout loggedInUser="">
+                <div className="mt-[84px]">
+                    <SlideServices />
+                    <Menuservice />g
+                    <div className="container mx-auto mt-28 mb-24 px-3">
+                        <div className="relative bg-white shadow-lg p-3 rounded-md">
+                            <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
+                                <p className="text-white">รูปแบบการบริการ</p>
+                            </div>
+                            <p className="mt-8 ml-6">รูปแบบการบริการ1</p>
                         </div>
-                        <p className="mt-8 ml-6">รูปแบบการบริการ1</p>
+
+                        <div className="relative bg-white shadow-lg p-3 rounded-md mt-16">
+                            <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
+                                <p className="text-white">รูปแบบการบริการ</p>
+                            </div>
+                            <p className="mt-8 ml-6">รูปแบบการบริการ1</p>
+                        </div>
                     </div>
 
-                    <div className="relative bg-white shadow-lg p-3 rounded-md mt-16">
-                        <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
-                            <p className="text-white">รูปแบบการบริการ</p>
+                    <div className=" bg-white w-full py-16 ">
+                        <div className="w-[1100px] mx-auto">
+                            <h1 className="text-black  text-xl md:text-3xl font-bold text-center  py-5">
+                                ตัวอย่างบริการของเรา
+                            </h1>
+                            <SlideServices2 />
                         </div>
-                        <p className="mt-8 ml-6">รูปแบบการบริการ1</p>
-                    </div>
-                </div>
-
-                <div className=" bg-white w-full">
-                    <div className="">
-                        <h1 className="text-black text-xl md:text-3xl font-bold text-center pt-5">
-                            ตัวอย่างบริการของเรา
-                        </h1>
-                        <SlideServices2 />
                     </div>
                 </div>
             </RootLayout>

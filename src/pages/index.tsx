@@ -13,7 +13,7 @@ const Home: React.FC = (props) => {
       <Head>
         <title>Mee Need Repair</title>
       </Head>
-      <div className="mt-[91px]">
+      <div className="mt-[84px]">
         <Slide />
       </div>
       <div className=''>

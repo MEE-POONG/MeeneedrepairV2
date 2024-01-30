@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
 import React, { useState, useEffect } from "react";
 import { HiBars3BottomLeft, HiOutlineXMark, HiUser, HiChevronDown, HiChevronUp, HiChevronRight } from "react-icons/hi2";
 import Cookies from 'js-cookie';
@@ -13,7 +13,6 @@ const fontMNR = Mitr({
 })
 
 const Navbar: React.FC = () => {
-  const router = useRouter();
 
   const [loggedInUser, setLoggedInUser] = useState<any>(null);
 
@@ -29,7 +28,7 @@ const Navbar: React.FC = () => {
     fetchData();
   }, []);
 
-  const Links = [
+  const navLinks = [
     { name: 'หน้าแรก', link: `/` },
     {
       name: 'เกี่ยวกับเรา',
@@ -62,18 +61,17 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={` ${fontMNR.className}`}>
-      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: scroll > 50 ? "" : "#0f172a" }}>
-        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}>
-          {/* <div className=" container  " style={{ backgroundColor: scroll > 50 ? "#F4F5F5" : "" }}> */}
+      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll >  90  ? "" : "#0f172a"}` }}>
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll >  90  ? "#F4F5F5" : ""}` }}>
           <div className="flex items-center  py-5 ">
             <div onClick={() => setIsOpen(!isOpen)}
               className="md:hidden duration-700 ease-in-out "
-              style={{ color: scroll > 50 ? "" : "#F4F5F5" }}>
+              style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
               {
                 isOpen ? <HiOutlineXMark size={38} /> : <HiBars3BottomLeft size={38} />
               }
             </div>
-            <div className="" > 
+            <div className="" >
               <Image
                 src="/images/logo.png"
                 width={100}
@@ -82,12 +80,11 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* nav link here */}
           <ul className="md:flex gap-5 hidden mr-96 font-medium text-sm md:text-lg items-center">
-            {Links.map((link) => (
-              <li key={link.name} className="hover:border-b-2  hover:border-natural04"
-                style={{ color: scroll > 50 ? "" : "#F4F5F5" }}>
-                {link.children ? (
+            {navLinks.map((list) => (
+              <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
+                style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
+                {list?.children ? (
                   <div
                     className="dropdown"
                     onClick={toggleDropdown}
@@ -99,7 +96,7 @@ const Navbar: React.FC = () => {
                       aria-haspopup="true"
                       aria-expanded={open ? 'true' : 'false'}
                     >
-                      {link.name}
+                      {list?.name}
 
                       <span
                         className="">
@@ -112,11 +109,11 @@ const Navbar: React.FC = () => {
                     <ul
                       className="dropdown-menu absolute bg-secondary1 p-3 rounded-lg drop-shadow-lg"
                       aria-labelledby="dropdownMenuButton"
-                      style={{ display: open ? 'block' : 'none' }}
+                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll >  90  ? "#F4F5F5" : "#0f172a"}` }}
                     >
-                      {link.children.map((child) => (
+                      {list?.children.map((child) => (
                         <li key={child.name} className="my-4 pl-2 hover:border-l-2 hover:border-natural01"
-                          style={{ color: scroll > 50 ? "#F4F5F5" : "" }}
+                          style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}
                         >
                           <a href={child.link}>{child.name}</a>
                         </li>
@@ -124,18 +121,17 @@ const Navbar: React.FC = () => {
                     </ul>
                   </div>
                 ) : (
-                  <a href={link.link}>{link.name}</a>
+                  <a href={list?.link}>{list?.name}</a>
                 )}
               </li>
             ))}
           </ul>
 
 
-          {/* login && badket */}
           <ul className="flex gap-3 font-semibold items-center text-base">
 
-            <li className="hover:border-b-2 hover:border-natural04" style={{ color: scroll > 50 ? "" : "#F4F5F5" }}>
-             
+            <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
+
               {loggedInUser ? (
                 <Link href={`./../profile/${loggedInUser.id}`} className="flex items-center">
                   <HiUser size={20} />
@@ -145,7 +141,7 @@ const Navbar: React.FC = () => {
                 <Link href="./login" className="flex items-center">
 
                   <HiUser size={20} />
-                  <span  className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</span>
+                  <span className="hidden lg:block text-sm md:text-lg ">เข้าสู่ระบบ</span>
 
                 </Link>
 
@@ -192,9 +188,7 @@ const Navbar: React.FC = () => {
 
 
 
-        {/* nav link for mobile here */}
 
-        
       </div>
     </nav>
   );
