@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+
 import React, { useState, useEffect } from "react";
 import { HiBars3BottomLeft, HiOutlineXMark, HiUser, HiChevronDown, HiChevronUp, HiChevronRight } from "react-icons/hi2";
 import Cookies from 'js-cookie';
@@ -13,7 +13,6 @@ const fontMNR = Mitr({
 })
 
 const Navbar: React.FC = () => {
-  const router = useRouter();
 
   const [loggedInUser, setLoggedInUser] = useState<any>(null);
 
@@ -62,12 +61,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={` ${fontMNR.className}`}>
-      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll > 50 ? "" : "#0f172a"}` }}>
-        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 50 ? "#F4F5F5" : ""}` }}>
+      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll >  90  ? "" : "#0f172a"}` }}>
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll >  90  ? "#F4F5F5" : ""}` }}>
           <div className="flex items-center  py-5 ">
             <div onClick={() => setIsOpen(!isOpen)}
               className="md:hidden duration-700 ease-in-out "
-              style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
+              style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
               {
                 isOpen ? <HiOutlineXMark size={38} /> : <HiBars3BottomLeft size={38} />
               }
@@ -84,7 +83,7 @@ const Navbar: React.FC = () => {
           <ul className="md:flex gap-5 hidden mr-96 font-medium text-sm md:text-lg items-center">
             {navLinks.map((list) => (
               <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
-                style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
+                style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
                 {list?.children ? (
                   <div
                     className="dropdown"
@@ -110,11 +109,11 @@ const Navbar: React.FC = () => {
                     <ul
                       className="dropdown-menu absolute bg-secondary1 p-3 rounded-lg drop-shadow-lg"
                       aria-labelledby="dropdownMenuButton"
-                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll > 50 ? "#F4F5F5" : "#0f172a"}` }}
+                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll >  90  ? "#F4F5F5" : "#0f172a"}` }}
                     >
                       {list?.children.map((child) => (
                         <li key={child.name} className="my-4 pl-2 hover:border-l-2 hover:border-natural01"
-                          style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}
+                          style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}
                         >
                           <a href={child.link}>{child.name}</a>
                         </li>
@@ -131,7 +130,7 @@ const Navbar: React.FC = () => {
 
           <ul className="flex gap-3 font-semibold items-center text-base">
 
-            <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll > 50 ? "" : "#F4F5F5"}` }}>
+            <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
 
               {loggedInUser ? (
                 <Link href={`./../profile/${loggedInUser.id}`} className="flex items-center">
