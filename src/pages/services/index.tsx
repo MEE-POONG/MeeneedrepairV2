@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import Menuservice from "../../container/Home/Menuservice";
 import RootLayout from "@/components/Layout";
+import Slide from "@/container/Services/Slide";
 
 
 const AdviserService: React.FC = (props) => {
@@ -23,8 +24,8 @@ const AdviserService: React.FC = (props) => {
         <>
             <RootLayout loggedInUser="">
                 <div className="mt-[84px]">
-                    <SlideServices />
-                    <Menuservice />g
+                    <Slide/>
+                    <Menuservice />
                     <div className="container mx-auto mt-28 mb-24 px-3">
                         <div className="relative bg-white shadow-lg p-3 rounded-md">
                             <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
