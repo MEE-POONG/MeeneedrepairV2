@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
             <div className="bg-natural04 w-[1px] h-10 "></div>
 
             <li className="mr-5 ">
-              <a href="./shoppingCart">
+              <a href="./cart">
                 <svg xmlns="http://www.w3.org/500/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
                   <path d="M8.5 18H6.5V26H8.5V18Z" fill="url(#paint0_linear_220_322)" />
                   <path d="M13.5 18H11.5V26H13.5V18Z" fill="url(#paint1_linear_220_322)" />
