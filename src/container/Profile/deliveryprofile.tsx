@@ -52,9 +52,9 @@ const DeliveryLocations: React.FC = (props) => {
             url: "/api/address/" + id,
             method: "DELETE",
         }).then(() => {
-            setFilteredAddressData((prevAddresses) =>
-                prevAddresses.filter((address) => address.id !== id)
-            );
+            // setFilteredAddressData((prevAddresses) =>
+            //     prevAddresses.filter((address) => address.id !== id)
+            // );
             router.reload();
         });
     };
