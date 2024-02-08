@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { News } from "@prisma/client";
 import RootLayout from "@/components/Layout";
-import SlideNews from "@/container/News/Slide";
+// import SlideNews from "@/container/News/Slide";
 
 interface NewsData {
     id: string;
@@ -44,7 +44,7 @@ const NewsPage: React.FC = (props) => {
     return (
         <RootLayout loggedInUser="">
             <div className="mb-24">
-                <SlideNews />
+                {/* <SlideNews /> */}
             </div>
             <div className="container mx-auto px-6 md:px-24">
                 <div className="flex items-center justify-center">

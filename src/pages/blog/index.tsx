@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Blog } from "@prisma/client";
 import Link from "next/link";
 import RootLayout from "@/components/Layout";
-import SlideBlog from "@/container/blog/SlideBlog";
+// import SlideBlog from "@/container/blog/SlideBlog";
 
 interface NewsData {
     id: string;
@@ -44,7 +44,7 @@ const BlogsPage: React.FC = () => {
         <RootLayout loggedInUser="">
             <div className='relative flex items-center justify-center bg-gray-800'>
                 <div className="md:h-[590px] w-full mb-24">
-                    <SlideBlog />
+                    {/* <SlideBlog /> */}
                 </div>
                 <div className='absolute inset-x-0 top-[35%]  md:h-40 text-center'>
                     <button className=" bg-black/20  rounded-lg w-28 h-14  md:w-80 md:h-28">

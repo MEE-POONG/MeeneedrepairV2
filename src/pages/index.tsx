@@ -1,5 +1,5 @@
 import RootLayout from "@/components/Layout";
-import Slide from "@/container/Home/Slide";
+// import Slide from "@/container/Home/Slide";
 import Menuservice from "@/container/Home/Menuservice";
 import BlogCard from "@/container/blog/blogcard";
 import NewsCard from "@/container/News/NewsCard";
@@ -14,7 +14,7 @@ const Home: React.FC = (props) => {
         <title>Mee Need Repair</title>
       </Head>
       <div className="mt-[84px]">
-        <Slide />
+        {/* <Slide /> */}
       </div>
       <div className=''>
         <Menuservice />
