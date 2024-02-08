@@ -40,7 +40,6 @@ const Navbar: React.FC = () => {
       ],
     },
     { name: 'บริการของเรา', link: `./../services` },
-    { name: 'สินค้า', link: `./../products` },
     { name: 'ประวัติ', link: `./../products` },
   ];
 
