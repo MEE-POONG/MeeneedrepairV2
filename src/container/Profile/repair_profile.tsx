@@ -72,9 +72,9 @@ const RepairProfile: React.FC = (props) => {
                             สถานะ:
                             <strong className={`self-center md:ml-1 text-${appointment.status === 'กำลังดำเนินการ' ? 'yellow-400' : appointment.status === 'อยู่ระหว่างการซ่อม' ? 'green-500' : 'red-500'} text-center`}>{appointment.status}</strong>
                         </div>
-                        <div className="flex items-center justify-center">
+                        {/* <div className="flex items-center justify-center">
                             <ModalRepair appointmentData={appointment} />
-                        </div>
+                        </div> */}
                     </div>
                 ))}
 
