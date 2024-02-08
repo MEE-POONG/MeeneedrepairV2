@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 // import ReactPlayer from 'react-player';
 import Link from 'next/link';
-import { Appointment } from '@prisma/client';
+// import { Appointment } from '@prisma/client';
 import useAxios from "axios-hooks";
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -19,9 +19,9 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
         executeappointmentDelete,
     ] = useAxios({}, { manual: true });
 
-    const [filteredappointmentsData, setFilteredappointmentsData] = useState<
-        Appointment[]
-    >([]);
+    // const [filteredappointmentsData, setFilteredappointmentsData] = useState<
+    //     Appointment[]
+    // >([]);
     const deleteappointment = async (id: string): Promise<any> => {
         try {
             await executeappointmentDelete({
