@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Information from "../../components/profile/Information";
 import { LuNewspaper } from "react-icons/lu";
 import Cookies from 'js-cookie';
-import { User } from "@prisma/client";
+import { PrismaClient, User } from '@prisma/client';
 import { FaUserCircle } from "react-icons/fa";
 
 
