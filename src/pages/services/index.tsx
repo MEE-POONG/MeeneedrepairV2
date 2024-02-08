@@ -1,11 +1,11 @@
 import Link from "next/link";
-import SlideServices from '../../container/Services/SlideServices';
+// import SlideServices from '../../container/Services/SlideServices';
 // import SlideServices2 from '../../container/Services/SlideServices2';
 import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import Menuservice from "../../container/Home/Menuservice";
 import RootLayout from "@/components/Layout";
-import Slide from "@/container/Services/Slide";
+// import Slide from "@/container/Services/Slide";
 
 
 const AdviserService: React.FC = (props) => {
@@ -24,7 +24,7 @@ const AdviserService: React.FC = (props) => {
         <>
             <RootLayout loggedInUser="">
                 <div className="mt-[84px]">
-                    <Slide/>
+                    {/* <Slide/> */}
                     <Menuservice />
                     <div className="container mx-auto mt-28 mb-24 px-3">
                         <div className="relative bg-white shadow-lg p-3 rounded-md">
