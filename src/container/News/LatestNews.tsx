@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HiOutlineShoppingCart, HiMiniCheck } from "react-icons/hi2";
 import { FiHeart } from "react-icons/fi";
 import Link from 'next/link';
-import CardProductAll from "../Product/CardProductAll";
+// import CardProductAll from "../Product/CardProductAll";
 
 
 interface news {
