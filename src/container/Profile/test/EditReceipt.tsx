@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import ProductCategory from "../../../container/Product/CategoryList";
+// import ProductCategory from "../../../container/Product/CategoryList";
 import ReceiptProfile from "../receipt_profile";
 import TabMenu from "../../../container/Profile/test/TabMenu";
 import TabMenuMobile from "../../../container/Profile/test/TabMenuMobile";
-import RootLayout from "../../../components/layout";
+// import RootLayout from "../../../components/layout";
 
 export default function EditReceiptPage() {
     return (

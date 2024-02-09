@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { News } from "@prisma/client";
 import RootLayout from "@/components/Layout";
-import SlideNews from "@/container/News/Slide";
+import Image from "next/image";
+// import SlideNews from "@/container/News/Slide";
 
 interface NewsData {
     id: string;
@@ -47,7 +48,7 @@ const NewsPage: React.FC = (props) => {
     return (
         <RootLayout loggedInUser="">
             <div className="mb-24">
-                <SlideNews />
+                {/* <SlideNews /> */}
             </div>
             <div className="container mx-auto px-6 md:px-24">
                 <div className="flex items-center justify-center">
@@ -65,7 +66,7 @@ const NewsPage: React.FC = (props) => {
                                 <div className="flex md:flex-wrap items-center">
                                     <div className="w-[350px] md:w-full h-[100px] md:h-[220px]  md:rounded-tr-lg md:rounded-tl-lg overflow-hidden ">
 
-                                        <img className="w-full h-full object-cover"
+                                        <Image className="w-full h-full object-cover"
                                             src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
                                             alt=""
                                         />

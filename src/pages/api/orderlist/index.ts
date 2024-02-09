@@ -1,3 +1,4 @@
+// api/orderlist.ts
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -12,39 +13,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const page: number = Number(req.query.page) || 1;
                 const pageSize: number = Number(req.query.pageSize) || 10;
 
-                const orderlists = await prisma.orderList.findMany({
+                const orderLists = await prisma.orderList.findMany({
                     skip: (page - 1) * pageSize,
                     take: pageSize,
                     include: {
-                        Order: true,
                         Products: true,
                     },
                 });
 
-                const totalorderlists = await prisma.orderList.count();
-                const totalPage: number = Math.ceil(totalorderlists / pageSize);
-
-                res.status(200).json({ orderlists, totalPage, currentPage: page });
+                const totalOrders = await prisma.orderList.count();
+                const totalPage: number = Math.ceil(totalOrders / pageSize);
+                res.status(200).json({ orderLists, totalPage });
             } catch (error) {
-                console.error('An error occurred:', error);
-                res.status(500).json({ error: "An error occurred while fetching the product" });
+                console.error(error);
+                res.status(500).json({ error: "An error occurred while fetching the order lists" });
             }
             break;
 
         case 'POST':
             try {
+                const { date, discount, productId, userId } = req.body;
                 const newOrderList = await prisma.orderList.create({
-                    include: {
-                        Order: true,
-                        Products: true,
+                    data: {
+                        date,
+                        discount,
+                        productId,
                     },
-                    data: req.body,
+                    include: {
+                        Products: true,
+
+                    },
                 });
 
                 res.status(201).json(newOrderList);
             } catch (error) {
-                console.error('An error occurred:', error);
-                res.status(500).json({ error: "An error occurred while creating the product" });
+                console.error(error);
+                res.status(500).json({ error: "An error occurred while creating the OrderList" });
             }
             break;
 

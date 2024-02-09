@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Products {
   id: number;
@@ -44,7 +45,7 @@ const PromoteCard: React.FC = () => {
             <Link href={`/products/${newsData[activeSlide].id}`}>
               <div className="flex items-center">
                 <div className="w-full h-[100px] md:h-[280px] shadow-2xl md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
-                  <img
+                  <Image
                     className="w-full h-full object-cover"
                     src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData[activeSlide].imgFirst || 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
 

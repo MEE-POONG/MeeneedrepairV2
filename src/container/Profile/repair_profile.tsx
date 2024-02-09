@@ -2,8 +2,8 @@ import Link from "next/link";
 import ModalRepair from "./ModalRepair";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { User } from '@prisma/client';
 import { AiOutlineTool } from "react-icons/ai";
+import Image from "next/image";
 const RepairProfile: React.FC = (props) => {
 
     const router = useRouter();
@@ -51,7 +51,7 @@ const RepairProfile: React.FC = (props) => {
 
                 {AppointmentData && AppointmentData.map((appointment: any, index: number) => (
                     <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5" key={index}>
-                        <img src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                        <Image src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
                         <div className="col-span-4 md:col-span-5 self-center flex flex-wrap">
                             อุปกรณ์:
                             <p className="md:ml-1 text-[#645cff]  self-center truncate">{appointment.request}</p>
@@ -72,9 +72,9 @@ const RepairProfile: React.FC = (props) => {
                             สถานะ:
                             <strong className={`self-center md:ml-1 text-${appointment.status === 'กำลังดำเนินการ' ? 'yellow-400' : appointment.status === 'อยู่ระหว่างการซ่อม' ? 'green-500' : 'red-500'} text-center`}>{appointment.status}</strong>
                         </div>
-                        <div className="flex items-center justify-center">
+                        {/* <div className="flex items-center justify-center">
                             <ModalRepair appointmentData={appointment} />
-                        </div>
+                        </div> */}
                     </div>
                 ))}
 

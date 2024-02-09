@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// ShowproductsCard.tsx
+import React, { useState, useEffect } from "react";
 import { LiaCartArrowDownSolid, LiaHeartSolid } from "react-icons/lia";
 import Link from "next/link";
 import Cookies from 'js-cookie';
@@ -34,23 +35,34 @@ const ShowproductsCard: React.FC = () => {
     fetchData();
   }, []);
 
-  const addToCart = (product: Products) => {
-    const existingItem = cartItems.find(item => item.id === product.id);
+  const addToCart = (productId: number) => {
+    const productToAdd = newsData.find((product) => product.id === productId);
 
-    if (existingItem) {
-      const updatedCart = cartItems.map(item =>
-        item.id === product.id ? { ...item, quantity: (item.quantity || 0) + 1 } : item
-      );
-      updateCart(updatedCart);
-    } else {
-      const updatedCart = [...cartItems, { ...product, quantity: 1 }];
-      updateCart(updatedCart);
+    if (productToAdd) {
+      const updatedCart = [...cartItems, { ...productToAdd, quantity: 1 }];
+      setCartItems(updatedCart);
+      Cookies.set('cartItems', JSON.stringify(updatedCart));
     }
   };
 
-  const updateCart = (updatedCart: Products[]) => {
-    setCartItems(updatedCart);
-    Cookies.set('cart', JSON.stringify(updatedCart));
+  const saveToOrderList = async (productId: number) => {
+    try {
+      const response = await fetch('/api/orderlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (response.ok) {
+        console.log('Product ID saved to OrderList successfully');
+      } else {
+        console.error('Failed to save Product ID to OrderList');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -64,7 +76,7 @@ const ShowproductsCard: React.FC = () => {
               <div className="flex md:flex-wrap items-center">
                 <div className="w-[230px] md:w-full h-[200px] md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
                   <Link href={`/products/${product.id}`}>
-                  <Image src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" />
+                    <Image src={product.imgFirst} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" />
                   </Link>
                 </div>
 
@@ -83,12 +95,11 @@ const ShowproductsCard: React.FC = () => {
                       {product.price} Bath
                     </p>
                     <div className="flex items-center">
-                      <button className="text-red-400 hover:text-red-900" onClick={() => addToCart(product)}>
+                      <button className="text-red-400 hover:text-red-900" onClick={() => { addToCart(product.id); saveToOrderList(product.id); }}>
                         <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
                           <LiaCartArrowDownSolid className="text-[20px] ml-32" />
                         </p>
                       </button>
-                    
                     </div>
                     <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
                       <LiaHeartSolid className="text-[20px]" />

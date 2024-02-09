@@ -1,6 +1,6 @@
-const SlidePromote = () => {
-    return (
-        <></>
-    )
-}
-export default SlidePromote;
+// const SlidePromote = () => {
+//     return (
+//         <></>
+//     )
+// }
+// export default SlidePromote;

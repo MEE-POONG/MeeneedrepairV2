@@ -40,7 +40,6 @@ const Navbar: React.FC = () => {
       ],
     },
     { name: 'บริการของเรา', link: `./../services` },
-    { name: 'สินค้า', link: `./../products` },
     { name: 'ประวัติ', link: `./../products` },
   ];
 
@@ -80,7 +79,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <ul className="md:flex gap-5 hidden mr-96 font-medium text-sm md:text-lg items-center">
+          <ul className="md:flex gap-3 hidden mr-96 font-medium text-sm md:text-lg items-center">
             {navLinks.map((list) => (
               <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
                 style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>

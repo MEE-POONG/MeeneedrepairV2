@@ -1,15 +1,15 @@
-import { Fragment, useRef, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-// import ReactPlayer from 'react-player';
-import Link from 'next/link';
-import { Appointment } from '@prisma/client';
+import { Fragment, useRef, useState } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+
+// import { Appointment } from '@prisma/client'; // Import Appointment type from Prisma client
 import useAxios from "axios-hooks";
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
-import axios from 'axios';
-
-const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
+interface Props {
+    prop: any; // Update with the appropriate type
+    // appointmentData: Appointment; // Use the Appointment type from Prisma
+}
+const ModalRepair: React.FC = ({ prop, appointmentData }: any) => {
     const [open, setOpen] = useState(false)
     const router = useRouter();
     const cancelButtonRef = useRef(null)
@@ -18,19 +18,17 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
         { loading: deleteappointmentLoading, error: deleteappointmentError },
         executeappointmentDelete,
     ] = useAxios({}, { manual: true });
+    const [{ loading: deleteAppointmentLoading, error: deleteAppointmentError }, executeAppointmentDelete] = useAxios({}, { manual: true });
 
-    const [filteredappointmentsData, setFilteredappointmentsData] = useState<
-        Appointment[]
-    >([]);
-    const deleteappointment = async (id: string): Promise<any> => {
+    // const [filteredappointmentsData, setFilteredappointmentsData] = useState<
+    //     Appointment[]
+    // >([]);
+    const deleteAppointment = async (id: string): Promise<void> => {
         try {
-            await executeappointmentDelete({
-                url: "/api/appointment/" + id,
+            await executeAppointmentDelete({
+                url: `/api/appointment/${id}`, // Fix the URL
                 method: "DELETE",
             });
-
-            // ทำการรีเฟรชหน้าจอ
-            //router.reload();
         } catch (error) {
             console.error("Error deleting appointment:", error);
         }
@@ -76,18 +74,18 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
             setIsLoading(true);
             const response = await executeIndexActivity({
                 data: {
-                     fname,
-                lname,
-                time: formattedDate,
-                request,
-                email,
-                tel,
-                userId,
-                repairmanId,
-                status: "อยู่ระหว่างการซ่อม",
+                    fname,
+                    lname,
+                    time: formattedDate,
+                    request,
+                    email,
+                    tel,
+                    userId,
+                    repairmanId,
+                    status: "อยู่ระหว่างการซ่อม",
                 },
             });
-        
+
 
             setIsSuccess(true);
             setMessage("สำเร็จ! คุณได้ทำการรับคิวซ่อมเรียบร้อยแล้ว");
@@ -271,7 +269,7 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
 
                                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                             <button
-                                                onClick={() => deleteappointment(appointmentData.id)}
+                                                onClick={() => deleteAppointment(appointmentData.id)}
                                                 className="mt-3 inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white hover:text-black shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                                             >
                                                 ยกเลิกการจองคิว
@@ -287,7 +285,7 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any)=> {
                                             <button
                                                 type="submit"
                                                 disabled={isLoading}
-                                                 onClick={() => handleSubmit(appointmentData.id)}// เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
+                                                onClick={() => handleSubmit(appointmentData.id)}// เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
                                                 className="w-[200px] py-3 bg-[#FFCD4B] rounded-lg font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
                                             >
                                                 รับคิว

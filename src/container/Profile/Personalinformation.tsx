@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Information from "../../components/profile/Information";
 import { LuNewspaper } from "react-icons/lu";
 import Cookies from 'js-cookie';
-import { User } from "@prisma/client";
 import { FaUserCircle } from "react-icons/fa";
+import { User } from "@prisma/client";
+import Image from "next/image";
 
 
 const Personalinformation: React.FC = (props) => {
@@ -118,7 +118,7 @@ const Personalinformation: React.FC = (props) => {
                             </div>
                             <div className="mt-5 leading-loose">
                                 {loggedInUser?.img ? (
-                                    <img
+                                    <Image
                                         src={loggedInUser?.img}
                                         alt="profile"
                                         className="shadow rounded-full object-cover mx-auto"
@@ -164,7 +164,7 @@ const Personalinformation: React.FC = (props) => {
                                                 id="imageInput"
                                                 style={{ display: 'none' }}
                                             />
-                                            <img
+                                            <Image
                                                 src={loggedInUser?.img}
                                                 alt="profile"
                                                 className="shadow rounded-full object-cover mx-auto"

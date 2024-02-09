@@ -1,6 +1,4 @@
 import Link from "next/link";
-import SlideServices from '../../container/Services/SlideServices';
-import SlideServices2 from '../../container/Services/SlideServices2';
 import React, { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
 import Menuservice from "../../container/Home/Menuservice";
@@ -47,7 +45,7 @@ const AdviserService: React.FC = (props) => {
                             <h1 className="text-black  text-xl md:text-3xl font-bold text-center  py-5">
                                 ตัวอย่างบริการของเรา
                             </h1>
-                            <SlideServices2 />
+                            
                         </div>
                     </div>
                 </div>
