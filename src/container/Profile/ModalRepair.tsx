@@ -19,9 +19,9 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any) => {
     ] = useAxios({}, { manual: true });
     const [{ loading: deleteAppointmentLoading, error: deleteAppointmentError }, executeAppointmentDelete] = useAxios({}, { manual: true });
 
-    // const [filteredappointmentsData, setFilteredappointmentsData] = useState<
-    //     Appointment[]
-    // >([]);
+    const [filteredappointmentsData, setFilteredappointmentsData] = useState<
+        Appointment[]
+    >([]);
     const deleteAppointment = async (id: string): Promise<void> => {
         try {
             await executeAppointmentDelete({
