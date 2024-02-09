@@ -3,18 +3,21 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { News } from "@prisma/client";
 import RootLayout from "@/components/Layout";
 import Image from "next/image";
 // import SlideNews from "@/container/News/Slide";
 
-interface NewsData {
+interface News {
     id: string;
-    image: string;
+    subtitle: string;
     title: string;
-    description: string;
-    credit: string;
+    detail: string;
+    refer: string;
     date: string;
+    author: string;
+    img: string;
+
+
 }
 
 const NewsPage: React.FC = (props) => {
