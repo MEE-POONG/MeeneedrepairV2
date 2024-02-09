@@ -92,7 +92,7 @@ const FavoriteProfile: React.FC = (props) => {
                         <Image
                             className="col-span-2 md:col-span-2 h-24 w-24 object-contain"
                             src='https://upload.wikimedia.org/wikipedia/commons/5/50/EquipoConXP.JPG'
-                            alt='indexActivity image'
+                            alt='indexActivity image' width={100} height={100}
                         />
 
                         <p className="col-span-4 md:col-span-6 self-center truncate">

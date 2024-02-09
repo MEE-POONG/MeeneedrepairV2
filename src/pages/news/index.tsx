@@ -68,7 +68,7 @@ const NewsPage: React.FC = (props) => {
 
                                         <Image className="w-full h-full object-cover"
                                             src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
-                                            alt=""
+                                            alt="" width={100} height={100}
                                         />
 
                                     </div>

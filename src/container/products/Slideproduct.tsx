@@ -57,7 +57,7 @@ export default function SlideProduct() {
                 {blogData.slice(0, visibleItems).map(blog => (
                     <SwiperSlide key={blog.id} className="relative">
                         <Link href={`/blog/${blog.id}`} className="text-natural04 text-xs">
-                            <Image className="object-cover w-full h-[720px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" />
+                            <Image className="object-cover w-full h-[720px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1"width={100} height={100} />
                         </Link>
                     </SwiperSlide>
                 ))}

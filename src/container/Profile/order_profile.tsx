@@ -13,7 +13,7 @@ const OrderProfile: React.FC = (props) => {
             <div className=" rounded-lg md:p-8 text-secondary1 text-sm md:text-base">
 
                 <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5">
-                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" width={100} height={100}/>
                     <p className="col-span-4 md:col-span-6 self-center truncate">ชื่อสินค้า</p>
                     <p className="col-span-2 md:col-span-1 self-center text-[#FF5C74] text-center">฿ 490</p>
                     <div className="col-span-3 md:col-span-2 self-center flex justify-center flex-wrap">สถานะ:
@@ -28,7 +28,7 @@ const OrderProfile: React.FC = (props) => {
 
 
                 <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5">
-                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain"width={100} height={100} />
                     <p className="col-span-4 md:col-span-6 self-center truncate">ชื่อสินค้า ถ้ายาวจะเป็นแบบนี้ อันนี้คือความยาวของตัวหนังสือ ถ้ายาว </p>
                     <p className="col-span-2 md:col-span-1 self-center text-[#FF5C74] text-center">฿ 490</p>
                     <div className="col-span-3 md:col-span-2  self-center flex justify-center flex-wrap">สถานะ:
@@ -42,7 +42,7 @@ const OrderProfile: React.FC = (props) => {
                 </div>
 
                 <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5">
-                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain"width={100} height={100} />
                     <p className="col-span-4 md:col-span-6 self-center truncate">ชื่อสินค้า</p>
                     <p className="col-span-2 md:col-span-1 self-center text-[#FF5C74] text-center">฿ 490</p>
                     <div className="col-span-3 md:col-span-2  self-center flex justify-center flex-wrap">สถานะ:
@@ -57,7 +57,7 @@ const OrderProfile: React.FC = (props) => {
 
 
                 <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5">
-                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                    <Image src="/images/joystick.png" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain"  width={100} height={100}/>
                     <p className="col-span-4 md:col-span-6 self-center truncate">ชื่อสินค้า</p>
                     <p className="col-span-2 md:col-span-1 self-center text-[#FF5C74] text-center">฿ 490</p>
                     <div className="col-span-3 md:col-span-2  self-center flex justify-center flex-wrap">สถานะ:

@@ -96,8 +96,8 @@ const CardProductAll = ({ searchText, setSearchText }:any) => {
                                         className="w-[150px] h-[150px] object-cover mx-auto"
                                         src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${products.productimg ? products.productimg : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'
                                             }/public`}
-                                        alt="indexActivity image"
-                                    />
+                                        alt="indexActivity image" width={100} height={100}
+                                    /> 
 
                                     <div className="mb-3 flex flex-col justify-between h-[120px]">
                                         <div>

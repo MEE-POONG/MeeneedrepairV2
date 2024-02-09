@@ -34,7 +34,7 @@ const ReadBlogDetail: React.FC = () => {
                 <div>
                     <Image
                         className="w-full h-[300px] md:h-[400px] object-cover"
-                        src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} />
+                        src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} width={100} height={100} />
 
                     <div className="mt-8 mx-4 xl:mx-0">
                         <h4 className="text-xl md:text-4xl font-semibold text-white">{blogData.title}</h4>
@@ -69,7 +69,7 @@ const ReadBlogDetail: React.FC = () => {
                             <div className="py-16">
                                 <Image
                                     className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg"
-                                    src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img}
+                                    src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} width={100} height={100}
                                 />
                                 <article className="prose lg:prose-md md:mx-auto mt-8 px-2 md:px-0">
                                     <h1 className=" text-xl md:text-2xl">{blogData.subtitle}</h1>
