@@ -127,6 +127,16 @@ model Payment {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   img         String?
   paymentType String?
+  name        String?
+  lname       String?
+  phonenumber String?
+  typeaddress String?
+  addressline String?
+  zipcode     String?
+  province    String?
+  district    String?
+  subdistrict String?
+  note        String?
   Order       Order[]
 }
 
