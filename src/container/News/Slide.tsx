@@ -73,7 +73,7 @@ export default function SlideNews() {
                     {blogData.slice(0, visibleItems).map((news, index) => (
                         <SwiperSlide key={index} className="relative">
                             <Link href={`/news/${news.id}`} className="text-natural04 text-xs">
-                                <Image className="object-cover w-full h-[700px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" width={100} height={100}/>
+                                {/* <Image className="object-cover w-full h-[700px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" width={100} height={100}/> */}
                             </Link>
                         </SwiperSlide>
                     ))}

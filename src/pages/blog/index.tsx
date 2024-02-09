@@ -70,13 +70,11 @@ const BlogsPage: React.FC = () => {
                             <Link href={`/blog/${blog.id}`} >
                                 <div className="flex md:flex-wrap items-center">
                                     <div className="w-[350px] md:w-full h-[100px] md:h-[220px]  md:rounded-tr-lg md:rounded-tl-lg overflow-hidden ">
-                                        <Image
-                                            className="w-full h-full object-cover"
-                                            src={blog.img ? blog.img : '/default-image.jpg'} // เปลี่ยน '/default-image.jpg' เป็น URL ของรูปภาพเริ่มต้นถ้าไม่มีภาพในฐานข้อมูล
-                                            alt=""
-                                            width={100}
-                                            height={100}
-                                        />
+                                        {/* 
+                                        <Image className="w-full h-full object-cover"
+                                            src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
+                                            alt="" width={100} height={100}
+                                        /> */}
 
                                     </div>
 

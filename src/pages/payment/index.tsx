@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import SelectAddress from './address';
 import RootLayout from '@/components/Layout';
+import Image from 'next/image';
 
 const Payment: React.FC = (props) => {
 
@@ -378,14 +379,23 @@ const Payment: React.FC = (props) => {
                         </label>
 
                         <div className='flex'>
-                            <img src="images/kbank.png" className='w-[60px] pt-5 ' />
+                            <Image
+                                className='w-[60px] pt-5 '
+                                src="/images/kbank.png"
+                                alt="indexActivity image" width={100} height={100}
+                            />
                             <p className='text-sm mt-5 ml-3'> บัญชี ธนาคาร กสิกร ไทย
                                 <span className='text-sm '> 11-111-1111</span>
                                 <span className='text-sm'>นาย ดุกดุ๋ย ดุ๊กดิ๊ก</span>
                             </p>
+
                         </div>
                         <div className='flex'>
-                            <img src="images/bank.png" className='w-[60px] pt-5 ' />
+                            <Image
+                                className='w-[60px] pt-5 '
+                                src="/images/bank.png"
+                                alt="indexActivity image" width={100} height={100}
+                            />
                             <p className='text-sm mt-5 ml-3'> บัญชี ธนาคาร กสิกร ไทย
                                 <span className='text-sm '> 11-111-1111 </span>
                                 <span className='text-sm'>นาย ดุกดุ๋ย ดุ๊กดิ๊ก</span>
