@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Blog } from "@prisma/client";
 import Link from "next/link";
 import RootLayout from "@/components/Layout";
 import Image from "next/image";
 // import SlideBlog from "@/container/blog/SlideBlog";
 
-interface NewsData {
+interface Blog {
     id: string;
-    image: string;
     title: string;
-    description: string;
-    credit: string;
+    detail: string;
+    subtitle: string;
+    img: string;
+    img1: string;
     date: string;
+    author: string;
 }
 
 const BlogsPage: React.FC = () => {
