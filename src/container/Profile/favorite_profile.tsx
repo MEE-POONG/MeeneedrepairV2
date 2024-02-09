@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {LuHeart} from "react-icons/lu";
+import { LuHeart } from "react-icons/lu";
 
 // Define the type of a product item
 type ProductItem = {
@@ -56,7 +57,7 @@ const FavoriteProfile: React.FC = (props) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ FavoriteItems : productId }),
+            body: JSON.stringify({ FavoriteItems: productId }),
         })
             .then((response) => {
                 if (response.status === 200) {
@@ -77,7 +78,7 @@ const FavoriteProfile: React.FC = (props) => {
     return (
         <div className="">
             <div className="flex items-center">
-            <LuHeart className='w-[25px] h-[25px]' />
+                <LuHeart className='w-[25px] h-[25px]' />
                 <h3 className="text-2xl text-black ml-2">รายการโปรด</h3>
             </div>
 
@@ -88,12 +89,12 @@ const FavoriteProfile: React.FC = (props) => {
                         key={index}
                         className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5"
                     >
-                        <img
-                            // src={product.image} // Replace with the actual image property
-                            // alt={product.name} // Replace with the actual name property
-                            src='https://upload.wikimedia.org/wikipedia/commons/5/50/EquipoConXP.JPG'
+                        <Image
                             className="col-span-2 md:col-span-2 h-24 w-24 object-contain"
+                            src='https://upload.wikimedia.org/wikipedia/commons/5/50/EquipoConXP.JPG'
+                            alt='indexActivity image'
                         />
+
                         <p className="col-span-4 md:col-span-6 self-center truncate">
                             {product.productname} {/* Replace with the actual name property */}
                         </p>

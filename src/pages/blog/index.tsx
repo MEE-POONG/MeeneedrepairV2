@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Blog } from "@prisma/client";
 import Link from "next/link";
 import RootLayout from "@/components/Layout";
+import Image from "next/image";
 // import SlideBlog from "@/container/blog/SlideBlog";
 
 interface NewsData {
@@ -70,7 +71,7 @@ const BlogsPage: React.FC = () => {
                                 <div className="flex md:flex-wrap items-center">
                                     <div className="w-[350px] md:w-full h-[100px] md:h-[220px]  md:rounded-tr-lg md:rounded-tl-lg overflow-hidden ">
 
-                                        <img className="w-full h-full object-cover"
+                                        <Image className="w-full h-full object-cover"
                                             src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
                                             alt=""
                                         />

@@ -3,6 +3,7 @@ import ModalRepair from "./ModalRepair";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { AiOutlineTool } from "react-icons/ai";
+import Image from "next/image";
 const RepairProfile: React.FC = (props) => {
 
     const router = useRouter();
@@ -50,7 +51,7 @@ const RepairProfile: React.FC = (props) => {
 
                 {AppointmentData && AppointmentData.map((appointment: any, index: number) => (
                     <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5" key={index}>
-                        <img src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
+                        <Image src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" />
                         <div className="col-span-4 md:col-span-5 self-center flex flex-wrap">
                             อุปกรณ์:
                             <p className="md:ml-1 text-[#645cff]  self-center truncate">{appointment.request}</p>

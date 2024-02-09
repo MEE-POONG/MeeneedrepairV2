@@ -66,7 +66,7 @@
 //             >
 //                 <div>
 
-//                     {/* <img className=" h-[300px]md:h-[567px] object-cover" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} /> */}
+//                     {/* <Image className=" h-[300px]md:h-[567px] object-cover" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} /> */}
 
 //                     <div className="grid grid-cols-1 lg:grid-cols-2">
 //                         <div className='slideproduct'>
@@ -89,27 +89,27 @@
 //                             >
 //                                 <SwiperSlide >
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide>
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide >
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide>
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
 //                                 </SwiperSlide>
 
 
 //                             </Swiper>
-//                             {/* <img src={img1} alt="img2" className="" /> */}
+//                             {/* <Image src={img1} alt="img2" className="" /> */}
 //                             <Swiper
 //                                 onSwiper={setThumbsSwiper}
 //                                 loop={true}
@@ -122,31 +122,31 @@
 //                             >
 
 //                                 <SwiperSlide>
-//                                     {/* <img src={img1} alt="img1" className="" /> */}
-//                                     <img className=" " src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+//                                     {/* <Image src={img1} alt="img1" className="" /> */}
+//                                     <Image className=" " src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
 
 
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide>
 
-//                                     <img className="" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+//                                     <Image className="" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide >
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
 //                                 </SwiperSlide>
 
 //                                 <SwiperSlide>
 
-//                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+//                                     <Image src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
 //                                 </SwiperSlide>
 
 //                                 {/* 
 //                             <SwiperSlide className="flex">
-//                                 <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
-//                                 <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+//                                 <Image className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+//                                 <Image className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
 //                             </SwiperSlide> */}
 
 
@@ -225,9 +225,9 @@
 //                     <p className="text-[#FFCD4B] font-bold text-3xl my-10">คุณสมบัติสินค้า</p>
 
 //                     <div className="grid place-items-center space-y-5">
-//                         <img src="https://i.imgur.com/Gn1CojE.png" alt="" />
-//                         <img src="https://www.jib.co.th/img_master/uploads/Aoy/Xiaomi/x1.jpg" alt="" />
-//                         <img src="https://www.jib.co.th/img_master/uploads/Aoy/Xiaomi/x2.jpg" alt="" />
+//                         <Image src="https://i.imgur.com/Gn1CojE.png" alt="" />
+//                         <Image src="https://www.jib.co.th/img_master/uploads/Aoy/Xiaomi/x1.jpg" alt="" />
+//                         <Image src="https://www.jib.co.th/img_master/uploads/Aoy/Xiaomi/x2.jpg" alt="" />
 
 //                     </div>
 
@@ -290,7 +290,7 @@
 //                                     src="https://images.yourstory.com/cs/wordpress/2017/02/52-Blog.jpg?w=1152&fm=auto&ar=2:1&mode=crop&crop=faces"
 //                                     alt=""
 //                                 /> */}
-//                                 <img className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.img}/public`} alt={productsData.img} />
+//                                 <Image className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.img}/public`} alt={productsData.img} />
 //                                 <article className="prose lg:prose-md md:mx-auto mt-8 px-2 md:px-0">
 //                                     <h1>{productsData.subtitle}</h1>
 //                                     <p>

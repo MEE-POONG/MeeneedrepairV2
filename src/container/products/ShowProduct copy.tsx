@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { LiaCartArrowDownSolid, LiaHeartSolid } from "react-icons/lia";
 import Link from "next/link";
 import Cookies from 'js-cookie';
+import Image from "next/image";
 
 interface Products {
   id: number;
@@ -75,7 +76,7 @@ const ShowproductsCard: React.FC = () => {
               <div className="flex md:flex-wrap items-center">
                 <div className="w-[230px] md:w-full h-[200px] md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
                   <Link href={`/products/${product.id}`}>
-                    <img src={product.imgFirst} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" />
+                    <Image src={product.imgFirst} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" />
                   </Link>
                 </div>
 

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LatestNews from "../../container/News/LatestNews";
 import RootLayout from "@/components/Layout";
+import Image from "next/image";
 
 
 
@@ -35,7 +36,7 @@ const ReadNewsDetail: React.FC = (props) => {
             <div className="container mx-auto"
             >
                 <div>
-                    <img className="w-full h-[300px] md:h-[400px] object-cover" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData.img}/public`} alt={newsData.img} />
+                    <Image className="w-full h-[300px] md:h-[400px] object-cover" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData.img}/public`} alt={newsData.img} />
                     <div className="mt-8 mx-4 xl:mx-0">
                         <h4 className="text-lg md:text-3xl font-semibold text-white">{newsData.title}</h4>
                         <div className="flex mt-8 gap-10">
@@ -68,7 +69,7 @@ const ReadNewsDetail: React.FC = (props) => {
                         {/* Left Content */}
                         <div className="col-span-7 bg-[#F4F5F5] mt-10 rounded-lg">
                             <div className="p-3 md:p-12">
-                                <img className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg"
+                                <Image className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg"
                                     src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData.img}/public`}
                                     alt={newsData.img}
                                 />

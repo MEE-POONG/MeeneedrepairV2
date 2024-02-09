@@ -18,7 +18,7 @@
 //     return (
 //         <>
 //             <div className='mb-10 relative bg-fixed'>
-//                 <img src="../images/imgslider/banner4.jpg" className='w-full md:h-[640px] ' alt="" />
+//                 <Image src="../images/imgslider/banner4.jpg" className='w-full md:h-[640px] ' alt="" />
 //                 <div className="absolute text-white text-center md:top-2/4 md:left-32 p-12 rounded-lg ">
 //                     <h2 className="hidden md:block text-7xl font-semibold text-white">เกี่ยวกับเรา</h2>
 //                 </div>

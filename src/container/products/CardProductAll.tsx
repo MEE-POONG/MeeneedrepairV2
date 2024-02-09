@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HiOutlineShoppingCart, HiMiniCheck } from "react-icons/hi2";
 import { FiHeart, FiSearch } from "react-icons/fi";
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 interface products {
@@ -91,7 +92,7 @@ const CardProductAll = ({ searchText, setSearchText }:any) => {
                                         </div>
                                     </button>
                                     <Link key={products.id} href={`/products/${products.id}`} passHref>
-                                    <img
+                                    <Image
                                         className="w-[150px] h-[150px] object-cover mx-auto"
                                         src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${products.productimg ? products.productimg : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'
                                             }/public`}

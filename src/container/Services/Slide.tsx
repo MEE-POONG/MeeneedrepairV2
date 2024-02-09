@@ -22,6 +22,7 @@ interface news {
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SlideNews() {
     const initialVisibleItems = 5; //ตัวตั้ง Limited จำนวนสำหรับการแสดงบนหน้าจอ
@@ -72,7 +73,7 @@ export default function SlideNews() {
                     {blogData.slice(0, visibleItems).map((news) => (
                         <SwiperSlide key={news.id.toString()} className="relative">
                             <Link href={`/news/${news.id}`} className="text-natural04 text-xs">
-                                <img className="object-cover w-full h-[700px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" />
+                                <Image className="object-cover w-full h-[700px] aspect-[4/3]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="img1" />
                             </Link>
                         </SwiperSlide>
                     ))}
