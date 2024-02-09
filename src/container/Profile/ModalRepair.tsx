@@ -1,13 +1,13 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
-import { Appointment } from '@prisma/client'; // Import Appointment type from Prisma client
+// import { Appointment } from '@prisma/client'; // Import Appointment type from Prisma client
 import useAxios from "axios-hooks";
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 interface Props {
     prop: any; // Update with the appropriate type
-    appointmentData: Appointment; // Use the Appointment type from Prisma
+    // appointmentData: Appointment; // Use the Appointment type from Prisma
 }
 const ModalRepair: React.FC = ({ prop, appointmentData }: any) => {
     const [open, setOpen] = useState(false)
@@ -20,9 +20,9 @@ const ModalRepair: React.FC = ({ prop, appointmentData }: any) => {
     ] = useAxios({}, { manual: true });
     const [{ loading: deleteAppointmentLoading, error: deleteAppointmentError }, executeAppointmentDelete] = useAxios({}, { manual: true });
 
-    const [filteredappointmentsData, setFilteredappointmentsData] = useState<
-        Appointment[]
-    >([]);
+    // const [filteredappointmentsData, setFilteredappointmentsData] = useState<
+    //     Appointment[]
+    // >([]);
     const deleteAppointment = async (id: string): Promise<void> => {
         try {
             await executeAppointmentDelete({
