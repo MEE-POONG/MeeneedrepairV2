@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LuMapPin } from "react-icons/lu";
-import { Address } from '@prisma/client';
 
 const AddressProfile: React.FC = (props) => {
     const router = useRouter();
