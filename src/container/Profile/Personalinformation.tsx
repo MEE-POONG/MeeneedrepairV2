@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { LuNewspaper } from "react-icons/lu";
 import Cookies from 'js-cookie';
-import { User } from '@prisma/client';
 import { FaUserCircle } from "react-icons/fa";
+import { User } from "@prisma/client";
 
 
 const Personalinformation: React.FC = (props) => {

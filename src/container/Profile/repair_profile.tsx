@@ -2,7 +2,6 @@ import Link from "next/link";
 import ModalRepair from "./ModalRepair";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { User } from '@prisma/client';
 import { AiOutlineTool } from "react-icons/ai";
 const RepairProfile: React.FC = (props) => {
 

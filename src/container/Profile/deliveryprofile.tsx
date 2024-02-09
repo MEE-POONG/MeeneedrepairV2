@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { User } from '@prisma/client';
 import SelectAddress from "./selectaddress_personaldata_profile";
 import DeleteMemberModal from "./Modal/DeleteAlertModal";
 import { MdOutlineEdit, MdDelete } from "react-icons/md";
