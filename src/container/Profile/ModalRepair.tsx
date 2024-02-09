@@ -1,5 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+
 import { Appointment } from '@prisma/client'; // Import Appointment type from Prisma client
 import useAxios from "axios-hooks";
 import { useRouter } from 'next/router';
