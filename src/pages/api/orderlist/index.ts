@@ -32,24 +32,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { date, discount, productId, userId } = req.body;
-                const newOrderList = await prisma.orderList.create({
-                    data: {
-                        date,
-                        discount,
-                        productId,
-                    },
-                    include: {
-                        Products: true,
+                const { date, orderId, productIds } = req.body; // ดึงข้อมูลวันที่และเวลา, orderId, และรหัสสินค้าทั้งหมดจาก req.body
 
-                    },
-                });
+                const newOrderLists = [];
+                for (const productId of productIds) {
+                    const newOrderList = await prisma.orderList.create({
+                        data: {
+                            date,
+                            orderId,
+                            productId,
+                            // ส่วนอื่น ๆ ของข้อมูลรายการสั่งซื้อสามารถเพิ่มตามต้องการ
+                        },
+                    });
+                    newOrderLists.push(newOrderList);
+                }
 
-                res.status(201).json(newOrderList);
+                res.status(201).json(newOrderLists);
             } catch (error) {
                 console.error(error);
                 res.status(500).json({ error: "An error occurred while creating the OrderList" });
             }
+
             break;
 
         default:
