@@ -16,7 +16,7 @@ interface Blog {
 }
 
 const BlogsPage: React.FC = () => {
-    const initialVisibleItems = 4;
+    const initialVisibleItems = 5;
     // const [visibleItems, setVisibleItems] = useState(initialVisibleItems);
     const [blogData, setblogData] = useState<Blog[]>([]); // Use the defined interface here
     const [isLoading, setIsLoading] = useState(true);
