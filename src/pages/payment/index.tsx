@@ -379,7 +379,7 @@ const Payment: React.FC = (props) => {
                         </label>
 
                         <div className='flex'>
-                            <Image
+                         <img
                                 className='w-[60px] pt-5 '
                                 src="/images/kbank.png"
                                 alt="indexActivity image" width={100} height={100}
@@ -391,7 +391,7 @@ const Payment: React.FC = (props) => {
 
                         </div>
                         <div className='flex'>
-                            <Image
+                         <img
                                 className='w-[60px] pt-5 '
                                 src="/images/bank.png"
                                 alt="indexActivity image" width={100} height={100}

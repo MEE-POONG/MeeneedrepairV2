@@ -101,7 +101,7 @@ const PersonalInformation: React.FC = () => {
                             </div>
                             <div className="mt-5 leading-loose">
                                 {loggedInUser?.img ? (
-                                    <Image
+                                 <img
                                         src={loggedInUser?.img}
                                         alt="profile"
                                         className="shadow rounded-full object-cover mx-auto"
@@ -144,7 +144,7 @@ const PersonalInformation: React.FC = () => {
                                                 id="imageInput"
                                                 style={{ display: 'none' }}
                                             />
-                                            <Image
+                                         <img
                                                 src={loggedInUser?.img}
                                                 alt="profile"
                                                 className="shadow rounded-full object-cover mx-auto"

@@ -51,7 +51,7 @@ const RepairProfile: React.FC = (props) => {
 
                 {AppointmentData && AppointmentData.map((appointment: any, index: number) => (
                     <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5" key={index}>
-                        <Image src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" width={100} height={100} />
+                     <img src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" width={100} height={100} />
                         <div className="col-span-4 md:col-span-5 self-center flex flex-wrap">
                             อุปกรณ์:
                             <p className="md:ml-1 text-[#645cff]  self-center truncate">{appointment.request}</p>

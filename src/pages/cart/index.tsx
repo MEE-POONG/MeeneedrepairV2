@@ -96,7 +96,7 @@ const CartPage: React.FC = () => {
         <div className="lg:col-span-9 bg-secondary1 rounded-md">
           {cartItems.map((product) => (
             <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
-              <Image src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" width={100} height={100} />
+           <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" width={100} height={100} />
               <div className="flex flex-col justify-end absolute top-4 ml-56 mt-5 space-y-2">
                 <span className="text-sm font-bold text-black">{product.productname}</span>
                 <span className="text-sm text-black">{product.description}</span>
