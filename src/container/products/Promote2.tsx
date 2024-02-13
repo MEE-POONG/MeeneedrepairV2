@@ -54,11 +54,11 @@ export default function PromoteCard2() {
               <Link href={`/products/${products.id}`}>
                 <div className="flex md:flex-wrap items-center">
                   <div className="w-[350px] md:w-full h-[100px] md:h-[280px] shadow-2xl md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
-                    {/* <Image
+                    <img
                       className="w-full h-full object-cover"
                       src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${products.imgFirst || 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
                       alt="" width={100} height={100}
-                    /> */}
+                    />
                   </div>
                 </div>
               </Link>

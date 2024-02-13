@@ -76,7 +76,7 @@ const ShowproductsCard: React.FC = () => {
               <div className="flex md:flex-wrap items-center">
                 <div className="w-[230px] md:w-full h-[200px] md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
                   <Link href={`/products/${product.id}`}>
-                    <Image src={product.imgFirst} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" width={100} height={100}/>
+                 <img src={product.imgFirst} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" width={100} height={100}/>
                   </Link>
                 </div>
 

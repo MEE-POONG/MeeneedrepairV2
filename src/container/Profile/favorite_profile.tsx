@@ -89,7 +89,7 @@ const FavoriteProfile: React.FC = (props) => {
                         key={index}
                         className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5"
                     >
-                        <Image
+                     <img
                             className="col-span-2 md:col-span-2 h-24 w-24 object-contain"
                             src='https://upload.wikimedia.org/wikipedia/commons/5/50/EquipoConXP.JPG'
                             alt='indexActivity image' width={100} height={100}

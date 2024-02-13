@@ -142,7 +142,7 @@ const Information: React.FC = (props) => {
                                     id="imageInput"
                                     style={{ display: 'none' }} disabled
                                 />
-                                <Image
+                             <img
                                     src={userData.img}
                                     alt="profile"
                                     className="shadow rounded-full object-cover mx-auto"
@@ -214,7 +214,7 @@ const Information: React.FC = (props) => {
                                         id="imageInput"
                                         style={{ display: 'none' }}
                                     />
-                                    <Image
+                                 <img
                                         src={userData.img}
                                         alt="profile"
                                         className="shadow rounded-full object-cover mx-auto"

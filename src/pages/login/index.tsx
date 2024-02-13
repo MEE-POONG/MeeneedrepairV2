@@ -65,7 +65,7 @@ const LoginComponent: React.FC = () => {
 
                 <div className=" flex flex-col  sm:px-6 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                        <Image className="mx-auto"
+                     <img className="mx-auto"
                             src={"/images/ear.gif"} width={100} height={100}
                             alt=""
                         />
@@ -146,7 +146,7 @@ const LoginComponent: React.FC = () => {
                                     <div>
                                         <a href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            <Image className="h-5 w-5" src="https://www.svgrepo.com/show/512120/facebook-176.svg"
+                                         <img className="h-5 w-5" src="https://www.svgrepo.com/show/512120/facebook-176.svg"
                                                 alt="" width={100} height={100}/>
                                         </a>
                                     </div>
@@ -159,7 +159,7 @@ const LoginComponent: React.FC = () => {
                                     <div>
                                         <a href="#"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                                            <Image className="h-5 w-5" src="https://www.svgrepo.com/show/506498/google.svg" width={100} height={100}
+                                         <img className="h-5 w-5" src="https://www.svgrepo.com/show/506498/google.svg" width={100} height={100}
                                                 alt="" />
                                         </a>
                                     </div>

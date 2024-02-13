@@ -99,7 +99,7 @@ const LatestNews = () => {
                     <div className="bg-[#F4F5F5] rounded-[20px] mx-auto my-5 md:w-[270px] lg:w-[270px]  " key={news.id}>
 
                         <div className="p-3">
-                            <Image
+                         <img
                                 className='rounded-[20px] w-full h-[150px]'
                                 src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${news.img ? news.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
                                 alt='indexActivity image' width={100} height={100}
