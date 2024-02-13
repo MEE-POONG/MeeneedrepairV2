@@ -68,7 +68,6 @@ model Repairman {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   fname       String?
   lname       String?
-  brithday    String?
   email       String?
   tel         String?
   Appointment Appointment[]
@@ -88,7 +87,7 @@ model Order {
 model OrderList {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   date      String?
-  discount  String?
+  discount  Float?
   Order     Order?    @relation(fields: [orderId], references: [id])
   orderId   String?   @db.ObjectId
   Products  Products? @relation(fields: [productId], references: [id])
@@ -101,9 +100,9 @@ model Products {
   productbrand String?
   productmodel String?
   description  String?
-  productcost  String?
-  price        String?
-  stock        String?
+  productcost  Float?
+  price        Float?
+  stock        Int?
   imgFirst     String?
   imgSecond    String?
   imgThird     String?
@@ -137,6 +136,7 @@ model Payment {
   district    String?
   subdistrict String?
   note        String?
+  vat         Float?
   Order       Order[]
 }
 
