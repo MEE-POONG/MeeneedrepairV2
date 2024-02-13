@@ -18,7 +18,7 @@ interface blog {
 export default function BlogCard() {
 
 
-    const initialVisibleItems = 4;
+    const initialVisibleItems = 5;
     const [visibleItems, setVisibleItems] = useState(initialVisibleItems);
     const [blogData, setblogData] = useState<blog[]>([]); // Use the defined interface here
     const [activeSlide, setActiveSlide] = useState(0);
@@ -56,10 +56,10 @@ export default function BlogCard() {
                                 <div className="flex md:flex-wrap items-center">
                                     <div className="w-[350px] md:w-full h-[100px] md:h-[220px]  md:rounded-tr-lg md:rounded-tl-lg overflow-hidden ">
 
-                                        {/* <Image className="w-full h-full object-cover" width={100} height={100}
+                                        <img className="w-full h-full object-cover" width={100} height={100}
                                             src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blog.img ? blog.img : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`}
                                             alt=""
-                                        /> */}
+                                        />
 
                                     </div>
 
