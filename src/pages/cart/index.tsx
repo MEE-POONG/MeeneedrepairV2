@@ -18,40 +18,6 @@ interface Product {
 const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
-  const updateCart = (updatedCart: Product[]) => {
-    setCartItems(updatedCart);
-    Cookies.set('cart', JSON.stringify(updatedCart));
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
-  };
-
-
-  const removeFromCart = (productId: number) => {
-    const updatedCart = cartItems.filter(item => item.id !== productId);
-    updateCart(updatedCart);
-  };
-
-  const increaseQuantity = (productId: number) => {
-    const updatedCart = cartItems.map(item => {
-      if (item.id === productId) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-    updateCart(updatedCart);
-  };
-
-  const decreaseQuantity = (productId: number) => {
-    const updatedCart = cartItems.map(item => {
-      if (item.id === productId && item.quantity > 0) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
-    updateCart(updatedCart);
-  };
   useEffect(() => {
     const getCartItemsFromCookies = () => {
       const cartItemsFromCookies = Cookies.get('cart');
@@ -64,22 +30,46 @@ const CartPage: React.FC = () => {
     getCartItemsFromCookies();
   }, []);
 
+  const updateCart = (updatedCart: Product[]) => {
+    setCartItems(updatedCart);
+    Cookies.set('cart', JSON.stringify(updatedCart));
+  };
+
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+  };
+
+  const removeFromCart = (productId: number) => {
+    const updatedCart = cartItems.filter(item => item.id !== productId);
+    updateCart(updatedCart);
+  };
+
+  const updateQuantity = (productId: number, newQuantity: number) => {
+    const updatedCart = cartItems.map(item => {
+      if (item.id === productId) {
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    updateCart(updatedCart);
+  };
+
   const checkout = async () => {
     try {
-      const productIds = cartItems.map(item => item.id); // ดึงรหัสสินค้าทั้งหมดจากตะกร้าสินค้า
+      const productIds = cartItems.map(item => item.id);
 
       const response = await fetch('/api/orderlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productIds, date: new Date() }), // ส่งรหัสสินค้าทั้งหมดในรูปแบบของอาร์เรย์
+        body: JSON.stringify({ productIds, date: new Date() }),
       });
 
       if (response.ok) {
         console.log('Order placed successfully', cartItems);
-        setCartItems([]); // เมื่อสั่งซื้อสำเร็จ ล้างตะกร้า
-        Cookies.remove('cart'); // เมื่อสั่งซื้อสำเร็จ ลบคุกกี้
+        setCartItems([]);
+        Cookies.remove('cart');
       } else {
         console.error('Failed to place order');
       }
@@ -97,7 +87,7 @@ const CartPage: React.FC = () => {
         <div className="lg:col-span-9 bg-secondary1 rounded-md">
           {cartItems.map((product) => (
             <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
-              <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" className="w-[200PX] h-[200] object-cover rounded-xl" width={100} height={100} />
+              <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
               <div className="flex flex-col justify-end absolute top-4 ml-56 mt-5 space-y-2">
                 <span className="text-sm font-bold text-black">{product.productname}</span>
                 <span className="text-sm text-black">{product.description}</span>
@@ -106,9 +96,9 @@ const CartPage: React.FC = () => {
                     <span className="text-sm font-bold text-red-600 hover:text-red-300">฿ {product.price}</span>
                   </div>
                   <div className="flex justify-between">
-                    <button onClick={() => decreaseQuantity(product.id)}>-</button>
+                    <button onClick={() => updateQuantity(product.id, product.quantity - 1)} disabled={product.quantity === 1}>-</button>
                     <span className="mx-2">{product.quantity}</span>
-                    <button onClick={() => increaseQuantity(product.id)}>+</button>
+                    <button onClick={() => updateQuantity(product.id, product.quantity + 1)}>+</button>
                     <button onClick={() => removeFromCart(product.id)}>
                       <RiDeleteBin6Line className="text-red-500" />
                     </button>

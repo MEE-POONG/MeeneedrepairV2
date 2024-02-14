@@ -1,4 +1,3 @@
-// api/orderlist.ts
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -10,30 +9,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const page: number = Number(req.query.page) || 1;
-                const pageSize: number = Number(req.query.pageSize) || 10;
-
-                const orderLists = await prisma.orderList.findMany({
-                    skip: (page - 1) * pageSize,
-                    take: pageSize,
-                    include: {
-                        Products: true,
-                    },
-                });
-
-                const totalOrders = await prisma.orderList.count();
-                const totalPage: number = Math.ceil(totalOrders / pageSize);
-                res.status(200).json({ orderLists, totalPage });
+                // โค้ดสำหรับการดึงข้อมูล Order จากฐานข้อมูล
+                // สามารถปรับแก้ตามความต้องการของคุณได้
             } catch (error) {
                 console.error(error);
-                res.status(500).json({ error: "An error occurred while fetching the order lists" });
+                res.status(500).json({ error: "An error occurred while fetching the orders" });
             }
             break;
 
         case 'POST':
             try {
-                const { date, orderId, productIds } = req.body; // ดึงข้อมูลวันที่และเวลา, orderId, และรหัสสินค้าทั้งหมดจาก req.body
+                const { date, userId, productIds } = req.body; // ดึงข้อมูลวันที่และเวลา, userId, และรหัสสินค้าทั้งหมดจาก req.body
 
+                const newOrder = await prisma.order.create({
+                    data: {
+                        date,
+                        
+                        userId, // บันทึก userId ลงใน Order
+                        // ส่วนอื่น ๆ ของข้อมูล Order สามารถเพิ่มตามต้องการ
+                    },
+                });
+
+                const orderId = newOrder.id; // เก็บรหัส orderId ที่สร้างได้จากการสร้าง Order
+
+                // สร้าง OrderList สำหรับแต่ละสินค้าที่มีในตะกร้า
                 const newOrderLists = [];
                 for (const productId of productIds) {
                     const newOrderList = await prisma.orderList.create({
@@ -41,16 +40,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                             date,
                             orderId,
                             productId,
-                            // ส่วนอื่น ๆ ของข้อมูลรายการสั่งซื้อสามารถเพิ่มตามต้องการ
+                            // ส่วนอื่น ๆ ของข้อมูล OrderList สามารถเพิ่มตามต้องการ
                         },
                     });
                     newOrderLists.push(newOrderList);
                 }
 
-                res.status(201).json(newOrderLists);
+                res.status(201).json({ orderId, newOrderLists }); // ส่งข้อมูล orderId และ newOrderLists กลับไปยังผู้ใช้
             } catch (error) {
                 console.error(error);
-                res.status(500).json({ error: "An error occurred while creating the OrderList" });
+                res.status(500).json({ error: "An error occurred while creating the Order and OrderLists" });
             }
 
             break;
