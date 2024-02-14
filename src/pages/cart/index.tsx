@@ -1,5 +1,4 @@
 // CartPage.tsx
-
 import { useState, useEffect } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Link from "next/link";
@@ -17,6 +16,7 @@ interface Product {
 
 const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const getCartItemsFromCookies = () => {
@@ -28,6 +28,12 @@ const CartPage: React.FC = () => {
     };
 
     getCartItemsFromCookies();
+
+    const userDataFromCookies = Cookies.get('user');
+    if (userDataFromCookies) {
+      const parsedUser = JSON.parse(userDataFromCookies);
+      setUserId(parsedUser.id);
+    }
   }, []);
 
   const updateCart = (updatedCart: Product[]) => {
@@ -63,7 +69,7 @@ const CartPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productIds, date: new Date() }),
+        body: JSON.stringify({ productIds, date: new Date(), userId }), // เพิ่ม userId เข้าไปในข้อมูลที่ส่งไปยัง API
       });
 
       if (response.ok) {
@@ -77,6 +83,7 @@ const CartPage: React.FC = () => {
       console.error('Error:', error);
     }
   };
+
 
   return (
     <div className="container mx-auto my-24 font-fontTH02 px-3 lg:px-24">
