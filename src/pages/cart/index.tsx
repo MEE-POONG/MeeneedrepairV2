@@ -4,6 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 import Image from "next/image";
+import RootLayout from "@/components/Layout";
 
 interface Product {
   id: number;
@@ -59,7 +60,6 @@ const CartPage: React.FC = () => {
     });
     updateCart(updatedCart);
   };
-
   const checkout = async () => {
     try {
       const productIds = cartItems.map(item => item.id);
@@ -74,8 +74,9 @@ const CartPage: React.FC = () => {
 
       if (response.ok) {
         console.log('Order placed successfully', cartItems);
-        setCartItems([]);
-        Cookies.remove('cart');
+        setCartItems([]); // ล้างรายการสินค้าในตะกร้า
+        Cookies.remove('cart'); // ลบข้อมูลใน Cookies ของตะกร้า
+        // ทำการโหลดหน้าอื่นๆ หรือทำการ Redirect ไปยังหน้าอื่นๆ ที่คุณต้องการ
       } else {
         console.error('Failed to place order');
       }
@@ -85,53 +86,57 @@ const CartPage: React.FC = () => {
   };
 
 
-  return (
-    <div className="container mx-auto my-24 font-fontTH02 px-3 lg:px-24">
-      <title>ตะกร้าสินค้าของคุณ</title>
 
-      <h3 className="text-lg md:text-2xl text-black">รายการสินค้า <span className="">({cartItems.length})</span></h3>
-      <div className="grid grid-flow-row lg:grid-cols-12 gap-2 lg:gap-8 mt-3 lg:mt-8 ">
-        <div className="lg:col-span-9 bg-secondary1 rounded-md">
-          {cartItems.map((product) => (
-            <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
-              <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
-              <div className="flex flex-col justify-end absolute top-4 ml-56 mt-5 space-y-2">
-                <span className="text-sm font-bold text-black">{product.productname}</span>
-                <span className="text-sm text-black">{product.description}</span>
-                <div className="flex items-center justify-between mt-2">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm font-bold text-red-600 hover:text-red-300">฿ {product.price}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <button onClick={() => updateQuantity(product.id, product.quantity - 1)} disabled={product.quantity === 1}>-</button>
-                    <span className="mx-2">{product.quantity}</span>
-                    <button onClick={() => updateQuantity(product.id, product.quantity + 1)}>+</button>
-                    <button onClick={() => removeFromCart(product.id)}>
-                      <RiDeleteBin6Line className="text-red-500" />
-                    </button>
+
+  return (
+    <RootLayout loggedInUser="">
+      <div className="container mx-auto my-24 font-fontTH02 px-3 lg:px-24">
+        <title>ตะกร้าสินค้าของคุณ</title>
+
+        <h3 className="text-lg md:text-2xl text-black">รายการสินค้า <span className="">({cartItems.length})</span></h3>
+        <div className="grid grid-flow-row lg:grid-cols-12 gap-2 lg:gap-8 mt-3 lg:mt-8 ">
+          <div className="lg:col-span-9 bg-secondary1 rounded-md">
+            {cartItems.map((product) => (
+              <div key={product.id} className="border rounded-lg overflow-hidden shadow-lg p-4 mb-3 bg-white relative">
+                <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
+                <div className="flex flex-col justify-end absolute top-4 ml-56 mt-5 space-y-2">
+                  <span className="text-sm font-bold text-black">{product.productname}</span>
+                  <span className="text-sm text-black">{product.description}</span>
+                  <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm font-bold text-red-600 hover:text-red-300">฿ {product.price}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <button onClick={() => updateQuantity(product.id, product.quantity - 1)} disabled={product.quantity === 1}>-</button>
+                      <span className="mx-2">{product.quantity}</span>
+                      <button onClick={() => updateQuantity(product.id, product.quantity + 1)}>+</button>
+                      <button onClick={() => removeFromCart(product.id)}>
+                        <RiDeleteBin6Line className="text-red-500" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="lg:col-span-3 md:h-48 bg-secondary2 rounded-md p-2 lg:p-5 text-center">
-          <div className="text-left text-xs md:text-sm">
-            <p className="flex justify-between mb-2">ยอดรวม <strong>฿ {calculateTotal()}</strong></p>
-            <p className="flex justify-between">ส่วนลด <strong className="text-natural03">฿ - 0.00</strong></p>
-            <div className="w-full h-0.5 bg-secondary1 mt-5 mb-2"></div>
-            <p className="flex justify-between"> <strong>ยอดรวมสุทธิ </strong><strong>฿ {calculateTotal()}</strong></p>
+            ))}
           </div>
-          <button
-            onClick={checkout}
-            className="mt-5 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
-          >
-            ดำเนินการสั่งซื้อ
-          </button>
+
+          <div className="lg:col-span-3 md:h-48 bg-secondary2 rounded-md p-2 lg:p-5 text-center">
+            <div className="text-left text-xs md:text-sm">
+              <p className="flex justify-between mb-2">ยอดรวม <strong>฿ {calculateTotal()}</strong></p>
+              <p className="flex justify-between">ส่วนลด <strong className="text-natural03">฿ - 0.00</strong></p>
+              <div className="w-full h-0.5 bg-secondary1 mt-5 mb-2"></div>
+              <p className="flex justify-between"> <strong>ยอดรวมสุทธิ </strong><strong>฿ {calculateTotal()}</strong></p>
+            </div>
+            <button
+              onClick={checkout}
+              className="mt-5 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
+            >
+              ดำเนินการสั่งซื้อ
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </RootLayout>
   );
 };
 

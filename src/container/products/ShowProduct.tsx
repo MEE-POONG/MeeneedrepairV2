@@ -4,7 +4,7 @@ import Link from "next/link";
 import Cookies from 'js-cookie';
 import Image from "next/image";
 
-interface Products {
+interface Product {
   id: number;
   productname: string;
   price: string;
@@ -14,16 +14,16 @@ interface Products {
 }
 
 const ShowproductsCard: React.FC = () => {
-  const [cartItems, setCartItems] = useState<Products[]>([]);
-  const [newsData, setNewsData] = useState<Products[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/products');
         const data = await response.json();
-        setNewsData(data.products);
+        setProducts(data.products);
         setIsLoading(false);
       } catch (error) {
         console.error('Error:', error);
@@ -34,7 +34,20 @@ const ShowproductsCard: React.FC = () => {
     fetchData();
   }, []);
 
-  const addToCart = (product: Products) => {
+  useEffect(() => {
+    const getCartItemsFromCookies = () => {
+      const cartItemsFromCookies = Cookies.get('cart');
+      if (cartItemsFromCookies) {
+        const parsedCartItems = JSON.parse(cartItemsFromCookies);
+        setCartItems(parsedCartItems);
+      }
+    };
+
+    getCartItemsFromCookies();
+  }, []);
+
+
+  const addToCart = (product: Product) => {
     const existingItem = cartItems.find(item => item.id === product.id);
 
     if (existingItem) {
@@ -48,7 +61,7 @@ const ShowproductsCard: React.FC = () => {
     }
   };
 
-  const updateCart = (updatedCart: Products[]) => {
+  const updateCart = (updatedCart: Product[]) => {
     setCartItems(updatedCart);
     Cookies.set('cart', JSON.stringify(updatedCart));
   };
@@ -59,12 +72,12 @@ const ShowproductsCard: React.FC = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          newsData.map((product) => (
+          products.map((product) => (
             <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
               <div className="flex md:flex-wrap items-center">
                 <div className="w-[230px] md:w-full h-[200px] md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
                   <Link href={`/products/${product.id}`}>
-               <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
+                    <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
                   </Link>
                 </div>
 
@@ -88,7 +101,7 @@ const ShowproductsCard: React.FC = () => {
                           <LiaCartArrowDownSolid className="text-[20px] ml-32" />
                         </p>
                       </button>
-                    
+
                     </div>
                     <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
                       <LiaHeartSolid className="text-[20px]" />
