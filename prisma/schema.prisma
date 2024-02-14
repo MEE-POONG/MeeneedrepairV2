@@ -87,7 +87,7 @@ model Order {
 model OrderList {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   date      String?
-  discount  Float?
+  discount  String?
   Order     Order?    @relation(fields: [orderId], references: [id])
   orderId   String?   @db.ObjectId
   Products  Products? @relation(fields: [productId], references: [id])
@@ -100,9 +100,9 @@ model Products {
   productbrand String?
   productmodel String?
   description  String?
-  productcost  Float?
-  price        Float?
-  stock        Int?
+  productcost  String?
+  price        String?
+  stock        String?
   imgFirst     String?
   imgSecond    String?
   imgThird     String?
