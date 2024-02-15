@@ -63,20 +63,22 @@ const CartPage: React.FC = () => {
   const checkout = async () => {
     try {
       const productIds = cartItems.map(item => item.id);
+      const quantities = cartItems.map(item => item.quantity);
 
       const response = await fetch('/api/orderlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ productIds, date: new Date(), userId }), // เพิ่ม userId เข้าไปในข้อมูลที่ส่งไปยัง API
+        body: JSON.stringify({ productIds, quantities, date: new Date(), userId }),
       });
 
       if (response.ok) {
         console.log('Order placed successfully', cartItems);
-        setCartItems([]); // ล้างรายการสินค้าในตะกร้า
-        Cookies.remove('cart'); // ลบข้อมูลใน Cookies ของตะกร้า
-        // ทำการโหลดหน้าอื่นๆ หรือทำการ Redirect ไปยังหน้าอื่นๆ ที่คุณต้องการ
+        setCartItems([]);
+        Cookies.remove('cart');
+        // ทำการโหลดหน้าอื่น ๆ หรือทำการ Redirect ไปยังหน้าอื่น ๆ ตามที่ต้องการ
+        window.location.href = "/success"; // ตัวอย่างการ Redirect ไปยังหน้า success
       } else {
         console.error('Failed to place order');
       }
