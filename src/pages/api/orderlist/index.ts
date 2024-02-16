@@ -33,20 +33,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { date, userId, productIds, quantities } = req.body; // ดึงข้อมูลวันที่และเวลา, userId, รหัสสินค้าทั้งหมด และจำนวนสินค้าจาก req.body
+                const { date, userId, productIds, quantities, addressId, paymentType, name, lname, phonenumber, typeaddress, addressline, zipcode, province, district, subdistrict, note, vat } = req.body;
+
+                const newPayment = await prisma.payment.create({
+                    data: {
+                        img: '', // รูปภาพหรือข้อมูลที่เกี่ยวข้องกับการชำระเงิน (ถ้ามี)
+                        paymentType,
+                        name,
+                        lname,
+                        phonenumber,
+                        typeaddress,
+                        addressline,
+                        zipcode,
+                        province,
+                        district,
+                        subdistrict,
+                        note,
+                        vat,
+                    },
+                });
+
+                const paymentId = newPayment.id;
 
                 const newOrder = await prisma.order.create({
                     data: {
                         date,
                         status: "ยังไม่ชำระเงิน",
-                        userId, // บันทึก userId ลงใน Order
-                        // ส่วนอื่น ๆ ของข้อมูล Order สามารถเพิ่มตามต้องการ
+                        userId,
+                        addressId,
+                        paymentId,
                     },
                 });
 
-                const orderId = newOrder.id; // เก็บรหัส orderId ที่สร้างได้จากการสร้าง Order
+                const orderId = newOrder.id;
 
-                // สร้าง OrderList สำหรับแต่ละสินค้าที่มีในตะกร้า
                 const newOrderLists = [];
                 for (let i = 0; i < productIds.length; i++) {
                     const productId = productIds[i];
@@ -58,19 +78,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                             productId,
                             userId,
                             quantity,
-                            // ส่วนอื่น ๆ ของข้อมูล OrderList สามารถเพิ่มตามต้องการ
                         },
                     });
                     newOrderLists.push(newOrderList);
                 }
 
-                res.status(201).json({ orderId, newOrderLists }); // ส่งข้อมูล orderId และ newOrderLists กลับไปยังผู้ใช้
+                res.status(201).json({ orderId, newOrderLists });
             } catch (error) {
                 console.error(error);
-                res.status(500).json({ error: "An error occurred while creating the Order and OrderLists" });
+                res.status(500).json({ error: "An error occurred while creating the Payment, Order, and OrderLists" });
             }
 
             break;
+
+
 
         default:
             res.setHeader('Allow', ['GET', 'POST']);

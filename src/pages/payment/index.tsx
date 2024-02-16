@@ -9,6 +9,35 @@ import Image from 'next/image';
 
 const Payment: React.FC = (props) => {
 
+
+    const [fname, setFname] = useState<string>("");
+    const [lname, setLname] = useState<string>("");
+    const [phonenumber, setTel] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [request, setRequest] = useState<string>("");
+    const [userId, setUserId] = useState<string>("");
+    const [AddressLine, setAddressLine] = useState<String>("");
+    const [ZipCode, setZipCode] = useState<String>("");
+
+    const [Province, setProvince] = useState<String>("");
+    const [District, setDistrict] = useState<String>("");
+    const [SubDistrict, setSubDistrict] = useState<String>("");
+    const [provinces, setProvinces] = useState<any[]>([]);
+    const [districts, setDistricts] = useState<any[]>([]);
+    const [subdistricts, setSubDistricts] = useState<any[]>([]);
+    const [UserAddressData, setUserAddressData] = useState<any>({});
+    const [addressId, setSelectedAddressId] = useState<string | null>(null);
+    const [CurrentAddress, setCurrentAddress] = useState<any>({});
+    const [selectedAddress, setSelectedAddress] = useState<any | null>(null)
+    const [loggedInUser, setLoggedInUser] = useState<any>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isMissingModalOpen, setIsMissingModalOpen] = useState(false);
+    const [isTexaddress, setIsTexaddress] = useState(false);
+    const [isTexaddress2, setIsTexaddress2] = useState(false);
+    const [isTexaddress3, setIsTexaddress3] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
+    const [isQrcode, setIsQrcode] = useState(false);
+
     useEffect(() => {
         const fetchData = async () => {
             const userDataFromCookies = Cookies.get('user');
@@ -24,59 +53,6 @@ const Payment: React.FC = (props) => {
 
         fetchData();
     }, []);
-
-    const [{ error: errorMessage, loading: IndexActivityLoading }, executeIndexActivity] = useAxios(
-        { url: '/api/appointment', method: 'POST' },
-        { manual: true }
-    )
-    const router = useRouter();
-
-    const [loading, setLoading] = useState(false);
-    const [fname, setFname] = useState<string>("");
-    const [lname, setLname] = useState<string>("");
-    const [tel, setTel] = useState<string>("");
-    const [time, setTime] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [request, setRequest] = useState<string>("");
-    const [userId, setUserId] = useState<string>("");
-
-    const [AddressData, setAddressData] = useState<any>(); // กำหนดประเภทของข้อมูลบทความข่าว
-    const [CurrentAddressId, setCurrentAddressId] = useState<String>();
-    const [IsDefaultAddress, setIsDefaultAddress] = useState<boolean>();
-    const [Name, setName] = useState<String>("");
-    const [PhoneNumber, setPhoneNumber] = useState<String>("");
-    const [TypeAddress, setTypeAddress] = useState<String>("");
-    const [AddressLine, setAddressLine] = useState<String>("");
-    const [ZipCode, setZipCode] = useState<String>("");
-    const [Province, setProvince] = useState<String>("");
-    const [District, setDistrict] = useState<String>("");
-    const [SubDistrict, setSubDistrict] = useState<String>("");
-    const [Note, setNote] = useState<String>("");
-    const [CheckDefault, setCheckDefault] = useState(false);
-    const [DefaultAddress, setDefaultAddress] = useState<String>("");
-    const [provinces, setProvinces] = useState<any[]>([]);
-    const [districts, setDistricts] = useState<any[]>([]);
-    const [subdistricts, setSubDistricts] = useState<any[]>([]);
-
-
-    const [UserAddressData, setUserAddressData] = useState<any>({});
-    const [addressId, setSelectedAddressId] = useState<string | null>(null);
-    const [taxaddress, setSelectedTaxAddress] = useState<string | null>(null);
-    const [CurrentAddress, setCurrentAddress] = useState<any>({});
-    const [selectedAddress, setSelectedAddress] = useState<any | null>(null)
-
-
-    const [loggedInUser, setLoggedInUser] = useState<any>(null);
-    const [message, setMessage] = useState<string>("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [isMissingModalOpen, setIsMissingModalOpen] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
-
-    const [isTexaddress, setIsTexaddress] = useState(false);
-    const [isTexaddress2, setIsTexaddress2] = useState(false);
-    const [isTexaddress3, setIsTexaddress3] = useState(false);
-    const [isChecked, setIsChecked] = useState(false);
-    const [isQrcode, setIsQrcode] = useState(false);
 
     useEffect(() => {
         fetch(`https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json`)
@@ -152,22 +128,22 @@ const Payment: React.FC = (props) => {
 
     }
 
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-        setIsQrcode(false);
-    };
+    // const handleCheckboxChange = () => {
+    //     setIsChecked(!isChecked);
+    //     setIsQrcode(false);
+    // };
 
-    const handleCheckboxChange2 = () => {
-        setIsQrcode(!isQrcode);
-        setIsChecked(false);
-    };
+    // const handleCheckboxChange2 = () => {
+    //     setIsQrcode(!isQrcode);
+    //     setIsChecked(false);
+    // };
 
     useEffect(() => {
         if (loggedInUser) {
             // ให้ทำการตั้งค่า state ต่าง ๆ ด้วยข้อมูลที่ได้จาก loggedInUser
             setFname(loggedInUser.fname || ""); // ตั้งค่าเป็นค่า fname หรือว่าเป็นค่าว่างถ้าไม่มี
             setLname(loggedInUser.lname || "");
-            setTel(loggedInUser.tel || "");
+            setTel(loggedInUser.phonenumber || "");
             setEmail(loggedInUser.email || "");
             setUserId(loggedInUser.id || "");
 
@@ -175,80 +151,11 @@ const Payment: React.FC = (props) => {
         }
     }, [loggedInUser])
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-
-        console.log(addressId);
-
-
-        // ตรวจสอบว่าข้อมูลถูกกรอกครบถ้วน
-        // if (!fname || !lname || !tel || !email || !time || !request || !message ) {
-        //     // ถ้าข้อมูลไม่ครบถ้วน ให้แสดง modal แจ้งเตือน
-        //     setIsMissingModalOpen(true);
-        //     return;
-        // }
-
-        // ส่งข้อมูลไปยัง API
-        try {
-            setIsLoading(true);
-            const response = await executeIndexActivity({
-                data: {
-                    fname,
-                    lname,
-                    tel,
-                    email,
-                    time,
-                    request,
-                    userId,
-                    status: "กำลังดำเนินการ",
-                    message,
-                    addressId
-
-                    // UserAddressData
-                    // เพิ่มข้อมูลอื่น ๆ ตามที่ต้องการ
-                },
-            });
-
-            // ประมวลผลเมื่อสำเร็จ
-            setIsLoading(false);
-            setIsSuccess(true);
-            setMessage("สำเร็จ! คุณได้ทำการจองคิวเรียบร้อยแล้ว");
-
-            // setIsModalOpen(true);
-        } catch (error) {
-            // ประมวลผลเมื่อเกิดข้อผิดพลาด
-            setIsLoading(false);
-            setIsSuccess(false);
-            setMessage("เกิดข้อผิดพลาดในการจองคิว");
-            console.error('Error:', error);
-        }
-    };
-
-
-    // เรียกใช้งานฟังก์ชันเมื่อกดปุ่ม "จองคิว"
-    // const handleOpenModal = () => {
-    //     setIsModalOpen(true);
-    // };
-
-    // // เรียกใช้งานฟังก์ชันเมื่อกดปุ่ม "ยกเลิก"
-    // const handleCloseModal = () => {
-
-    //     window.location.reload();
-    //     setIsModalOpen(false);
-    // };
-    // const handleConfirm = () => {
-
-    //     window.location.reload();
-    //     // ทำสิ่งที่คุณต้องการเมื่อยืนยัน
-    //     // ตัวอย่าง: ปิด Modal
-    //     setIsModalOpen(false);
-
-    // };
 
     const [UserData, setUserData] = useState({
         fname: "",
         lname: "",
-        tel: "",
+        phonenumber: "",
         email: "",
         id: ""
     });
@@ -283,7 +190,7 @@ const Payment: React.FC = (props) => {
                     setUserData(data);
                     setFname(data.fname);
                     setLname(data.lname);
-                    setTel(data.tel);
+                    setTel(data.phonenumber);
                     setEmail(data.email);
                     setRequest(data.request);
                     setUserId(data.id);
@@ -302,7 +209,76 @@ const Payment: React.FC = (props) => {
         }
     }, [userId]);
 
+    const [cartItems, setCartItems] = useState<any[]>([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const userDataFromCookies = Cookies.get("user");
+            if (userDataFromCookies) {
+                try {
+                    const parsedUser = JSON.parse(userDataFromCookies);
+                    setLoggedInUser(parsedUser);
+                } catch (error) {
+                    console.error("Error parsing user data:", error);
+                }
+            }
+        };
 
+        fetchData();
+    }, []);
+
+    // รับข้อมูลสินค้าที่เลือกจากหน้า CartPage
+
+
+    useEffect(() => {
+        const cartItemsFromCookies = Cookies.get("cart");
+        if (cartItemsFromCookies) {
+            const parsedCartItems = JSON.parse(cartItemsFromCookies);
+            setCartItems(parsedCartItems);
+        }
+    }, []);
+
+    // รวมยอดเงินทั้งหมด
+    const calculateTotal = () => {
+        return cartItems.reduce(
+            (total: number, item: any) => total + item.price * item.quantity,
+            0
+        );
+    };
+    const checkout = async () => {
+        try {
+            const productIds = cartItems.map(item => item.id);
+            const quantities = cartItems.map(item => item.quantity);
+            const paymentData = {
+                name: fname,
+                lname: lname,
+                phonenumber: phonenumber,
+                addressline: AddressLine,
+                zipcode: ZipCode,
+                province: Province,
+                district: District,
+                subdistrict: SubDistrict
+            };
+            const response = await fetch('/api/orderlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ productIds, paymentData, quantities, date: new Date(), userId, addressId }), // เพิ่ม addressId ในข้อมูลที่ส่ง
+            });
+
+            if (response.ok) {
+                console.log('Order placed successfully', cartItems);
+                setCartItems([]);
+                Cookies.remove('cart');
+                // ทำการโหลดหน้าอื่น ๆ หรือทำการ Redirect ไปยังหน้าอื่น ๆ ตามที่ต้องการ
+                window.location.href = "/"; // ตัวอย่างการ Redirect ไปยังหน้า success
+            } else {
+                console.error('Failed to place order');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
 
     return (
@@ -369,7 +345,7 @@ const Payment: React.FC = (props) => {
                                         <div className="relative " data-te-input-wrapper-init>
                                             <div className='mb-2'>เบอร์โทร</div>
                                             <input
-                                                type="number" value={tel} onChange={(e) => setTel(e.target.value)}
+                                                type="number" value={phonenumber} onChange={(e) => setTel(e.target.value)}
                                                 className="w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-10 resize-none"
                                                 id="exampleFormControlInput3"
                                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
@@ -461,114 +437,40 @@ const Payment: React.FC = (props) => {
                                             </div>
                                         </div>
                                     )}
-                                    {/* {isModalOpen && (
-                                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
-                                    <div className="bg-white p-6 rounded-lg">
-                                        <p className="text-2xl font-semibold mb-4">ยืนยันการจองคิว</p>
-                                        <p>คุณต้องการจองคิวหรือไม่?</p>
-                                        <div className="mt-4 flex justify-end">
-                                            <button
-                                                onClick={handleCloseModal} // เรียกใช้งานเมื่อกดปุ่ม "ยกเลิก"
-                                                className="px-4 py-2 bg-red-500 text-white rounded-md mr-2"
-                                            >
-                                                ยกเลิก
-                                            </button>
-                                            <button
-                                                onClick={handleConfirm} // เรียกใช้งานเมื่อกดปุ่ม "ยืนยัน"
-                                                className="px-4 py-2 bg-green-500 text-white rounded-md"
-                                            >
-                                                ยืนยัน
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )} */}
+
                                 </form>
 
                             )}
 
                         </div>
                     </div>
-                    {/* <div className='col-start-3 text-xl ps-20'>
-                        <div >วิธีการชำระเงิน</div>
-                        <div className="w-full h-0.5 bg-black mx-auto mt-5"></div>
 
-                        <input
-                            type="checkbox"
-                            className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mt-4"
-                            onChange={handleCheckboxChange}
-                            checked={isChecked}
-                        />
-                        <label className="text-base font-medium mx-1 text-gray-700">
-                            โอนผ่าน mobile banking
-                        </label>
-
-                        {isChecked && (
-                            <>
-                                <div className='flex'>
-                                    <img
-                                        className='w-[60px] pt-5'
-                                        src="/images/kbank.png"
-                                        alt="indexActivity image"
-                                        width={100}
-                                        height={100}
-                                    />
-                                    <p className='text-sm mt-5 ml-3'>
-                                        บัญชี ธนาคาร กสิกร ไทย
-                                        <br />
-                                        <span className='text-sm'>11-111-1111</span>
-                                        <br />
-                                        <span className='text-sm'>นาย ดุกดุ๋ย ดุ๊กดิ๊ก</span>
-                                    </p>
-                                </div>
-                                <div className='flex'>
-                                    <img
-                                        className='w-[60px] pt-5'
-                                        src="/images/bank.png"
-                                        alt="indexActivity image"
-                                        width={100}
-                                        height={100}
-                                    />
-                                    <p className='text-sm mt-5 ml-3 whitespace-pre'>
-                                        บัญชี ธนาคาร ไทยพาณิชย์
-                                        <br />
-                                        <span className='text-sm'>444-444-111</span>
-                                        <br />
-                                        <span className='text-sm'>นาย สมหย๋อย หม๋อยเรืองเเสง</span>
-                                    </p>
-                                </div>
-                            </>
-                        )}
-                        <br />
-                        <input
-                            type="checkbox"
-                            className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mt-4"
-                            onChange={handleCheckboxChange2}
-                            checked={isQrcode}
-                        />
-                        <label className=" text-base font-medium mx-1 text-gray-700 ">
-                            คิวอาร์โค้ด
-                        </label>
-                        {isQrcode && (
-                            <img src="/images/QR.jpg" className='rounded-lg mt-5' />
-                        )}
-
-                    </div> */}
 
                     <div className='col-start-3 text-xl ps-20'>
                         <div>สรุปรายการสั่งสื้อสินค้า</div>
                         <div className="w-full h-0.5 bg-black mx-auto mt-5"></div>
-                        <div className='container h-80 bg-white border border-gray-400 rounded-md mt-5'>
-                            <div className='mt-[280px]'></div>
-                            <div className="w-[350px] h-0.5 bg-gray-400 mx-auto mt-5  "></div>
-                            <div className='ml-5 bottom-28'>รวม</div>
-
+                        <div className="container h-80 bg-white border border-gray-400 rounded-md mt-5">
+                            {cartItems.map((item) => (
+                                <div key={item.id} className="flex items-center justify-between p-2 border-b">
+                                    <div className="flex items-center space-x-2">
+                                        <div>
+                                            <p className="text-sm font-bold">{item.productname}</p>
+                                            <p className="text-sm text-gray-500">{item.quantity} x {item.price}</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-sm font-bold">{item.quantity * item.price}</p>
+                                </div>
+                            ))}
+                            <div className="flex items-center justify-between p-2 border-t">
+                                <p className="text-sm font-bold">ยอดรวมทั้งหมด</p>
+                                <p className="text-sm font-bold">{calculateTotal()}</p>
+                            </div>
                         </div>
                         <div className="flex justify-center mt-6">
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                onClick={handleSubmit} // เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
+                                onClick={checkout} // เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
                                 className="w-[150px] py-3 bg-[#FFCD4B] rounded-lg font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
                             >
                                 ยืนยันคำสั่งซื้อ
@@ -577,10 +479,6 @@ const Payment: React.FC = (props) => {
                     </div>
 
                 </div>
-
-
-
-
             </>
         </RootLayout >
     );
