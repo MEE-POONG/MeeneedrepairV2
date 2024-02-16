@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import Image from "next/image";
 import RootLayout from "@/components/Layout";
 
+
 interface Product {
   id: number;
   productname: string;
@@ -78,7 +79,7 @@ const CartPage: React.FC = () => {
         setCartItems([]);
         Cookies.remove('cart');
         // ทำการโหลดหน้าอื่น ๆ หรือทำการ Redirect ไปยังหน้าอื่น ๆ ตามที่ต้องการ
-        window.location.href = "/success"; // ตัวอย่างการ Redirect ไปยังหน้า success
+        // window.location.href = "/success"; // ตัวอย่างการ Redirect ไปยังหน้า success
       } else {
         console.error('Failed to place order');
       }
@@ -129,12 +130,13 @@ const CartPage: React.FC = () => {
               <div className="w-full h-0.5 bg-secondary1 mt-5 mb-2"></div>
               <p className="flex justify-between"> <strong>ยอดรวมสุทธิ </strong><strong>฿ {calculateTotal()}</strong></p>
             </div>
+          <Link href={`/payment`}>
             <button
               onClick={checkout}
               className="mt-5 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900"
             >
               ดำเนินการสั่งซื้อ
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>
