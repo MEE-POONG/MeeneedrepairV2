@@ -15,6 +15,7 @@ const fontMNR = Mitr({
 const Navbar: React.FC = () => {
 
   const [loggedInUser, setLoggedInUser] = useState<any>(null);
+  const [cartItemCount, setCartItemCount] = useState<number>(0); // เพิ่ม state สำหรับจำนวนสินค้าในตะกร้า
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +29,13 @@ const Navbar: React.FC = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const cartItemsFromCookies = Cookies.get("cart");
+    if (cartItemsFromCookies) {
+      const parsedCartItems = JSON.parse(cartItemsFromCookies);
+      setCartItemCount(parsedCartItems.length); // นับจำนวนสินค้าในตะกร้าและกำหนดให้ state
+    }
+  }, []);
   const navLinks = [
     { name: 'หน้าแรก', link: `/` },
     {
@@ -60,18 +68,18 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={` ${fontMNR.className}`}>
-      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll >  90  ? "" : "#0f172a"}` }}>
-        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll >  90  ? "#F4F5F5" : ""}` }}>
+      <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll > 90 ? "" : "#0f172a"}` }}>
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 90 ? "#F4F5F5" : ""}` }}>
           <div className="flex items-center  py-5 ">
             <div onClick={() => setIsOpen(!isOpen)}
               className="md:hidden duration-700 ease-in-out "
-              style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
+              style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}>
               {
                 isOpen ? <HiOutlineXMark size={38} /> : <HiBars3BottomLeft size={38} />
               }
             </div>
             <div className="" >
-           <img
+              <img
                 src="/images/logo.png"
                 width={100}
                 height={100}
@@ -82,7 +90,7 @@ const Navbar: React.FC = () => {
           <ul className="md:flex gap-3 hidden mr-96 font-medium text-sm md:text-lg items-center">
             {navLinks.map((list) => (
               <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
-                style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
+                style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}>
                 {list?.children ? (
                   <div
                     className="dropdown"
@@ -108,11 +116,11 @@ const Navbar: React.FC = () => {
                     <ul
                       className="dropdown-menu absolute bg-secondary1 p-3 rounded-lg drop-shadow-lg"
                       aria-labelledby="dropdownMenuButton"
-                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll >  90  ? "#F4F5F5" : "#0f172a"}` }}
+                      style={{ display: `${open ? 'block' : 'none'}`, backgroundColor: `${scroll > 90 ? "#F4F5F5" : "#0f172a"}` }}
                     >
                       {list?.children.map((child) => (
                         <li key={child.name} className="my-4 pl-2 hover:border-l-2 hover:border-natural01"
-                          style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}
+                          style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}
                         >
                           <a href={child.link}>{child.name}</a>
                         </li>
@@ -129,7 +137,7 @@ const Navbar: React.FC = () => {
 
           <ul className="flex gap-3 font-semibold items-center text-base">
 
-            <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll >  90  ? "" : "#F4F5F5"}` }}>
+            <li className="hover:border-b-2 hover:border-natural04" style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}>
 
               {loggedInUser ? (
                 <Link href={`./../profile/${loggedInUser.id}`} className="flex items-center">
@@ -148,9 +156,9 @@ const Navbar: React.FC = () => {
             </li>
             <div className="bg-natural04 w-[1px] h-10 "></div>
 
-            <li className="mr-5 ">
+            <li className="mr-5 relative"> {/* เพิ่มคลาส relative เพื่อให้ระบุตำแหน่งของจำนวนสินค้าในตะกร้า */}
               <a href="./cart">
-                <svg xmlns="http://www.w3.org/500/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
                   <path d="M8.5 18H6.5V26H8.5V18Z" fill="url(#paint0_linear_220_322)" />
                   <path d="M13.5 18H11.5V26H13.5V18Z" fill="url(#paint1_linear_220_322)" />
                   <path d="M18.5 18H16.5V26H18.5V18Z" fill="url(#paint2_linear_220_322)" />
@@ -179,6 +187,9 @@ const Navbar: React.FC = () => {
                     </linearGradient>
                   </defs>
                 </svg>
+                {cartItemCount > 0 && ( // เพิ่มการตรวจสอบว่ามีสินค้าในตะกร้าหรือไม่ก่อนแสดงจำนวนสินค้า
+                  <span className="absolute top-[-6px] right-[-6px] bg-red-500 text-white text-xs px-2 py-1 rounded-full">{cartItemCount}</span>
+                )}
               </a>
             </li>
           </ul>
