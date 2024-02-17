@@ -11,17 +11,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
 
                 const id = req.query.id;
-                const data = await prisma.order.findUnique({
+                const data = await prisma.user.findUnique({
                     where: {
                         id: id as string,
                     },
                     include: {
-                        OrderList: {
+                        Order: {
                             include: {
-                                Products: true // เรียกข้อมูลสินค้าที่เกี่ยวข้องในแต่ละรายการ OrderList
+                                OrderList: {
+                                    include: {
+                                        Products: true // เรียกข้อมูลสินค้าที่เกี่ยวข้องในแต่ละรายการ OrderList
+                                    }
+                                }
                             }
                         }
-                    },
+                    }
                 });
 
                 res.status(200).json(data);
@@ -35,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.order.update({
+                const data = await prisma.user.update({
                     where: {
                         id: id as string,
                     },
@@ -59,7 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.order.delete({
+                const data = await prisma.user.delete({
                     where: {
                         id: id as string,
                     },

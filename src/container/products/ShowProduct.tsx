@@ -3,6 +3,7 @@ import { LiaCartArrowDownSolid, LiaHeartSolid } from "react-icons/lia";
 import Link from "next/link";
 import Cookies from 'js-cookie';
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface Product {
   id: number;
@@ -17,6 +18,9 @@ const ShowproductsCard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [loggedInUser, setLoggedInUser] = useState<any>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +39,19 @@ const ShowproductsCard: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const checkLoggedIn = () => {
+      const userDataFromCookies = Cookies.get('user');
+      if (userDataFromCookies) {
+        const parsedUser = JSON.parse(userDataFromCookies);
+        setLoggedInUser(parsedUser);
+        setIsLoggedIn(true);
+      }
+    };
+
+    checkLoggedIn();
+  }, []);
+
+  useEffect(() => {
     const getCartItemsFromCookies = () => {
       const cartItemsFromCookies = Cookies.get('cart');
       if (cartItemsFromCookies) {
@@ -46,8 +63,12 @@ const ShowproductsCard: React.FC = () => {
     getCartItemsFromCookies();
   }, []);
 
-
   const addToCart = (product: Product) => {
+    if (!isLoggedIn) {
+      router.push("/login");
+      return;
+    }
+
     const existingItem = cartItems.find(item => item.id === product.id);
 
     if (existingItem) {
@@ -96,7 +117,7 @@ const ShowproductsCard: React.FC = () => {
                       {product.price} Bath
                     </p>
                     <div className="flex items-center">
-                      <button className="text-red-400 hover:text-red-900" onClick={() => addToCart(product)}>
+                      <button className="text-red-400 hover:text-red-900" onClick={() => isLoggedIn ? addToCart(product) : alert('กรุณาเข้าสู่ระบบก่อน')}>
                         <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
                           <LiaCartArrowDownSolid className="text-[20px] ml-32" />
                         </p>
