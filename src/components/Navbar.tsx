@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
       ],
     },
     { name: 'บริการของเรา', link: `./../services` },
-    { name: 'ประวัติ', link: `./../products` },
+    { name: 'สินค้า', link: `./../products` },
   ];
 
   const [scroll, setScroll] = useState(0);
