@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineTool } from "react-icons/ai";
 import Image from "next/image";
 import ModalOrderlist from "./Modal/ModalOrderlist";
+import { TfiShoppingCartFull } from "react-icons/tfi";
 
 const OrderProfile: React.FC = (props) => {
     const router = useRouter();
@@ -37,10 +38,10 @@ const OrderProfile: React.FC = (props) => {
             <div className="rounded-lg md:p-8 text-secondary1 text-sm md:text-base ">
                 {OrderData && OrderData.map((order: any, index: number) => (
                     <div className="bg-secondary2 rounded-2xl p-3 grid grid-cols-12 mb-5" key={index}>
-                        <img src="" alt="" className="col-span-2 md:col-span-2 h-24 w-24 object-contain" width={100} height={100} />
-                        <div className="col-span-4 md:col-span-5 self-center flex flex-wrap">
+                        <TfiShoppingCartFull className="col-span-2 md:col-span-2 h-12 w-12 object-contain" />
+                        <div className="col-span-2 md:col-span-2 self-center flex flex-wrap">
                             รายการที่: {index + 1} {/* แสดงหมายเลขลำดับของรายการ */}
-                           
+                            <span className="ml-1 text-sm text-gray-500">({order.OrderList.length} รายการ)</span>
                         </div>
 
                         <div className="col-span-2 md:col-span-2 self-center  flex justify-center flex-wrap">
@@ -48,7 +49,8 @@ const OrderProfile: React.FC = (props) => {
                         </div>
 
                         <div className="col-span-3 md:col-span-2 self-center flex justify-center flex-wrap">
-                            สถานะ: {order.status}
+                            สถานะ:
+                            <strong className={`self-center md:ml-1 text-${order.status === 'ยังไม่ชำระเงิน' ? 'red-500' : order.status === 'อยู่ระหว่างการซ่อม' ? 'green-500' : 'red-500'} text-center`}>{order.status}</strong>
                         </div>
 
                         {/* เรียกใช้ ModalOrderlist เมื่อคลิกที่ปุ่ม */}
