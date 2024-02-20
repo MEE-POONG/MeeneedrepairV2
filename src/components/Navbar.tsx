@@ -157,7 +157,7 @@ const Navbar: React.FC = () => {
             <div className="bg-natural04 w-[1px] h-10 "></div>
 
             <li className="mr-5 relative"> {/* เพิ่มคลาส relative เพื่อให้ระบุตำแหน่งของจำนวนสินค้าในตะกร้า */}
-              <a href="./cart">
+              <Link href="./cart">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="none">
                   <path d="M8.5 18H6.5V26H8.5V18Z" fill="url(#paint0_linear_220_322)" />
                   <path d="M13.5 18H11.5V26H13.5V18Z" fill="url(#paint1_linear_220_322)" />
@@ -188,9 +188,9 @@ const Navbar: React.FC = () => {
                   </defs>
                 </svg>
                 {cartItemCount > 0 && ( // เพิ่มการตรวจสอบว่ามีสินค้าในตะกร้าหรือไม่ก่อนแสดงจำนวนสินค้า
-                  <span className="absolute top-[-6px] right-[-6px] bg-red-500 text-white text-xs px-2 py-1 rounded-full">{cartItemCount}</span>
+                  <span className="absolute top-[-10px] right-[-10px] bg-red-500 text-white text-xs px-2 py-1 rounded-full">{cartItemCount}</span>
                 )}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
