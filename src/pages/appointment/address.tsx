@@ -18,20 +18,23 @@ export default function SelectAddress({ UserAddressData, onSelectAddress }: { Us
       }}>
         {({ open }) => (
           <>
-            <div className="relative mt-5 mx-auto">
-              <Listbox.Button className=" w-[510px] ml-14 bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus: h-10 resize-none ">
+            <div className="relative px-[60px] mt-5 mx-auto">
+              <Listbox.Button className=" w-full  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus: h-10 resize-none ">
                 <span className="flex items-center">
-                  <span className="block truncate">
+                  <span className=" truncate">
                     {selected
                       ? `${selected.name || "ไม่มีข้อมูล"} ${selected.lname || "ไม่มีข้อมูล"} ${selected.phonenumber || "ไม่มีข้อมูล"} ${selected.addressline || "ไม่มีข้อมูล"} ${selected.district || "ไม่มีข้อมูล"} ${selected.subdistrict || "ไม่มีข้อมูล"} ${selected.province || "ไม่มีข้อมูล"} ${selected.zipcode || "ไม่มีข้อมูล"}`
                       : UserAddressData && UserAddressData.length > 0
                         ? "กรุณาเลือกที่อยู่จัดส่ง"
                         : "ยังไม่มีที่อยู่จัดส่ง"}
+
+
                   </span>
-                </span>
-                <span className="pointer-events-none absolute inset-y-0 right-0 mr-16 items-center py-3">
+                  
                   <ChevronUpDownIcon className="h-5 w-5 text-black" aria-hidden="true" />
+                
                 </span>
+                
               </Listbox.Button>
 
               <Transition
@@ -58,8 +61,18 @@ export default function SelectAddress({ UserAddressData, onSelectAddress }: { Us
                           <>
                             <div className="flex items-center">
                               <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                                {address.name} {address.lname} {address.phonenumber} {address.addressline}
-                                {address.district} {address.subdistrict} {address.province} {address.zipcode}
+                              <p>
+                                    <strong>ชื่อผู้รับ : </strong>{address.name} {address.lname}
+                                </p>
+                                <p>
+                                    <strong>เบอร์โทรศัพท์ : </strong>{address.phonenumber}
+                                </p>
+                                <p>
+                                    <strong>ที่อยู่จัดส่ง : </strong>{address.addressline} {address.district} {address.province} {address.subdistrict} {address.zipcode} 
+                                </p>
+                                <p>
+                                <strong>หมายเหตุ : </strong> {address.note}
+                                </p>
                               </span>
                             </div>
 
