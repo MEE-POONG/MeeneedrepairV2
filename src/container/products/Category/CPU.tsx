@@ -18,7 +18,7 @@ interface Category {
   name: string
 }
 
-const ShowproductsCard: React.FC = () => {
+const CPUCard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -144,4 +144,4 @@ const ShowproductsCard: React.FC = () => {
   );
 };
 
-export default ShowproductsCard;
+export default CPUCard;

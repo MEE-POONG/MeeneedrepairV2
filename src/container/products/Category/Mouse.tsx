@@ -18,7 +18,7 @@ interface Category {
   name: string
 }
 
-const CPUCard: React.FC = () => {
+const MouseCard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -98,7 +98,7 @@ const CPUCard: React.FC = () => {
           <p>Loading...</p>
         ) : (
           products
-            .filter(product => product.Category && product.Category.name === "เมนบอร์ด")
+            .filter(product => product.Category && product.Category.name === "เมาส์")
             .map(product => (
               <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
                 <div className="flex md:flex-wrap items-center">
@@ -144,4 +144,4 @@ const CPUCard: React.FC = () => {
   );
 };
 
-export default CPUCard;
+export default MouseCard;
