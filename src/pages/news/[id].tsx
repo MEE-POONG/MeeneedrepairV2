@@ -40,9 +40,9 @@ const ReadNewsDetail: React.FC = (props) => {
                     <div className=" xl:grid xl:grid-cols-9 xl:gap-2 mx-4 xl:mx-0 ">
                         {/* Left Content */}
                         <div className="col-span-7 bg-[#ffffff] text-white mt-10 rounded-xl shadow-2xl overflow-hidden">
-                            <div className="">
+                            <div className="shadow-black">
                                 <img
-                                    className="object-cover object-center w-full h-full shadow-lg"
+                                    className="object-cover object-center w-1200 h-620 shadow-lg"
                                     src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData.img}/public`}
                                     alt={newsData.img}
                                 />
