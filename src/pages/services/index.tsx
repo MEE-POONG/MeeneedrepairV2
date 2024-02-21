@@ -40,7 +40,7 @@ const AdviserService: React.FC = (props) => {
 
                         <div className="relative bg-white shadow-lg p-3 rounded-md mt-16">
                             <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
-                                <p className="text-white">รูปแบบการบริการ</p>
+                                <p className="text-white">การจองใช้บริการ</p>
                             </div>
                             <p className="mt-8 ml-6">
                                 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore laboriosam nisi, velit quos doloremque iusto.</li>
