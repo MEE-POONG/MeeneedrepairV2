@@ -30,7 +30,7 @@ export default function Menuservice() {
               <p className="text-sm md:text-base">บริการซ่อมบำรุง </p>
             </Link>
           </div><div className="bg-white rounded-xl p-3 hover:bg-slate-900 hover:text-white">
-            <Link href='' className="text-sm text-center">
+            <Link href='/appointment' className="text-sm text-center">
               <LuTimerReset className="text-5xl md:text-7xl lg:text-[100px] mx-auto mb-2 md:p-3" />
               <p className="text-sm md:text-base">บริการจองซ่อม</p>
             </Link>

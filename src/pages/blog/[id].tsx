@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 // import LatestBlog from "../../container/Blog/Latestblog";
 import RootLayout from "@/components/Layout";
+import Image from "next/image";
 
 const ReadBlogDetail: React.FC = () => {
     const router = useRouter();
@@ -11,7 +12,7 @@ const ReadBlogDetail: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if (id) {   
+        if (id) {
             fetch(`/api/blog/${id}`)
                 .then((response) => response.json())
                 .then((data) => {
@@ -31,10 +32,10 @@ const ReadBlogDetail: React.FC = () => {
             <div className="container mx-auto"
             >
                 <div>
-                    <img
+                    {/* <img
                         className="w-full h-[300px] md:h-[400px] object-cover"
-                        src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} />
-                    
+                        src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} width={100} height={100} /> */}
+
                     <div className="mt-8 mx-4 xl:mx-0">
                         <h4 className="text-xl md:text-4xl font-semibold text-white">{blogData.title}</h4>
                         <div className="flex mt-8 gap-10">
@@ -68,14 +69,14 @@ const ReadBlogDetail: React.FC = () => {
                             <div className="py-16">
                                 <img
                                     className="w-[726px] px-2 md:px-0 mx-auto rounded-sm drop-shadow-lg"
-                                    src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img}
+                                    src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${blogData.img}/public`} alt={blogData.img} width={100} height={100}
                                 />
                                 <article className="prose lg:prose-md md:mx-auto mt-8 px-2 md:px-0">
                                     <h1 className=" text-xl md:text-2xl">{blogData.subtitle}</h1>
                                     <p>
-                                    {blogData.detail}
+                                        {blogData.detail}
                                     </p>
-                                    
+
                                 </article>
 
 
@@ -83,15 +84,15 @@ const ReadBlogDetail: React.FC = () => {
                         </div>
 
                         {/* Right Content */}
-                       
 
-                            {/* <LatestBlog/> */}
 
-                        </div>
+                        {/* <LatestBlog/> */}
+
                     </div>
                 </div>
+            </div>
 
-     
+
         </RootLayout>
     )
 }

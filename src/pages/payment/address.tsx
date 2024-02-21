@@ -18,7 +18,7 @@ export default function SelectAddress({ UserAddressData, onSelectAddress }: { Us
       }}>
         {({ open }) => (
           <>
-            <div className="relative px-[60px] mt-5 mx-auto">
+            <div className="relative mt-5 mx-auto">
               <Listbox.Button className=" w-full  bg-gray-200 text-gray-700 border border-gray-200 rounded  px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus: h-10 resize-none ">
                 <span className="flex items-center">
                   <span className=" truncate">
@@ -27,14 +27,11 @@ export default function SelectAddress({ UserAddressData, onSelectAddress }: { Us
                       : UserAddressData && UserAddressData.length > 0
                         ? "กรุณาเลือกที่อยู่จัดส่ง"
                         : "ยังไม่มีที่อยู่จัดส่ง"}
-
-
                   </span>
-                  
-                  <ChevronUpDownIcon className="h-5 w-5 text-black" aria-hidden="true" />
-                
                 </span>
-                
+                <span className="pointer-events-none absolute inset-y-0 right-0 items-center py-3">
+                  <ChevronUpDownIcon className="h-5 w-5 text-black" aria-hidden="true" />
+                </span>
               </Listbox.Button>
 
               <Transition

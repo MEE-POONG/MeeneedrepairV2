@@ -1,19 +1,34 @@
 import { useEffect, useState } from "react";
-import Information from "../../components/profile/Information";
 import { LuNewspaper } from "react-icons/lu";
 import Cookies from 'js-cookie';
-import { User } from "@prisma/client";
 import { FaUserCircle } from "react-icons/fa";
+import Image from "next/image";
 
+// กำหนด interface หรือ type ของ User
+interface User {
+    id: string;
+    fname?: string;
+    lname?: string;
+    birthday?: string;
+    email?: string;
+    password?: string;
+    comfirmPassword?: string;
+    img?: string;
+    tel?: string;
+    secretKey?: string;
+    facebook?: string;
+    google?: string;
+}
 
-const Personalinformation: React.FC = (props) => {
-
+// สร้าง component PersonalInformation
+const PersonalInformation: React.FC = () => {
     const [loggedInUser, setLoggedInUser] = useState<User>();
-    const [editUser, setEditUser] = useState({
+    const [editUser, setEditUser] = useState<User>({
+        id: '',
         fname: '',
         lname: '',
         tel: '',
-        image: '',
+        img: '',
     });
     const [isEditing, setIsEditing] = useState(false);
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -25,24 +40,24 @@ const Personalinformation: React.FC = (props) => {
                 const parsedUser = JSON.parse(userDataFromCookies);
                 setLoggedInUser(parsedUser);
                 setEditUser({
-                    fname: parsedUser?.fname,
-                    lname: parsedUser?.lname,
-                    tel: parsedUser?.tel,
-                    image: parsedUser?.image,
+                    id: parsedUser.id,
+                    fname: parsedUser.fname || '',
+                    lname: parsedUser.lname || '',
+                    tel: parsedUser.tel || '',
+                    img: parsedUser.img || '',
                 });
             }
         };
 
         fetchData();
     }, []);
+
     useEffect(() => {
         console.log(editUser);
     }, [editUser]);
 
     const handleCancel = () => {
-        // setUserData(initialUserData);
         setIsEditing(false);
-
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,46 +68,15 @@ const Personalinformation: React.FC = (props) => {
 
             const reader = new FileReader();
             reader.onloadend = () => {
-                // setUserData({ ...userData, img: reader.result as string });
+                // อาจจะทำการ set รูปภาพใหม่เพื่อดูตัวอย่าง แต่ในที่นี้ไม่ได้ใช้
             };
             reader.readAsDataURL(file);
         }
     };
 
     const handleSave = () => {
-        // const updatedUserData = {
-        //     fname: loggedInUser?.fname,
-        //     lname: loggedInUser?.lname,
-        //     email: loggedInUser?.email,
-        //     tel: loggedInUser?.tel,
-        //     img: loggedInUser?.img
-        // };
-
-        // if (imageFile) {
-        //     // ส่งไฟล์รูปภาพไปยัง API หรือทำการอัปโหลดตามที่ต้องการ
-        //     // เช่น fetch('/api/upload-image', { method: 'POST', body: imageFile })
-        // }
-
-        // fetch(`/api/user/${loggedInUser?.id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(updatedUserData),
-        // })
-        //     .then((response) => {
-        //         if (response.ok) {
-        //             setIsEditing(false);
-        //             setInitialUserData(updatedUserData);
-        //         } else {
-        //             console.error('Error:', response.status);
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
+        // ต้องทำการบันทึกข้อมูลที่แก้ไขลงในฐานข้อมูล และสิ้นสุดการแก้ไข
     };
-
 
     return (
         <>
@@ -103,7 +87,6 @@ const Personalinformation: React.FC = (props) => {
                 </div>
 
                 <div className="container w-[800px] bg-secondary2 mt-10 rounded-lg p-8 text-secondary1">
-                    {/* <Information /> */}
                     {!isEditing ? (
                         <>
                             <div className="flex justify-between">
@@ -118,7 +101,7 @@ const Personalinformation: React.FC = (props) => {
                             </div>
                             <div className="mt-5 leading-loose">
                                 {loggedInUser?.img ? (
-                                    <img
+                                 <img
                                         src={loggedInUser?.img}
                                         alt="profile"
                                         className="shadow rounded-full object-cover mx-auto"
@@ -140,8 +123,6 @@ const Personalinformation: React.FC = (props) => {
                                 <p>
                                     <strong>เบอร์โทรศัพท์ :</strong> {loggedInUser?.tel} { }
                                 </p>
-
-
                             </div>
                             <div className="w-full h-0.5 bg-gradient-to-r from-[#CA0808] to-[#0FC0E7] mx-auto mt-5"></div>
                         </>
@@ -154,7 +135,6 @@ const Personalinformation: React.FC = (props) => {
                             </div>
                             <form>
                                 <div className="mt-5 leading-loose">
-
                                     {loggedInUser?.img ? (
                                         <div>
                                             <input
@@ -164,7 +144,7 @@ const Personalinformation: React.FC = (props) => {
                                                 id="imageInput"
                                                 style={{ display: 'none' }}
                                             />
-                                            <img
+                                         <img
                                                 src={loggedInUser?.img}
                                                 alt="profile"
                                                 className="shadow rounded-full object-cover mx-auto"
@@ -188,48 +168,42 @@ const Personalinformation: React.FC = (props) => {
                                             />
                                         </div>
                                     )}
-
                                     <p>
                                         <strong>ชื่อผู้รับ :</strong>
                                         <input
                                             type="text"
-                                            value={editUser?.fname}
+                                            value={editUser?.fname || ''}
                                             onChange={(e) => setEditUser({ ...editUser, fname: e.target.value })}
                                             className="mt-5 border border-b-black focus:outline-none focus:border-b-blue-500 pl-2 mr-2"
                                         />
                                         <input
                                             type="text"
-                                            value={editUser?.lname}
+                                            value={editUser?.lname || ''}
                                             onChange={(e) => setEditUser({ ...editUser, lname: e.target.value })}
                                             className="border border-b-black focus:outline-none focus:border-b-blue-500 pl-2"
                                         />
                                     </p>
-
                                     <p>
                                         <strong>เบอร์โทรศัพท์ :</strong>
                                         <input
                                             type="text"
-                                            value={editUser?.tel}
+                                            value={editUser?.tel || ''}
                                             onChange={(e) => setEditUser({ ...editUser, tel: e.target.value })}
                                             className="border border-b-black focus:outline-none focus:border-b-blue-500 pl-2"
                                         />
                                     </p>
                                 </div>
                             </form>
-
                             <div className="my-2">
                                 <button onClick={handleSave} className="bg-green-500 text-white w-16 h-8 rounded">บันทึก</button>
                                 <button onClick={handleCancel} className="ml-2 bg-red-500 text-white w-16 h-8 rounded">ยกเลิก</button>
                             </div>
                             <div className="w-full h-0.5 bg-gradient-to-r from-[#CA0808] to-[#0FC0E7] mx-auto mt-5"></div>
                         </div>
-
                     )}
                 </div>
-
             </div>
-
         </>
     )
 }
-export default Personalinformation
+export default PersonalInformation;

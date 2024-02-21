@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LuMapPin } from "react-icons/lu";
-import { Address } from '@prisma/client';
 
 const AddressProfile: React.FC = (props) => {
     const router = useRouter();
@@ -30,7 +29,7 @@ const AddressProfile: React.FC = (props) => {
 
 
     useEffect(() => {
-        fetch("https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json")
+        fetch(`https://raw.githubusercontent.com/kongvut/thai-province-data/master/api_province.json`)
             .then((response) => response.json())
             .then((data) => {
                 setProvinces(data);

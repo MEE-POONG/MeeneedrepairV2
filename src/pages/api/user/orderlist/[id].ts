@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
@@ -9,37 +9,46 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const id = req.query.id;
 
-                const data = await prisma.appointment.findUnique({
+                const id = req.query.id;
+                const data = await prisma.user.findUnique({
                     where: {
                         id: id as string,
                     },
                     include: {
-                        User: true,
-                        Address: true
-                    },
+                        Order: {
+                            include: {
+                                OrderList: {
+                                    include: {
+                                        Products: true // เรียกข้อมูลสินค้าที่เกี่ยวข้องในแต่ละรายการ OrderList
+                                    }
+                                }
+                            }
+                        }
+                    }
                 });
 
                 res.status(200).json(data);
             } catch (error) {
+                console.error(error);
                 res.status(500).json({ error: "An error occurred while fetching the data" });
             }
             break;
-
-
 
         case 'PUT':
             try {
                 const id = req.query.id;
 
-                const data = await prisma.appointment.update({
+                const data = await prisma.user.update({
                     where: {
                         id: id as string,
                     },
                     include: {
-                        User: true,
-                        Address: true
+                        OrderList: {
+                            include: {
+                                Products: true // เรียกข้อมูลสินค้าที่เกี่ยวข้องในแต่ละรายการ OrderList
+                            }
+                        }
                     },
                     data: req.body,
                 });
@@ -54,7 +63,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const id = req.query.id;
 
-                const data = await prisma.appointment.delete({
+                const data = await prisma.user.delete({
                     where: {
                         id: id as string,
                     },

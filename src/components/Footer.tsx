@@ -4,6 +4,7 @@ import { ImHome } from 'react-icons/im';
 import { BiLogoGmail } from 'react-icons/bi';
 import { FiPhoneCall } from 'react-icons/fi';
 import { Mitr } from 'next/font/google'
+import Image from "next/image";
 
 const fontMNR = Mitr({
     weight: "300",
@@ -16,7 +17,7 @@ const Footer: React.FC = () => {
         <footer className={`w-full ${fontMNR.className}`}>
             <div className="font-fontTH01 w-full bg-[#F4F5F5] bottom-0">
                 <div className="md:grid grid-cols-6 lg:grid-cols-5 gap-3 mx-5 md:mx-8 py-4 justify-center">
-                    <img className="w-24 lg:w-36 md:col-start-2 md:mx-auto md:col-span-2 lg:col-span-1" src="../images/logo/logoMR7.png" alt="" />
+                 <img className="w-24 lg:w-36 md:col-start-2 md:mx-auto md:col-span-2 lg:col-span-1" src={"/images/LOGO.png"} alt="" width={`150`} height={`150`} />
                     <div className="md:col-span-3 lg:col-span-2 ">
                         <p className="text-base lg:text-3xl font-extrabold text-transparent 
                                       bg-gradient-to-r from-orange-400 to-blue-600

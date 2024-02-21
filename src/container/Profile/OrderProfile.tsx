@@ -14,7 +14,7 @@ import RootLayout from "@/components/Layout";
 const EditFavoritePage: React.FC = (props) => {
 
     return (
-        <RootLayout>
+        <RootLayout loggedInUser="">
             {/* <ProductCategory /> */}
             <div className="xl:hidden">
                 <TabMenuMobile />

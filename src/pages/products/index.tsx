@@ -31,11 +31,11 @@ const ProductPage: React.FC = (props) => {
     return (
         <RootLayout loggedInUser="">
             {/* Slideproduct component */}
-            <div className="mt-[110]">
+            <div className="mt-[84px]">
                 <Slideproduct />
             </div>
             {/* Main content container */}
-            <div className="container mt-5 mx-auto font-fontTH01">
+            <div className="container my-[84px]  mx-auto font-fontTH01">
                 {/* Promotion section */}
                 <div className="mx-auto text-center text-[50px]">
                     <p>Promotion</p>

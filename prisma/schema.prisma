@@ -26,6 +26,7 @@ model User {
   Address         Address[]
   Appointment     Appointment[]
   Order           Order[]
+  OrderList       OrderList[]
 }
 
 model Address {
@@ -41,6 +42,7 @@ model Address {
   subdistrict String?
   note        String?
   Appointment Appointment[]
+  Order       Order[]
   User        User?         @relation(fields: [userId], references: [id])
   userId      String?       @db.ObjectId
 }
@@ -68,10 +70,27 @@ model Repairman {
   id          String        @id @default(auto()) @map("_id") @db.ObjectId
   fname       String?
   lname       String?
-  brithday    String?
   email       String?
   tel         String?
   Appointment Appointment[]
+}
+
+model Payment {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  img         String?
+  paymentType String?
+  name        String?
+  lname       String?
+  phonenumber String?
+  typeaddress String?
+  addressline String?
+  zipcode     String?
+  province    String?
+  district    String?
+  subdistrict String?
+  note        String?
+  vat         Float?
+  Order       Order[]
 }
 
 model Order {
@@ -83,16 +102,21 @@ model Order {
   userId    String?     @db.ObjectId
   Payment   Payment?    @relation(fields: [paymentId], references: [id])
   paymentId String?     @db.ObjectId
+  Address   Address?    @relation(fields: [addressId], references: [id])
+  addressId String?     @db.ObjectId
 }
 
 model OrderList {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   date      String?
   discount  String?
+  quantity  Int?
   Order     Order?    @relation(fields: [orderId], references: [id])
   orderId   String?   @db.ObjectId
   Products  Products? @relation(fields: [productId], references: [id])
   productId String?   @db.ObjectId
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    String?   @db.ObjectId
 }
 
 model Products {
@@ -110,24 +134,9 @@ model Products {
   imgFourth    String?
   imgFifth     String?
 
-  OrderList      OrderList[]
-  Category       Category?     @relation(fields: [categoryId], references: [id])
-  categoryId     String?       @db.ObjectId
-  Productbrand   Productbrand? @relation(fields: [productbrandId], references: [id])
-  productbrandId String?       @db.ObjectId
-}
-
-model Productbrand {
-  id       String     @id @default(auto()) @map("_id") @db.ObjectId
-  name     String?
-  Products Products[]
-}
-
-model Payment {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  img         String?
-  paymentType String?
-  Order       Order[]
+  OrderList  OrderList[]
+  Category   Category?   @relation(fields: [categoryId], references: [id])
+  categoryId String?     @db.ObjectId
 }
 
 model Category {
@@ -172,4 +181,9 @@ model About {
   phoneTwo    String?
   FBname      String?
   line        String?
+}
+
+model Services {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  img String?
 }

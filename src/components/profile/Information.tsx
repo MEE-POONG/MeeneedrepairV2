@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import Cookies from 'js-cookie';
+import Image from "next/image";
 
 interface User {
     fname: string;
@@ -141,7 +142,7 @@ const Information: React.FC = (props) => {
                                     id="imageInput"
                                     style={{ display: 'none' }} disabled
                                 />
-                                <img
+                             <img
                                     src={userData.img}
                                     alt="profile"
                                     className="shadow rounded-full object-cover mx-auto"
@@ -213,7 +214,7 @@ const Information: React.FC = (props) => {
                                         id="imageInput"
                                         style={{ display: 'none' }}
                                     />
-                                    <img
+                                 <img
                                         src={userData.img}
                                         alt="profile"
                                         className="shadow rounded-full object-cover mx-auto"

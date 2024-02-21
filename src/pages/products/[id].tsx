@@ -143,11 +143,11 @@ const ReadProductsDetail: React.FC = (props) => {
                                     <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
                                 </SwiperSlide>
 
-                                {/* 
-                            <SwiperSlide className="flex">
-                                <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
-                                <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
-                            </SwiperSlide> */}
+
+                                <SwiperSlide className="flex">
+                                    <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg}/public`} alt={productsData.productimg} />
+                                    <img className="w-[100px] h-[100px]" src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${productsData.productimg1}/public`} alt={productsData.productimg1} />
+                                </SwiperSlide>
 
 
                             </Swiper>
@@ -236,12 +236,12 @@ const ReadProductsDetail: React.FC = (props) => {
 
                     <div className="flex justify-center my-24">
                         <button className="bg-[#18BCEB] rounded-lg w-48 h-16 text-2xl text-secondary2 flex items-center justify-center gap-x-2 "
-                        onClick={() => {
-                            window.scrollTo({
-                              top: 0,
-                              behavior: 'smooth',
-                            });
-                          }}>
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth',
+                                });
+                            }}>
                             <AiOutlineArrowUp />
                             <p>กลับสู่ด้านบน</p>
                         </button>
