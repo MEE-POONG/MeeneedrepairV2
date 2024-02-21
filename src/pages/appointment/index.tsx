@@ -196,7 +196,7 @@ function YourComponent() {
 
     return (
         <RootLayout loggedInUser="">
-            <div className="flex justify-center items-center min-h-screen">
+            <div className="flex justify-center items-center min-h-screen mt-24">
                 <div className="bg-white w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto p-6 rounded-lg shadow-lg">
                     <h2 className=" font-semibold text-xl lg:text-2xl text-gray-800 mb-4">
                         จองคิวซ่อม
