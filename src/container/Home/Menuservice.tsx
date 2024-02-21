@@ -20,7 +20,7 @@ export default function Menuservice() {
             </Link>
           </div>
           <div className="bg-white rounded-xl p-3 hover:bg-slate-900 hover:text-white">
-            <Link href='/services/consult' className="text-sm text-center">
+            <Link href='./about/' className="text-sm text-center">
               <FaHeadset className="text-5xl md:text-7xl lg:text-[100px] mx-auto mb-2 md:p-3" />
               <p className="text-sm md:text-base">บริการให้คำปรึกษา</p>
             </Link>

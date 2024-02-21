@@ -19,7 +19,7 @@ export default function AboutPage() {
             <div className="container mx-auto my-24">
                 <div className="text-center">
                     <div className="w-64 h-1 bg-gradient-to-r from-[#CA0808] to-[#0FC0E7] mx-auto mb-10"></div>
-                    <div className="text-white text-2xl md:text-5xl font-bold">
+                    <div className="text-black text-2xl md:text-5xl font-bold">
                         รู้จัก&nbsp;
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#081FF0] to-[#13D1D1]">
                             &quot;Mee Need Repair&quot;

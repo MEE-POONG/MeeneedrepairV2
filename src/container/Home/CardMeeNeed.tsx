@@ -8,7 +8,7 @@ export default function CardMeeNeed() {
           <div>
             <Image
               className='mx-auto mt-10 md:w-[200px]'
-              src="/images/logo/logoMR3.png"
+              src="/images/logoMR3.png"
               width={130}
               height={130}
               alt="Picture of the author"
@@ -24,7 +24,7 @@ export default function CardMeeNeed() {
              
             </div>
 
-            <div className='text-secondary2 text-sm md:text-base mt-5'>
+            <div className='text-secondary2 text-white text-sm md:text-base mt-5'>
               Me Support ให้บริการด้านไอทีซัพพอร์ท
               ให้คำปรึกษาด้านการใช้งานอุปกรณ์ไอที
               รวมถึงรับซ่อมอุปกรณ์ไอทีทุกประเภท
