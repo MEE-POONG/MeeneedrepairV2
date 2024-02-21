@@ -69,8 +69,8 @@ const Navbar: React.FC = () => {
   return (
     <nav className={` ${fontMNR.className}`}>
       <div className="fixed  top-0 z-50 w-full " style={{ backgroundColor: `${scroll > 90 ? "" : "#0f172a"}` }}>
-        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-36 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 90 ? "#F4F5F5" : ""}` }}>
-          <div className="flex items-center  py-5 ">
+        <div className=" container  mx-auto flex items-center justify-between md:rounded-[100px] px-10 drop-shadow-2xl" style={{ backgroundColor: `${scroll > 90 ? "#F4F5F5" : ""}` }}>
+          <div className="items-center py-5">
             <div onClick={() => setIsOpen(!isOpen)}
               className="md:hidden duration-700 ease-in-out "
               style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}>
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <ul className="md:flex gap-3 hidden mr-96 font-medium text-sm md:text-lg items-center">
+          <ul className="md:flex gap-7 hidden mr-[600px] font-medium text-sm md:text-lg items-center">
             {navLinks.map((list) => (
               <li key={list?.name} className="hover:border-b-2  hover:border-natural04"
                 style={{ color: `${scroll > 90 ? "" : "#F4F5F5"}` }}>
