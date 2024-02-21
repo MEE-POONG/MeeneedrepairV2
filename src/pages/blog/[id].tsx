@@ -29,7 +29,7 @@ const ReadBlogDetail: React.FC = () => {
     }, [id]);
     return (
         <RootLayout loggedInUser="">
-            <div className="container mx-auto"
+            <div className="container mx-auto "
             >
                 <div>
                     {/* <img
