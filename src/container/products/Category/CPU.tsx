@@ -98,7 +98,7 @@ const ShowproductsCard: React.FC = () => {
           <p>Loading...</p>
         ) : (
           products
-            .filter(product => product.Category && product.Category.name === "เมนบอร์ด")
+            .filter(product => product.Category && product.Category.name === "CPU")
             .map(product => (
               <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
                 <div className="flex md:flex-wrap items-center">

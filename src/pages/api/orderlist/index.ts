@@ -9,9 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                const page: number = Number(req.query.page) || 1;
-                const pageSize: number = Number(req.query.pageSize) || 10;
-                const orders = await prisma.order.findMany({
+                 const orders = await prisma.order.findMany({
                     include: {
                         OrderList: {
                             include: {
@@ -21,8 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-                const totaluser = await prisma.order.count();
-                const totalPage: number = Math.ceil(totaluser / pageSize);
+         
                 res.status(200).json({ orders });
             } catch (error) {
                 console.error(error);
