@@ -113,13 +113,13 @@ const MainboardCard: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap my-3 justify-between md:mt-2">
-                    <p className="text-red-400 font-black	 text-[16px]" style={{ marginTop: 'auto', textShadow: '1px 2px 2px rgba(0, 0, 0, 0.5)' }}>
+                    <p className="text-amber-400 font-black	 text-[16px]" >
                       {product.price} Bath
                     </p>
                     <div className="flex items-center">
-                      <button className="text-red-400 hover:text-red-900" onClick={() => isLoggedIn ? addToCart(product) : alert('กรุณาเข้าสู่ระบบก่อน')}>
+                      <button className="text-amber-400 hover:text-red-900" onClick={() => isLoggedIn ? addToCart(product) : alert('กรุณาเข้าสู่ระบบก่อน')}>
                         <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
-                          <LiaCartArrowDownSolid className="text-[20px] ml-32" />
+                          <LiaCartArrowDownSolid className="text-[20px] ml-32 text-amber-400" />
                         </p>
                       </button>
 
