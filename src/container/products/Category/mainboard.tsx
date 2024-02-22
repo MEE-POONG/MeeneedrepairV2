@@ -130,10 +130,7 @@ const Mainboard: React.FC = () => {
                         </button>
 
                       </div>
-                      <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
-                        <LiaHeartSolid className="text-[20px]" />
-                      </p>
-                    </div>
+                     </div>
                   </div>
                 </div>
               </div>

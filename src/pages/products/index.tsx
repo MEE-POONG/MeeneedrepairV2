@@ -72,7 +72,7 @@ const ProductPage: React.FC = (props) => {
                         <button onClick={() => handleTabClick(1)} className={activeTab === 0 ? 'active' : ''}>
                             <div className="ml-5 flex gap-1 text-black hover:underline text-[18px] ">
                                 <p className='w-[25px] h-[25px]' />
-                                ซีพียู
+                                เมาส์
                             </div>
                         </button>
 
@@ -84,7 +84,7 @@ const ProductPage: React.FC = (props) => {
                         </button>
                         <button onClick={() => handleTabClick(3)} className={activeTab === 2 ? 'active' : ''}> <div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
                             <p className='w-[25px] h-[25px]' />
-                            เมาส์
+                            ซีพียู
                         </div>
                         </button>
                         {/* <button onClick={() => handleTabClick(3)} className={activeTab === 3 ? 'active' : ''}><div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
@@ -117,9 +117,9 @@ const ProductPage: React.FC = (props) => {
                     </div>
                     <div className="tab-content mx-5 col-span-18 p-5 lg:p-0 lg:col-span-10 pt-5 mb-10 lg:mb-0 lg:pt-0 my-10 ">
                         {activeTab === 0 && <ShowproductsCard />}
-                        {activeTab === 1 && <p><CPUCard /></p>}
+                        {activeTab === 1 && <p><MouseCard /></p>}
                         {activeTab === 2 && <p><Mainboard /></p>}
-                        {activeTab === 3 && <p><MouseCard /></p>}
+                        {activeTab === 3 && <p><CPUCard /></p>}
                      
                     </div>
                 </div>

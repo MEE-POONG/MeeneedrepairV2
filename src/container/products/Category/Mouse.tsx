@@ -98,7 +98,7 @@ const MouseCard: React.FC = () => {
           <p>Loading...</p>
         ) : (
           products
-            .filter(product => product.Category && product.Category.name === "เมาส")
+            .filter(product => product.Category && product.Category.name === "เมาส์")
             .map(product => (
               <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
                 <div className="flex md:flex-wrap items-center">
@@ -130,9 +130,6 @@ const MouseCard: React.FC = () => {
                         </button>
 
                       </div>
-                      <p className="text-orange-600 text-[16px]" style={{ marginTop: 'auto' }}>
-                        <LiaHeartSolid className="text-[20px]" />
-                      </p>
                     </div>
                   </div>
                 </div>
