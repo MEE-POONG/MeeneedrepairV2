@@ -271,7 +271,7 @@ const Payment: React.FC = (props) => {
                 setCartItems([]);
                 Cookies.remove('cart');
                 // ทำการโหลดหน้าอื่น ๆ หรือทำการ Redirect ไปยังหน้าอื่น ๆ ตามที่ต้องการ
-                window.location.href = "/"; // ตัวอย่างการ Redirect ไปยังหน้า success
+                window.location.href = "/payment/success"; // ตัวอย่างการ Redirect ไปยังหน้า success
             } else {
                 console.error('Failed to place order');
             }
