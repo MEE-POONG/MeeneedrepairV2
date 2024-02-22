@@ -14,7 +14,7 @@ export default function Menuservice() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 px-3 lg:px-32 gap-3 my-8 h-48 ">
           <div className="bg-white rounded-xl p-7 hover:bg-slate-900 hover:text-white">
-            <Link href='/services/program' className="text-sm text-center">
+            <Link href='/products' className="text-sm text-center">
               <MdOutlineShoppingCart  className="text-5xl md:text-7xl lg:text-[100px] mx-auto mb-2" />
               <p className="text-sm md:text-base">บริการติดตั้งโปรแกรม</p>
             </Link>

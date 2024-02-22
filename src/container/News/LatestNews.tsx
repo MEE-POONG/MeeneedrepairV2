@@ -30,10 +30,10 @@ const LatestNews = () => {
     }, []);
 
     return (
-        <div className="col-span-2 bg-[#1E293B] mt-10 rounded-lg p-6">
-            <p className="text-white text-xl">ข่าวแนะนำ</p>
+        <div className="col-span-2  mt-10 rounded-lg p-6">
+            <p className="text-black text-xl mx-5">ข่าวแนะนำ</p>
             {newsData.slice(-2).map((news) => ( // แก้จาก .slice(-2, -1) เป็น .slice(-2) เพื่อให้แสดงข่าวทั้ง 2 ข่าว
-                <div className="bg-[#F4F5F5] rounded-[20px] mx-auto my-5 md:w-[270px] lg:w-[270px]" key={news.id}>
+                <div className="m-[200px]  bg-[#ffffff] rounded-[20px] mx-auto my-5 md:w-[270px] lg:w-[270px]" key={news.id}>
                     <div className="p-3">
                         <img
                             className="rounded-[20px] w-full h-[150px]"
@@ -44,7 +44,7 @@ const LatestNews = () => {
                         />
                     </div>
                     <div className="px-4 py-2">
-                        <p className="text-2xl truncate font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#081FF0] to-[#13D1D1]">{news.title}</p>
+                        <p className="text-2xl truncate font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#000000] to-[#000000]">{news.title}</p>
                         <div className="flex justify-between px-2 text-sm">
                             <p> By &nbsp; {news.refer}</p>
                             <p>{news.date}</p>
@@ -59,5 +59,4 @@ const LatestNews = () => {
         </div>
     );
 };
-
 export default LatestNews;

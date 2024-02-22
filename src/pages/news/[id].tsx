@@ -46,18 +46,18 @@ const ReadNewsDetail: React.FC = (props) => {
                                     src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${newsData.img}/public`}
                                     alt={newsData.img}
                                 />
-                                <div className="w-full text-end mt-2">
-                                    <span className="text-sky-600">{newsData.date}</span>
+                                <div className="w-full text-end mt-2 px-6">
+                                    <span className="text-sky-600 ">{newsData.date}</span>
                                     <span className="text-black"> I </span>
                                     <span className="text-cyan-600 font-black">{newsData.author}</span>
                                 </div>
-                                <h1 className="text-2xl p-3 text-black">{newsData.subtitle}</h1>
+                                <h1 className="text-2xl p-3 text-black px-6">{newsData.subtitle}</h1>
 
-                                <p className="mx-6 text-base leading-relaxed text-gray-700">
+                                <p className="mx-6 text-base px-6 leading-relaxed text-gray-700">
                                     {newsData.detail}
                                 </p>
 
-                                <div className=" items-center text-end mt-4 my-2 text-sm text-gray-600 italic">
+                                <div className=" items-center px-6 text-end mt-4 my-2 text-sm text-gray-600 italic">
                                     อ้างอิง: {newsData.refer}
                                 </div>
                             </div>

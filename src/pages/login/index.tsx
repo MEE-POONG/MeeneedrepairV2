@@ -65,8 +65,8 @@ const LoginComponent: React.FC = () => {
 
                 <div className=" flex flex-col  sm:px-6 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                     <img className="mx-auto"
-                            src={"/images/ear.gif"} width={100} height={100}
+                     <img className="mx-auto w-52"
+                            src={"/images/ear.gif"} 
                             alt=""
                         />
                         <h2 className=" text-center text-3xl font-extrabold text-gray-900">
