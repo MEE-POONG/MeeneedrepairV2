@@ -8,15 +8,7 @@ import Slide from "@/container/Services/Slide";
 
 const AdviserService: React.FC = (props) => {
 
-    const [scroll, setScroll] = useState(0);
-    useEffect(() => {
-        const handleScroll = () => {
-            setScroll(window.scrollY);
-        };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
         <>
@@ -29,27 +21,27 @@ const AdviserService: React.FC = (props) => {
                             <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
                                 <p className="text-white">รูปแบบการบริการ</p>
                             </div>
-                            <p className="mt-8 ml-6">
+                            <ul className="mt-8 ml-6">
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
 
-                            </p>
+                            </ul>
                         </div>
 
                         <div className="relative bg-white shadow-lg p-3 rounded-md mt-16  max-w-[1300px] mx-auto">
                             <div className="absolute bg-black p-3 rounded-md -top-6 left-5">
                                 <p className="text-white">การจองใช้บริการ</p>
                             </div>
-                            <p className="mt-8 ml-6">
+                            <ul className="mt-8 ml-6">
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum aut, impedit alias labore saepe, expedita et laborum unde officiis amet excepturi quaerat voluptatibus rem natus.</li>
 
-                            </p>
+                            </ul>
                         </div>
                     </div>
 

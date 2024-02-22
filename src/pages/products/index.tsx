@@ -10,6 +10,9 @@ import PromoteCard2 from "@/container/products/Promote2";
 import PromoteCard from "@/container/products/Promote";
 import ShowproductsCard from "@/container/products/ShowProduct";
 import RootLayout from "@/components/Layout";
+import MouseCard from "@/container/products/Category/Mouse";
+import CPUCard from "@/container/products/Category/CPU";
+import Mainboard from "@/container/products/Category/mainboard";
 
 // Main ProductPage component
 const ProductPage: React.FC = (props) => {
@@ -59,24 +62,32 @@ const ProductPage: React.FC = (props) => {
                 {/* Card Product section */}
                 <div className="flex mx-auto bg-secondary2 rounded-lg">
                     <div className="container w-[250px] h-[100%] tab-buttons hidden lg:flex flex-col grid-cols-5 md:gap-2 my-10 mx-10">        <h3 className="text-3xl text-black mb-8">หมวดหมู่สินค้า</h3>
-                        <button onClick={() => handleTabClick(0)} className={activeTab === 0 ? 'active' : ''}><div className="ml-5 flex gap-1 text-black hover:underline text-[18px] ">
-                            <p className='w-[25px] h-[25px]' />
-                            ซีพียู
-                        </div>
+                        <button onClick={() => handleTabClick(0)} className={activeTab === 0 ? 'active' : ''}>
+                            <div className="ml-5 flex gap-1 text-black hover:underline text-[18px] ">
+                                <p className='w-[25px] h-[25px]' />
+                                สินค้าทั้งหมด
+                            </div>
                         </button>
 
-                        <button onClick={() => handleTabClick(1)} className={activeTab === 1 ? 'active' : ''}><div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
+                        <button onClick={() => handleTabClick(1)} className={activeTab === 0 ? 'active' : ''}>
+                            <div className="ml-5 flex gap-1 text-black hover:underline text-[18px] ">
+                                <p className='w-[25px] h-[25px]' />
+                                ซีพียู
+                            </div>
+                        </button>
+
+                        <button onClick={() => handleTabClick(2)} className={activeTab === 1 ? 'active' : ''}><div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
                             <p className='w-[25px] h-[25px]' />
                             เมนบอร์ด
 
                         </div>
                         </button>
-                        <button onClick={() => handleTabClick(2)} className={activeTab === 2 ? 'active' : ''}> <div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
+                        <button onClick={() => handleTabClick(3)} className={activeTab === 2 ? 'active' : ''}> <div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
                             <p className='w-[25px] h-[25px]' />
-                            การ์ดจอ
+                            เมาส์
                         </div>
                         </button>
-                        <button onClick={() => handleTabClick(3)} className={activeTab === 3 ? 'active' : ''}><div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
+                        {/* <button onClick={() => handleTabClick(3)} className={activeTab === 3 ? 'active' : ''}><div className="ml-5 flex gap-1 items-center mt-2 text-black hover:underline text-[18px] ">
                             <p className='w-[25px] h-[25px]' />
                             แรม
                         </div>
@@ -102,17 +113,14 @@ const ProductPage: React.FC = (props) => {
                             อุปกรณ์เสริม
 
                         </div>
-                        </button>
+                        </button> */}
                     </div>
                     <div className="tab-content mx-5 col-span-18 p-5 lg:p-0 lg:col-span-10 pt-5 mb-10 lg:mb-0 lg:pt-0 my-10 ">
                         {activeTab === 0 && <ShowproductsCard />}
-                        {activeTab === 1 && <p><NewsCard /></p>}
-                        {activeTab === 2 && <p><NewsCard /></p>}
-                        {activeTab === 3 && <p><NewsCard /></p>}
-                        {activeTab === 4 && <p><NewsCard /></p>}
-                        {activeTab === 5 && <p><NewsCard /></p>}
-                        {activeTab === 6 && <p><NewsCard /></p>}
-                        {activeTab === 7 && <p><NewsCard /></p>}
+                        {activeTab === 1 && <p><CPUCard /></p>}
+                        {activeTab === 2 && <p><Mainboard /></p>}
+                        {activeTab === 3 && <p><MouseCard /></p>}
+                     
                     </div>
                 </div>
             </div>

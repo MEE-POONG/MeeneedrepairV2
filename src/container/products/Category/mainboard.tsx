@@ -18,7 +18,7 @@ interface Category {
   name: string
 }
 
-const CPUCard: React.FC = () => {
+const Mainboard: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -104,7 +104,7 @@ const CPUCard: React.FC = () => {
                 <div className="flex md:flex-wrap items-center">
                   <div className="w-[230px] md:w-full h-[200px] md:rounded-tr-lg md:rounded-tl-lg overflow-hidden">
                     <Link href={`/products/${product.id}`}>
-                      <img src={`https://addin.co.th/wp-content/uploads/2022/10/desktop-pc-lenovo-thinkcentre-neo-30a-cover.jpg`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl" />
+                    <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${product.imgFirst ? product.imgFirst : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl mx-auto" />
                     </Link>
                   </div>
 
@@ -144,4 +144,4 @@ const CPUCard: React.FC = () => {
   );
 };
 
-export default CPUCard;
+export default Mainboard;
