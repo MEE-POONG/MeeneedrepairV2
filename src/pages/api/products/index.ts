@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             try {
                 const products = await prisma.products.findMany({
                     include: {
-                        Category: true // ต้องรวมข้อมูลของหมวดหมู่ด้วย
+                        Categories: true // ต้องรวมข้อมูลของหมวดหมู่ด้วย
                     },
                 });
 

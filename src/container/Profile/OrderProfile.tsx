@@ -15,7 +15,7 @@ const EditFavoritePage: React.FC = (props) => {
 
     return (
         <RootLayout loggedInUser="">
-            {/* <ProductCategory /> */}
+            {/* <ProductCategories /> */}
             <div className="xl:hidden">
                 <TabMenuMobile />
             </div>

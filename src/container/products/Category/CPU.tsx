@@ -14,7 +14,7 @@ interface Product {
   quantity?: number;
 
 }
-interface Category {
+interface Categories {
   name: string
 }
 
@@ -98,7 +98,7 @@ const CPUCard: React.FC = () => {
           <p>Loading...</p>
         ) : (
           products
-            .filter(product => product.Category && product.Category.name === "CPU")
+            .filter(product => product.Categories && product.Categories.name === "CPU")
             .map(product => (
               <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
                 <div className="flex md:flex-wrap items-center">

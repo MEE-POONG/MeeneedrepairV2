@@ -134,11 +134,11 @@ model Products {
   imgFifth     String?
 
   OrderList  OrderList[]
-  Category   Category?   @relation(fields: [categoryId], references: [id])
-  categoryId String?     @db.ObjectId
+  Categories   Categories?   @relation(fields: [CategoriesId], references: [id])
+  CategoriesId String?     @db.ObjectId
 }
 
-model Category {
+model Categories {
   id       String     @id @default(auto()) @map("_id") @db.ObjectId
   name     String?
   Products Products[]

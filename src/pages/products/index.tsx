@@ -10,9 +10,9 @@ import PromoteCard2 from "@/container/products/Promote2";
 import PromoteCard from "@/container/products/Promote";
 import ShowproductsCard from "@/container/products/ShowProduct";
 import RootLayout from "@/components/Layout";
-import MouseCard from "@/container/products/Category/Mouse";
-import CPUCard from "@/container/products/Category/CPU";
-import Mainboard from "@/container/products/Category/mainboard";
+import MouseCard from "@/container/products/Categories/Mouse";
+import CPUCard from "@/container/products/Categories/CPU";
+import Mainboard from "@/container/products/Categories/mainboard";
 
 // Main ProductPage component
 const ProductPage: React.FC = (props) => {

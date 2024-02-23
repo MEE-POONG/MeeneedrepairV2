@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-// import ProductCategory from "../../../container/Product/CategoryList";
+// import ProductCategories from "../../../container/Product/CategoriesList";
 import ReceiptProfile from "../receipt_profile";
 import TabMenu from "../../../container/Profile/test/TabMenu";
 import TabMenuMobile from "../../../container/Profile/test/TabMenuMobile";
@@ -9,7 +9,7 @@ import TabMenuMobile from "../../../container/Profile/test/TabMenuMobile";
 export default function EditReceiptPage() {
     return (
         <>
-            {/* <ProductCategory /> */}
+            {/* <ProductCategories /> */}
             <div className="xl:hidden">
                 <TabMenuMobile />
             </div>

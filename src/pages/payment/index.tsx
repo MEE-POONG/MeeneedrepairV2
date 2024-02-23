@@ -447,6 +447,7 @@ const Payment: React.FC = (props) => {
 
 
                     <div className='col-start-3 text-xl ps-20'>
+
                         <div>สรุปรายการสั่งสื้อสินค้า</div>
                         <div className="w-full h-0.5 bg-black mx-auto mt-5"></div>
                         <div className="container h-80 bg-white border border-gray-400 rounded-md mt-5">
@@ -466,11 +467,14 @@ const Payment: React.FC = (props) => {
                                 <p className="text-sm font-bold">{calculateTotal()}</p>
                             </div>
                         </div>
+                        {!addressId && (
+                            <p className="text-red-500">กรุณาเลือกที่อยู่ก่อนยืนยันคำสั่งซื้อ</p>
+                        )}
                         <div className="flex justify-center mt-6">
                             <button
                                 type="submit"
-                                disabled={isLoading}
-                                onClick={checkout} // เรียกใช้ฟังก์ชัน handleSubmit ในการตรวจสอบข้อมูล
+                                disabled={!addressId || isLoading}
+                                onClick={checkout}
                                 className="w-[150px] py-3 bg-[#FFCD4B] rounded-lg font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
                             >
                                 ยืนยันคำสั่งซื้อ

@@ -14,7 +14,7 @@ interface Product {
   quantity?: number;
 
 }
-interface Category {
+interface Categories {
   name: string
 }
 
@@ -98,7 +98,7 @@ const MouseCard: React.FC = () => {
           <p>Loading...</p>
         ) : (
           products
-            .filter(product => product.Category && product.Category.name === "เมาส์")
+            .filter(product => product.Categories && product.Categories.name === "เมาส์")
             .map(product => (
               <div key={product.id} className="bg-white shadow-xl rounded-md overflow-hidden">
                 <div className="flex md:flex-wrap items-center">

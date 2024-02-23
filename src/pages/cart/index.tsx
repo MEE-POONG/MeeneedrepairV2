@@ -59,7 +59,7 @@ const CartPage: React.FC = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <img className="h-10 w-10 rounded-full" src={item.imgFirst} alt={item.productname} />
+                        <img src={`https://imagedelivery.net/QZ6TuL-3r02W7wQjQrv5DA/${item.imgFirst ? item.imgFirst : 'f701ce08-7ebe-4af2-c4ec-2b3967392900'}/public`} alt="" width={100} height={100} className="w-[200PX] h-[200] object-cover rounded-xl mx-auto" />
                         </div>
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">{item.productname}</div>

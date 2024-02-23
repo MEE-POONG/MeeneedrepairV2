@@ -17,7 +17,7 @@ const categories = [
   { id: 7, icon: <LuUnlock />, name: "โน๊ตบุ๊ก", component: <NewsCard /> },
 ];
 
-const CategoryList = () => {
+const CategoriesList = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index: number) => {
@@ -30,11 +30,11 @@ const CategoryList = () => {
     <div className="bg-secondary2 p-4 rounded-lg">
       <div className="container w-[250px] h-[100%] tab-buttons hidden lg:flex flex-col grid-cols-5 md:gap-2 my-10 mx-10">
         <h3 className="text-3xl text-black mb-8">หมวดหมู่สินค้า</h3>
-        {memoizedCategories.map((category, index) => (
-          <button key={category.id} onClick={() => handleTabClick(index)} className={activeTab === index ? 'active' : ''}>
+        {memoizedCategories.map((Categories, index) => (
+          <button key={Categories.id} onClick={() => handleTabClick(index)} className={activeTab === index ? 'active' : ''}>
             <div className="ml-5 flex gap-1 text-black hover:underline text-[18px] ">
-              {category.icon}
-              {category.name}
+              {Categories.icon}
+              {Categories.name}
             </div>
           </button>
         ))}
@@ -44,4 +44,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default CategoriesList;
