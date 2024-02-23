@@ -82,14 +82,13 @@ model Payment {
   name        String?
   lname       String?
   phonenumber String?
-  typeaddress String?
   addressline String?
   zipcode     String?
   province    String?
   district    String?
   subdistrict String?
-  note        String?
   vat         Float?
+  taxaddress  String?
   Order       Order[]
 }
 

@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     switch (method) {
         case 'GET':
             try {
-                 const orders = await prisma.order.findMany({
+                const orders = await prisma.order.findMany({
                     include: {
                         OrderList: {
                             include: {
@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     },
                 });
 
-         
+
                 res.status(200).json({ orders });
             } catch (error) {
                 console.error(error);
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { date, userId, productIds, quantities, addressId, paymentType, name, lname, phonenumber, typeaddress, addressline, zipcode, province, district, subdistrict, note, vat } = req.body;
+                const { date, userId, productIds, quantities, paymentType, name, lname, phonenumber, addressline, zipcode, province, district, subdistrict, vat, taxaddress } = req.body;
 
                 const newPayment = await prisma.payment.create({
                     data: {
@@ -39,15 +39,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         name,
                         lname,
                         phonenumber,
-                        typeaddress,
                         addressline,
                         zipcode,
                         province,
                         district,
                         subdistrict,
-                        note,
                         vat,
-                        addressId,
+                        taxaddress
                     },
                 });
 
@@ -58,7 +56,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         date,
                         status: "ยังไม่ชำระเงิน",
                         userId,
-                        addressId,
                         paymentId,
                     },
                 });
