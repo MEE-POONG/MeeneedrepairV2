@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         case 'POST':
             try {
-                const { date, userId, productIds, quantities, paymentType, name, lname, phonenumber, addressline, zipcode, province, district, subdistrict, vat, taxaddress } = req.body;
+                const { date, userId, productIds, quantities, paymentType, name, lname, phonenumber, addressline, zipcode, province, district, subdistrict, addressId, vat, taxaddress } = req.body;
 
                 const newPayment = await prisma.payment.create({
                     data: {
@@ -57,6 +57,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         status: "ยังไม่ชำระเงิน",
                         userId,
                         paymentId,
+                        addressId,
                     },
                 });
 
